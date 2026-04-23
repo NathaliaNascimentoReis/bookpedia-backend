@@ -1,0 +1,29 @@
+{
+  "name": "projeto final back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "cls && nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "@supabase/supabase-js": "^2.104.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "pg": "^8.20.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prisma": "^7.3.0"
+  }
+}
