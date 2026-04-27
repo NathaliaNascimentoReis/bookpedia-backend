@@ -1,6 +1,6 @@
 import prisma from '../lib/services/prismaClient.js';
 
-export default class ExemploModel {
+export default class GuaraniModel {
     constructor({ id = null, nome, estado = true, preco = null } = {}) {
         this.id = id;
         this.nome = nome;
@@ -9,7 +9,7 @@ export default class ExemploModel {
     }
 
     async criar() {
-        return prisma.exemplo.create({
+        return prisma.guarani.create({
             data: {
                 nome: this.nome,
                 estado: this.estado,
@@ -19,14 +19,14 @@ export default class ExemploModel {
     }
 
     async atualizar() {
-        return prisma.exemplo.update({
+        return prisma.guarani.update({
             where: { id: this.id },
             data: { nome: this.nome, estado: this.estado, preco: this.preco },
         });
     }
 
     async deletar() {
-        return prisma.exemplo.delete({ where: { id: this.id } });
+        return prisma.guarani.delete({ where: { id: this.id } });
     }
 
     static async buscarTodos(filtros = {}) {
@@ -42,14 +42,14 @@ export default class ExemploModel {
             where.preco = parseFloat(filtros.preco);
         }
 
-        return prisma.exemplo.findMany({ where });
+        return prisma.guarani.findMany({ where });
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.exemplo.findUnique({ where: { id } });
+        const data = await prisma.guarani.findUnique({ where: { id } });
         if (!data) {
             return null;
         }
-        return new ExemploModel(data);
+        return new GuaraniModel(data);
     }
 }
