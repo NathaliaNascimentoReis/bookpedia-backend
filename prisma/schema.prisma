@@ -6,11 +6,63 @@ datasource db {
     provider = "postgresql"
 }
 
-model Exemplo {
-    id        Int      @id @default(autoincrement())
-    nome      String
-    estado    Boolean?  @default(true)
-    preco     Decimal @db.Decimal(10, 2)
+model Livro {
+    id                       Int    @id @default(autoincrement())
+    tituloDoLivro            String
+    autor                    String
+    descricao                String
+    descricaoEnglish         String
+    contextoHistorico        String
+    contextoHistoricoEnglish String
+    anoDeLancamento          Int
+    resumo                   String
+    resumoEnglish            String
+    analise                  String
+    analiseEnglish           String
+    capaURL                  String
+    personagemId             Int?
 
-    @@map("exemplo")
+    @@map("livro")
+}
+
+model Personagens {
+    id       Int    @id @default(autoincrement())
+    nome     String
+    idade   Int
+    descricao String
+    descricaoEnglish String
+    fotoURL  String
+    idDoLivro Int?
+
+    @@map("personagens")
+
+}
+
+model Questoes {
+    id       Int    @id @default(autoincrement())
+    enunciado String
+    vestibular String
+    anoVestibular Int
+    idDoLivro Int?
+
+    @@map("questoes")
+}
+
+model Videos {
+    id       Int    @id @default(autoincrement())
+    url      String
+    titulo   String
+    descricao String
+    idDoLivro Int?
+
+    @@map("videos")
+}
+
+model Curiosidades {
+    id       Int    @id @default(autoincrement())
+    texto    String
+    titulo   String
+    idDoLivro Int?
+
+    @@map("curiosidades")
 }

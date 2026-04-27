@@ -16,7 +16,7 @@ async function main() {
 
     console.log('📦 Inserindo novos registros...');
 
-    await prisma.exemplo.createMany({
+    await prisma.guarani.createMany({
         data: [
             { nome: 'Exemplo Star' },
             { nome: 'Exemplo Beta' },
