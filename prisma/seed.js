@@ -18,10 +18,20 @@ async function main() {
 
     await prisma.guarani.createMany({
         data: [
-            { nome: 'Exemplo Star' },
-            { nome: 'Exemplo Beta' },
-            { nome: 'Exemplo Gamma' },
-            { nome: 'Exemplo Delta' },
+            {
+                nome: 'Exemplo Star',
+                idade: 20,
+                descricao: 'Desc em PT',
+                descricaoEnglish: 'Desc in EN',
+                fotoURL: 'http://link.com',
+            },
+            {
+                nome: 'Exemplo Beta',
+                idade: 25,
+                descricao: 'Outra desc',
+                descricaoEnglish: 'Another desc',
+                fotoURL: 'http://link2.com',
+            },
         ],
     });
 
