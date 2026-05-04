@@ -20,49 +20,188 @@ model Livro {
     analise                  String
     analiseEnglish           String
     capaURL                  String
-    personagemId             Int?
 
     @@map("livro")
 }
 
-model Personagens {
-    id       Int    @id @default(autoincrement())
-    nome     String
-    idade   Int
-    descricao String
-    descricaoEnglish String
-    fotoURL  String
-    idDoLivro Int?
+model Enredos {
+    id                Int    @id @default(autoincrement())
+    introducao        String
+    introducaoEnglish String
+    conflito          String
+    conflitoEnglish   String
+    climax            String
+    climaxEnglish     String
+    desfecho          String
+    desfechoEnglish   String
+    idDoLivro         Int?
 
-    @@map("personagens")
-
+    @@map("enredos")
 }
 
-model Questoes {
-    id       Int    @id @default(autoincrement())
-    enunciado String
-    vestibular String
-    anoVestibular Int
-    idDoLivro Int?
+model MovimentosLiterarios {
+    id                       Int    @id @default(autoincrement())
+    nome                     String
+    contextoHistorico        String
+    contextoHistoricoEnglish String
+    caracteristicas          String
+    caracteristicasEnglish   String
+    periodo                  String
+    fase                     String
+    influencia               String
+    idDoLivro                Int?
 
-    @@map("questoes")
+    @@map("movimentosLiterarios")
+}
+
+model Personagens {
+    id               Int    @id @default(autoincrement())
+    nome             String
+    idade            Int
+    descricao        String
+    descricaoEnglish String
+    historia         String
+    historiaEnglish  String
+    idDoLivro        Int?
+
+    @@map("personagens")
 }
 
 model Videos {
-    id       Int    @id @default(autoincrement())
-    url      String
-    titulo   String
-    descricao String
-    idDoLivro Int?
+    id               Int    @id @default(autoincrement())
+    titulo           String
+    tituloEnglish    String
+    descricao        String
+    descricaoEnglish String
+    url              String
+    idDoLivro        Int?
 
     @@map("videos")
 }
 
 model Curiosidades {
-    id       Int    @id @default(autoincrement())
-    texto    String
-    titulo   String
-    idDoLivro Int?
+    id                       Int    @id @default(autoincrement())
+    tituloCuriosidade        String
+    tituloCuriosidadeEnglish String
+    curiosidade              String
+    curiosidadeEnglish       String
+    idDoLivro                Int?
 
     @@map("curiosidades")
+}
+
+model Questoes {
+    id               Int    @id @default(autoincrement())
+    enunciado        String
+    enunciadoEnglish String
+    vestibular       String
+    anoVestibular    Int
+    idAlternativas   Int?
+    idDoLivro        Int?
+
+    @@map("questoes")
+}
+
+model Alternativas {
+    id                   Int    @id @default(autoincrement())
+    alternativaA         String
+    alternativaAEnglish  String
+    alternatvaB          String
+    alternativaBEnglish  String
+    alternativaC         String
+    alternativaCEnglish  String
+    alternativaD         String
+    alternativaDEnglish  String
+    respostaCorreta      String
+    justificativa        String
+    justificativaEnglish String
+
+    @@map("alternativas")
+}
+
+model Vocabulario {
+    id                 Int    @id @default(autoincrement())
+    palavra            String
+    palavraEnglish     String
+    significado        String
+    significadoEnglish String
+    idDoLivro          Int?
+
+    @@map("vocabulario")
+}
+
+model Autores {
+    id                       Int    @id @default(autoincrement())
+    nome                     String
+    descricao                String
+    descricaoEnglish         String
+    contextoHistorico        String
+    contextoHistoricoEnglish String
+    anoNascimento            Int
+    anoFalecimento           Int
+    biografia                String
+    biografiaEnglish         String
+    movimentosLiterario      String
+    fotoURL                  String
+    idDoLivro                Int?
+
+    @@map("autores")
+}
+
+model Cenarios {
+    id                     Int    @id @default(autoincrement())
+    nome                   String
+    caracteristicas        String
+    caracteristicasEnglish String
+    descricao              String
+    descricaoEnglish       String
+    fotoURL                String
+    idDoLivro              Int?
+
+    @@map("cenarios")
+}
+
+model Membros {
+    id               Int    @id @default(autoincrement())
+    nome             String
+    idade            Int
+    curso            String
+    cursoEnglish     String
+    descricao        String
+    descricaoEnglish String
+    cargo            String
+    avaliacaoDaObra  Int
+    diasDeLeitura    Int
+    opiniao          String
+    idDoProjeto      Int?
+
+    @@map("membros")
+}
+
+model Projetos {
+    id                            Int    @id @default(autoincrement())
+    nome                          String
+    introducao                    String
+    introducaoEnglish             String
+    objetivoProjeto               String
+    objetivoProjetoEnglish        String
+    sobreAEquipe                  String
+    sobreAEquipeEnglish           String
+    desenvolvimentoTecnico        String
+    desenvolvimentoTecnicoEnglish String
+    tecnologias                   String
+    integracaoAPI                 String
+    integracaoAPIEnglish          String
+
+    @@map("projetos")
+}
+
+model DicasDeVestibular {
+    id            Int    @id @default(autoincrement())
+    titulo        String
+    tituloEnglish String
+    dica          String
+    dicaEnglish   String
+
+    @@map("dicasDeVestibular")
 }
