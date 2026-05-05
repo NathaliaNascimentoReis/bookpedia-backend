@@ -11,33 +11,30 @@ const prisma = new PrismaClient({ adapter });
 async function main() {
     console.log('🌱 Resetando tabela exemplo...');
 
-    // Remove todos os registros
-    // await prisma.exemplo.deleteMany();
-
     console.log('📦 Inserindo novos registros...');
 
-    const livro = await prisma.livros.create({
+    const livro = await prisma.livro.create({
         data: {
             tituloDoLivro: 'Dom Casmurro',
             tituloDoLivroEn: 'Dom Casmurro',
             autor: 'Machado de Assis',
             descricao:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             descricaoEn:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             contextoHistorico:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos.',
             contextoHistoricoEn:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos.',
             anoDeLancamento: 1899,
-            resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+            resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             resumoEn:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             analise:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est enim vitium in amicitia, si alter plus quam alter colat. At ille pellit, qui permulcet sensum voluptate. Quid in isto egregio tuo officio et disciplina ponit? Nec enim, dum metuit, iustus est, et certe, si metuere destiterit, non erit; Nam cum solitudo et vita sine amicis insidiarum et metus plena sit.',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est enim vitium in amicitia, si alter plus quam alter colat.',
             analiseEn:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est enim vitium in amicitia, si alter plus quam alter colat. At ille pellit, qui permulcet sensum voluptate. Quid in isto egregio tuo officio et disciplina ponit? Nec enim, dum metuit, iustus est, et certe, si metuere destiterit, non erit; Nam cum solitudo et vita sine amicis insidiarum et metus plena sit.',
-            capaUrl: 'https://link.com/capa.jpg',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est enim vitium in amicitia, si alter plus quam alter colat.',
+            capaURL: 'https://link.com/capa.jpg',
         },
     });
 
@@ -45,19 +42,23 @@ async function main() {
         data: [
             {
                 nome: 'Capitu',
-                idade: 'Adulta',
+                idade: 20,
                 descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 descricaoEn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 historia:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                historiaEn:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 idDoLivro: livro.id,
             },
             {
                 nome: 'Bentinho',
-                idade: 'Idoso',
+                idade: 70,
                 descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 descricaoEn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 historia:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                historiaEn:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 idDoLivro: livro.id,
             },
@@ -81,14 +82,17 @@ async function main() {
             {
                 alternativaA: 'Sim, Lorem Ipsum.',
                 alternativaAEn: 'Yes, Lorem Ipsum.',
-                alternativaB: 'Não, Lorem Ipsum.',
+                alternatvaB: 'Não, Lorem Ipsum.',
                 alternativaBEn: 'No, Lorem Ipsum.',
+                alternativaC: 'Talvez, Lorem Ipsum.',
+                alternativaCEn: 'Maybe, Lorem Ipsum.',
+                alternativaD: 'Nunca, Lorem Ipsum.',
+                alternativaDEn: 'Never, Lorem Ipsum.',
                 respostaCorreta: 'B',
                 justificativa:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 justificativaEn:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                idDoLivro: questao.id,
             },
         ],
     });
