@@ -1,5 +1,5 @@
 import express from 'express';
-import * as controller from '../controllers/guaraniController.js';
+import * as controller from '../controllers/alternativasController.js';
 
 const router = express.Router();
 
