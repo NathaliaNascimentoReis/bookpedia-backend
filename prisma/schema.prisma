@@ -107,7 +107,7 @@ model Alternativas {
     id              Int    @id @default(autoincrement())
     alternativaA    String
     alternativaAEn  String
-    alternatvaB     String
+    alternativaB     String
     alternativaBEn  String
     alternativaC    String
     alternativaCEn  String
