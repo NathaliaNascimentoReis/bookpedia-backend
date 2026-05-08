@@ -82,7 +82,7 @@ async function main() {
             {
                 alternativaA: 'Sim, Lorem Ipsum.',
                 alternativaAEn: 'Yes, Lorem Ipsum.',
-                alternatvaB: 'Não, Lorem Ipsum.',
+                alternativaB: 'Não, Lorem Ipsum.',
                 alternativaBEn: 'No, Lorem Ipsum.',
                 alternativaC: 'Talvez, Lorem Ipsum.',
                 alternativaCEn: 'Maybe, Lorem Ipsum.',

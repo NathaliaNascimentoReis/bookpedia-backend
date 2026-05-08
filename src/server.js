@@ -1,6 +1,5 @@
 import express from 'express';
 import 'dotenv/config';
-import guaraniRoutes from './routes/guaraniRoute.js';
 import alternativasRoutes from './routes/alternativasRoute.js';
 import autoresRoutes from './routes/autoresRoute.js';
 import cenariosRoutes from './routes/cenariosRoute.js';
@@ -26,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Rotas
-app.use('/obras', guaraniRoutes);
+
 app.use('/alternativas', alternativasRoutes);
 app.use('/autores', autoresRoutes);
 app.use('/cenarios', cenariosRoutes);
