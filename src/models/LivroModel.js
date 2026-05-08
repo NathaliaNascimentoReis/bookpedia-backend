@@ -105,7 +105,7 @@ export default class LivroModel {
         if (filtros.capaUrl) {where.capaUrl = { contains: filtros.capaUrl, mode: 'insensitive' };
         }
 
-        return prisma.livros.findMany({ where });
+        return prisma.livro.findMany({ where });
     }
 
     static async buscarPorId(id) {

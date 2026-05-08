@@ -69,7 +69,7 @@ export default class CuriosidadesModel {
             where.idDoLivro = parseFloat(filtros.idDoLivro);
         }
 
-        return prisma.curiosidade.findMany({ where });
+        return prisma.curiosidades.findMany({ where });
     }
 
     static async buscarPorId(id) {
