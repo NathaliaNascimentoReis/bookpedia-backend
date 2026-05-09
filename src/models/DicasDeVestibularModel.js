@@ -50,9 +50,6 @@ export default class DicasDeVestibularModel {
         if (filtros.titulo) {
             where.titulo = { contains: filtros.titulo, mode: 'insensitive' };
         }
-        if (filtros.titulo) {
-            where.titulo = { contains: filtros.titulo, mode: 'insensitive' };
-        }
         if (filtros.tituloEn) {
             where.tituloEn = { contains: filtros.tituloEn, mode: 'insensitive' };
         }
@@ -70,6 +67,6 @@ export default class DicasDeVestibularModel {
         if (!data) {
             return null;
         }
-        return new dicasDeVestibularModel(data);
+        return new DicasDeVestibularModel(data);
     }
 }
