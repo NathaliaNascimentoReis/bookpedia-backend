@@ -1,7 +1,7 @@
 import prisma from '../lib/services/prismaClient.js';
 
 export default class LivroModel {
-    constructor({ id = null,tituloDoLivro, tituloDoLivroEn, autor, descricao, descricaoEn, contextoHistorico, contextoHistoricoEn, anoDeLancamento, resumo, resumoEn, analise, analiseEn,capaUrl } = {}) {
+    constructor({ id = null,tituloDoLivro, tituloDoLivroEn, autor, descricao, descricaoEn, contextoHistorico, contextoHistoricoEn, anoDeLancamento, resumo, resumoEn, analise, analiseEn,capaUrl, capaURL } = {}) {
         this.id = id;
         this.tituloDoLivro = tituloDoLivro;
         this.tituloDoLivroEn = tituloDoLivroEn;
@@ -11,17 +11,16 @@ export default class LivroModel {
         this.contextoHistorico = contextoHistorico;
         this.contextoHistoricoEn = contextoHistoricoEn;
         this.anoDeLancamento = anoDeLancamento;
-        this.anoDeLancamentoEn = anoDeLancamentoEn;
         this.resumo = resumo;
         this.resumoEn = resumoEn;
         this.analise = analise;
         this.analiseEn = analiseEn;
-        this.capaUrl = capaUrl;
+        this.capaURL = capaURL ?? capaUrl;
 
     }
 
     async criar() {
-        return prisma.livros.create({
+        return prisma.livro.create({
             data: {
                 tituloDoLivro: this.tituloDoLivro,
                 tituloDoLivroEn: this.tituloDoLivroEn,
@@ -30,17 +29,18 @@ export default class LivroModel {
                 descricaoEn: this.descricaoEn,
                 contextoHistorico: this.contextoHistorico,
                 contextoHistoricoEn: this.contextoHistoricoEn,
+                anoDeLancamento: this.anoDeLancamento,
                 resumo: this.resumo,
                 resumoEn: this.resumoEn,
                 analise: this.analise,
                 analiseEn: this.analiseEn,
-                CapaUrl: this.CapaUrl,
+                capaURL: this.capaURL,
             },
         });
     }
 
     async atualizar() {
-        return prisma.livros.update({
+        return prisma.livro.update({
             where: { id: this.id },
             data: {
                 tituloDoLivro: this.tituloDoLivro,
@@ -50,17 +50,18 @@ export default class LivroModel {
                 descricaoEn: this.descricaoEn,
                 contextoHistorico: this.contextoHistorico,
                 contextoHistoricoEn: this.contextoHistoricoEn,
+                anoDeLancamento: this.anoDeLancamento,
                 resumo: this.resumo,
                 resumoEn: this.resumoEn,
                 analise: this.analise,
                 analiseEn: this.analiseEn,
-                CapaUrl: this.CapaUrl,
+                capaURL: this.capaURL,
             },
         });
     }
 
     async deletar() {
-        return prisma.livros.delete({ where: { id: this.id } });
+        return prisma.livro.delete({ where: { id: this.id } });
     }
 
     static async buscarTodos(filtros = {}) {
@@ -102,14 +103,16 @@ export default class LivroModel {
         if (filtros.analiseEn) {where.analiseEn = {contains: filtros.analiseEn,mode: 'insensitive',
             };
         }
-        if (filtros.capaUrl) {where.capaUrl = { contains: filtros.capaUrl, mode: 'insensitive' };
+        if (filtros.capaUrl) {where.capaURL = { contains: filtros.capaUrl, mode: 'insensitive' };
+        }
+        if (filtros.capaURL) {where.capaURL = { contains: filtros.capaURL, mode: 'insensitive' };
         }
 
         return prisma.livro.findMany({ where });
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.livros.findUnique({ where: { id } });
+        const data = await prisma.livro.findUnique({ where: { id } });
         if (!data) {
             return null;
         }

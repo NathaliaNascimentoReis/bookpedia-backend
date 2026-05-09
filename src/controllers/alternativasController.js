@@ -53,6 +53,7 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+
     try {
         const { id } = req.params;
 
@@ -72,7 +73,7 @@ export const atualizar = async (req, res) => {
 
         if (req.body.alternativaA !== undefined) item.alternativaA = req.body.alternativaA;
         if (req.body.alternativaAEn !== undefined) item.alternativaAEn = req.body.alternativaAEn;
-        if (req.body.alternatvaB !== undefined) item.alternatvaB = req.body.alternatvaB;
+        if (req.body.alternativaB !== undefined) item.alternativaB = req.body.alternativaB;
         if (req.body.alternativaBEn !== undefined) item.alternativaBEn = req.body.alternativaBEn;
         if (req.body.alternativaC !== undefined) item.alternativaC = req.body.alternativaC;
         if (req.body.alternativaCEn !== undefined) item.alternativaCEn = req.body.alternativaCEn;
@@ -89,7 +90,7 @@ export const atualizar = async (req, res) => {
             .json({ message: `O registro "${data.id}" foi atualizado com sucesso!`, data });
     } catch (error) {
         console.error('Erro ao atualizar:', error);
-        return res.status(500).json({ error: 'Erro ao atualizar registro.' });
+        return res.status(500).json({ error: 'Erro ao atualizar registro.',  });
     }
 };
 

@@ -18,36 +18,32 @@ export default class CuriosidadesModel {
     }
 
     async criar() {
-        return prisma.curiosidade.create({
+        return prisma.curiosidades.create({
             data: {
-                nome: this.nome,
-                caracteristicas: this.caracteristicas,
-                caracteristicasEn: this.caracteristicasEn,
-                descricaoEn: this.descricaoEn,
-                descricao: this.descricao,
-                fotoURL: this.fotoURL,
+                tituloCuriosidade: this.tituloCuriosidade,
+                tituloCuriosidadeEn: this.tituloCuriosidadeEn,
+                curiosidade: this.curiosidade,
+                curiosidadeEn: this.curiosidadeEn,
                 idDoLivro: this.idDoLivro,
             },
         });
     }
 
     async atualizar() {
-        return prisma.curiosidade.update({
+        return prisma.curiosidades.update({
             where: { id: this.id },
             data: {
-                nome: this.nome,
-                caracteristicas: this.caracteristicas,
-                caracteristicasEn: this.caracteristicasEn,
-                descricao: this.descricao,
-                descricaoEn: this.descricaoEn,
-                fotoURL: this.fotoURL,
+                tituloCuriosidade: this.tituloCuriosidade,
+                tituloCuriosidadeEn: this.tituloCuriosidadeEn,
+                curiosidade: this.curiosidade,
+                curiosidadeEn: this.curiosidadeEn,
                 idDoLivro: this.idDoLivro,
             },
         });
     }
 
     async deletar() {
-        return prisma.curiosidade.delete({ where: { id: this.id } });
+        return prisma.curiosidades.delete({ where: { id: this.id } });
     }
 
     static async buscarTodos(filtros = {}) {
@@ -73,7 +69,7 @@ export default class CuriosidadesModel {
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.curiosidade.findUnique({ where: { id } });
+        const data = await prisma.curiosidades.findUnique({ where: { id } });
         if (!data) {
             return null;
         }

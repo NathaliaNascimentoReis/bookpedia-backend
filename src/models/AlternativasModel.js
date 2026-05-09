@@ -39,11 +39,11 @@ export default class AlternativasModel {
                 alternativaBEn: this.alternativaBEn,
                 alternativaC: this.alternativaC,
                 alternativaCEn: this.alternativaCEn,
-                alternativaD: alternativaD,
-                alternativaDEn: alternativaDEn,
-                respostaCorreta: respostaCorreta,
-                justificativa: justificativa,
-                justificativaEn: justificativaEn,
+                alternativaD: this.alternativaD,
+                alternativaDEn: this.alternativaDEn,
+                respostaCorreta: this.respostaCorreta,
+                justificativa: this.justificativa,
+                justificativaEn: this.justificativaEn,
             },
         });
     }
@@ -58,11 +58,11 @@ export default class AlternativasModel {
                 alternativaBEn: this.alternativaBEn,
                 alternativaC: this.alternativaC,
                 alternativaCEn: this.alternativaCEn,
-                alternativaD: alternativaD,
-                alternativaDEn: alternativaDEn,
-                respostaCorreta: respostaCorreta,
-                justificativa: justificativa,
-                justificativaEn: justificativaEn,
+                alternativaD: this.alternativaD,
+                alternativaDEn: this.alternativaDEn,
+                respostaCorreta: this.respostaCorreta,
+                justificativa: this.justificativa,
+                justificativaEn: this.justificativaEn,
             },
         });
     }

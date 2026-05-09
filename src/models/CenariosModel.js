@@ -72,7 +72,7 @@ export default class CenariosModel {
         if (filtros.descricao) {
             where.descricao = { contains: filtros.descricao, mode: 'insensitive' };
         }
-        if (filtros.descricaoEn) {where.descricaoEn = {contains: filtros.contextoHistoricoEn,mode: 'insensitive',
+        if (filtros.descricaoEn) {where.descricaoEn = {contains: filtros.descricaoEn,mode: 'insensitive',
             };
         }
         if (filtros.fotoURL) {where.fotoURL = {contains: filtros.fotoURL,mode: 'insensitive',
