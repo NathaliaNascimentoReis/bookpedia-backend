@@ -24,26 +24,34 @@ export default class CuriosidadesModel {
                 tituloCuriosidadeEn: this.tituloCuriosidadeEn,
                 curiosidade: this.curiosidade,
                 curiosidadeEn: this.curiosidadeEn,
-                idDoLivro: this.idDoLivro,
+                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro) : undefined,
             },
         });
     }
 
     async atualizar() {
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
         return prisma.curiosidades.update({
-            where: { id: this.id },
+            where: { id: parseInt(this.id, 10) },
             data: {
                 tituloCuriosidade: this.tituloCuriosidade,
                 tituloCuriosidadeEn: this.tituloCuriosidadeEn,
                 curiosidade: this.curiosidade,
                 curiosidadeEn: this.curiosidadeEn,
-                idDoLivro: this.idDoLivro,
+                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro) : undefined,
             },
         });
     }
 
     async deletar() {
-        return prisma.curiosidades.delete({ where: { id: this.id } });
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
+        return prisma.curiosidades.delete({ where: { id: parseInt(this.id, 10) } });
     }
 
     static async buscarTodos(filtros = {}) {
@@ -52,27 +60,29 @@ export default class CuriosidadesModel {
         if (filtros.tituloCuriosidade) {
             where.tituloCuriosidade = { contains: filtros.tituloCuriosidade, mode: 'insensitive' };
         }
+
         if (filtros.tituloCuriosidadeEn) {
-            where.tituloCuriosidadeEn = { contains: filtros.tituloCuriosidadeEn, mode: 'insensitive' };
-        }
-        if (filtros.curiosidade) {
-            where.curiosidade = { contains: filtros.curiosidade, mode: 'insensitive' };
-        }
-        if (filtros.curiosidadeEn) {
-            where.curiosidadeEn = { contains: filtros.curiosidadeEn, mode: 'insensitive' };
-        }
-        if (filtros.idDoLivro !== undefined) {
-            where.idDoLivro = parseFloat(filtros.idDoLivro);
+            where.tituloCuriosidadeEn = {
+                contains: filtros.tituloCuriosidadeEn,
+                mode: 'insensitive',
+            };
         }
 
-        return prisma.curiosidades.findMany({ where });
+        if (filtros.idDoLivro !== undefined) {
+            where.idDoLivro = parseInt(filtros.idDoLivro);
+        }
+
+        return prisma.curiosidades.findMany({ where, include: { livro: true } });
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.curiosidades.findUnique({ where: { id } });
-        if (!data) {
-            return null;
-        }
+        const data = await prisma.curiosidades.findUnique({
+            where: { id: parseInt(id, 10) },
+            include: { livro: true },
+        });
+
+        if (!data) return null;
+
         return new CuriosidadesModel(data);
     }
 }

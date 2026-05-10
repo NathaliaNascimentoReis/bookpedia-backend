@@ -10,7 +10,6 @@ model Livro {
     id                  Int    @id @default(autoincrement())
     tituloDoLivro       String
     tituloDoLivroEn     String
-    autor               String
     descricao           String
     descricaoEn         String
     contextoHistorico   String
@@ -22,7 +21,50 @@ model Livro {
     analiseEn           String
     capaURL             String
 
+    autores            Autores[]
+    enredos            Enredos[]
+    cenarios           Cenarios[]
+    personagens        Personagens[]
+    movimentoLiterario MovimentosLiterarios[]
+    vocabularios       Vocabulario[]
+    videos             Videos[]
+    curiosidades       Curiosidades[]
+    questoes           Questoes[]
+
     @@map("livro")
+}
+
+model Autores {
+    id                  Int    @id @default(autoincrement())
+    nome                String
+    descricao           String
+    descricaoEn         String
+    contextoHistorico   String
+    contextoHistoricoEn String
+    anoNascimento       Int
+    anoFalecimento      Int?
+    biografia           String
+    biografiaEn         String
+    fotoURL             String
+
+    livros              Livro[]
+
+    @@map("autores")
+}
+
+model Personagens {
+    id          Int    @id @default(autoincrement())
+    nome        String
+    idade       Int
+    descricao   String
+    descricaoEn String
+    historia    String
+    historiaEn  String
+
+    idDoLivro   Int
+    livro       Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+
+    @@map("personagens")
 }
 
 model Enredos {
@@ -35,9 +77,39 @@ model Enredos {
     climaxEn     String
     desfecho     String
     desfechoEn   String
-    idDoLivro    Int?
+
+    idDoLivro    Int
+    livro        Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("enredos")
+}
+
+model Cenarios {
+    id                Int    @id @default(autoincrement())
+    nome              String
+    nomeEn            String
+    caracteristicas   String
+    caracteristicasEn String
+    descricao         String
+    descricaoEn       String
+    fotoURL           String
+
+    idDoLivro         Int
+    livro             Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+
+    @@map("cenarios")
+}
+
+model Vocabulario {
+    id            Int    @id @default(autoincrement())
+    palavra       String
+    palavraEn     String
+    significado   String
+    significadoEn String
+
+    livros         Livro[]
+
+    @@map("vocabulario")
 }
 
 model MovimentosLiterarios {
@@ -50,22 +122,10 @@ model MovimentosLiterarios {
     periodo             String
     fase                String
     influencia          String
-    idDoLivro           Int?
+
+    livros              Livro[]
 
     @@map("movimentosLiterarios")
-}
-
-model Personagens {
-    id          Int    @id @default(autoincrement())
-    nome        String
-    idade       Int
-    descricao   String
-    descricaoEn String
-    historia    String
-    historiaEn  String
-    idDoLivro   Int?
-
-    @@map("personagens")
 }
 
 model Videos {
@@ -75,7 +135,9 @@ model Videos {
     descricao   String
     descricaoEn String
     url         String
-    idDoLivro   Int?
+
+    idDoLivro   Int
+    livro       Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("videos")
 }
@@ -86,19 +148,24 @@ model Curiosidades {
     tituloCuriosidadeEn String
     curiosidade         String
     curiosidadeEn       String
-    idDoLivro           Int?
+
+    idDoLivro           Int
+    livro               Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("curiosidades")
 }
 
 model Questoes {
-    id             Int    @id @default(autoincrement())
-    enunciado      String
-    enunciadoEn    String
-    vestibular     String
-    anoVestibular  Int
-    idAlternativas Int?
-    idDoLivro      Int?
+    id            Int    @id @default(autoincrement())
+    enunciado     String
+    enunciadoEn   String
+    vestibular    String
+    anoVestibular Int
+
+    alternativas Alternativas?
+
+    idDoLivro     Int
+    livro         Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("questoes")
 }
@@ -107,7 +174,7 @@ model Alternativas {
     id              Int    @id @default(autoincrement())
     alternativaA    String
     alternativaAEn  String
-    alternativaB     String
+    alternativaB    String
     alternativaBEn  String
     alternativaC    String
     alternativaCEn  String
@@ -117,49 +184,10 @@ model Alternativas {
     justificativa   String
     justificativaEn String
 
+    idQuestao       Int      @unique
+    questoes        Questoes @relation(fields: [idQuestao], references: [id], onDelete: Cascade)
+
     @@map("alternativas")
-}
-
-model Vocabulario {
-    id            Int    @id @default(autoincrement())
-    palavra       String
-    palavraEn     String
-    significado   String
-    significadoEn String
-    idDoLivro     Int?
-
-    @@map("vocabulario")
-}
-
-model Autores {
-    id                  Int    @id @default(autoincrement())
-    nome                String
-    descricao           String
-    descricaoEn         String
-    contextoHistorico   String
-    contextoHistoricoEn String
-    anoNascimento       Int
-    anoFalecimento      Int
-    biografia           String
-    biografiaEn         String
-    movimentosLiterario String
-    fotoURL             String
-    idDoLivro           Int?
-
-    @@map("autores")
-}
-
-model Cenarios {
-    id                Int    @id @default(autoincrement())
-    nome              String
-    caracteristicas   String
-    caracteristicasEn String
-    descricao         String
-    descricaoEn       String
-    fotoURL           String
-    idDoLivro         Int?
-
-    @@map("cenarios")
 }
 
 model Membros {
@@ -174,7 +202,9 @@ model Membros {
     avaliacaoDaObra Int
     diasDeLeitura   Int
     opiniao         String
-    idDoProjeto     Int?
+
+    idDoProjeto     Int
+    projetos        Projetos @relation(fields: [idDoProjeto], references: [id], onDelete: Cascade)
 
     @@map("membros")
 }
@@ -193,6 +223,8 @@ model Projetos {
     tecnologias              String
     integracaoAPI            String
     integracaoAPIEn          String
+
+    membros                  Membros[]
 
     @@map("projetos")
 }
