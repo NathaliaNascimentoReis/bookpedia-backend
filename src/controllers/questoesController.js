@@ -7,7 +7,7 @@ export const criar = async (req, res) => {
         }
 
         const item = new QuestoesModel(req.body);
-        const data = await item.criar();
+        const data = await item.criar(req.body.alternativas);
 
         return res.status(201).json({ message: 'Registro criado com sucesso!', data });
     } catch (error) {
@@ -60,10 +60,6 @@ export const atualizar = async (req, res) => {
             return res.status(400).json({ error: 'ID inválido.' });
         }
 
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
-
         const item = await QuestoesModel.buscarPorId(parseInt(id));
 
         if (!item) {
@@ -74,9 +70,7 @@ export const atualizar = async (req, res) => {
         if (req.body.enunciadoEn !== undefined) item.enunciadoEn = req.body.enunciadoEn;
         if (req.body.vestibular !== undefined) item.vestibular = req.body.vestibular;
         if (req.body.anoVestibular !== undefined && req.body.anoVestibular !== null)
-            item.anoVestibular = parseInt(req.body.anoVestibular);
-        if (req.body.idAlternativas !== undefined && req.body.idAlternativas !== null)
-            item.idAlternativas = parseInt(req.body.idAlternativas);
+            item.anoVestibular = parseInt(req.body.anoVestibular, 10);
         if (req.body.idDoLivro !== undefined && req.body.idDoLivro !== null)
             item.idDoLivro = parseInt(req.body.idDoLivro);
 

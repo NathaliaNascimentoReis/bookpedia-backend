@@ -1,20 +1,19 @@
 import prisma from '../lib/services/prismaClient.js';
 
 export default class AutoresModel {
-    constructor({ id = null,
-    nome,
-    descricao,
-    descricaoEn,
-    contextoHistorico,
-    contextoHistoricoEn,
-    anoNascimento,
-    anoFalecimento,
-    biografia,
-    biografiaEn,
-    movimentosLiterario,
-    fotoURL,
-    idDoLivro  } = {}) {
-
+    constructor({
+        id = null,
+        nome,
+        descricao,
+        descricaoEn,
+        contextoHistorico,
+        contextoHistoricoEn,
+        anoNascimento,
+        anoFalecimento,
+        biografia,
+        biografiaEn,
+        fotoURL,
+    } = {}) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -25,53 +24,58 @@ export default class AutoresModel {
         this.anoFalecimento = anoFalecimento;
         this.biografia = biografia;
         this.biografiaEn = biografiaEn;
-        this.movimentosLiterario = movimentosLiterario;
         this.fotoURL = fotoURL;
-        this.idDoLivro = idDoLivro;
-
     }
 
-    async criar() {
-        return prisma.autores.create({
-            data: {
-                nome: this.nome,
-                descricao: this.descricao,
-                descricaoEn: this.descricaoEn,
-                contextoHistorico: this.contextoHistorico,
-                contextoHistoricoEn: this.contextoHistoricoEn,
-                anoNascimento: this.anoNascimento,
-                anoFalecimento: this.anoFalecimento,
-                biografia: this.biografia,
-                biografiaEn: this.biografiaEn,
-                movimentosLiterario: this.movimentosLiterario,
-                fotoURL: this.fotoURL,
-                idDoLivro: this.idDoLivro,
-            },
-        });
+    async criar(idLivroParaConectar = null) {
+        const data = {
+            nome: this.nome,
+            descricao: this.descricao,
+            descricaoEn: this.descricaoEn,
+            contextoHistorico: this.contextoHistorico,
+            contextoHistoricoEn: this.contextoHistoricoEn,
+            anoNascimento: this.anoNascimento ? parseInt(this.anoNascimento, 10) : undefined,
+            anoFalecimento: this.anoFalecimento ? parseInt(this.anoFalecimento, 10) : null,
+            biografia: this.biografia,
+            biografiaEn: this.biografiaEn,
+            fotoURL: this.fotoURL,
+        };
+
+        if (idLivroParaConectar) {
+            data.livros = { connect: { id: parseInt(idLivroParaConectar) } };
+        }
+
+        return prisma.autores.create({ data });
     }
 
     async atualizar() {
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
         return prisma.autores.update({
-            where: { id: this.id },
+            where: { id: parseInt(this.id) },
             data: {
                 nome: this.nome,
                 descricao: this.descricao,
                 descricaoEn: this.descricaoEn,
                 contextoHistorico: this.contextoHistorico,
                 contextoHistoricoEn: this.contextoHistoricoEn,
-                anoNascimento: this.anoNascimento,
-                anoFalecimento: this.anoFalecimento,
+                anoNascimento: this.anoNascimento ? parseInt(this.anoNascimento, 10) : undefined,
+                anoFalecimento: this.anoFalecimento ? parseInt(this.anoFalecimento, 10) : null,
                 biografia: this.biografia,
                 biografiaEn: this.biografiaEn,
-                movimentosLiterario: this.movimentosLiterario,
                 fotoURL: this.fotoURL,
-                idDoLivro: this.idDoLivro,
             },
         });
     }
 
     async deletar() {
-        return prisma.autores.delete({ where: { id: this.id } });
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
+        return prisma.autores.delete({ where: { id: parseInt(this.id, 10) } });
     }
 
     static async buscarTodos(filtros = {}) {
@@ -80,49 +84,26 @@ export default class AutoresModel {
         if (filtros.nome) {
             where.nome = { contains: filtros.nome, mode: 'insensitive' };
         }
-        if (filtros.descricao) {
-            where.descricao = { contains: filtros.descricao, mode: 'insensitive' };
-        }
-        if (filtros.descricaoEn) {
-            where.descricaoEn = { contains: filtros.descricaoEn, mode: 'insensitive' };
-        }
-        if (filtros.contextoHistorico) {
-            where.contextoHistorico = { contains: filtros.contextoHistorico, mode: 'insensitive' };
-        }
-        if (filtros.contextoHistoricoEn) {
-            where.contextoHistoricoEn = { contains: filtros.contextoHistoricoEn, mode: 'insensitive' };
-        }
+
         if (filtros.anoNascimento !== undefined) {
-            where.anoNascimento = parseFloat(filtros.anoNascimento);
+            where.anoNascimento = parseInt(filtros.anoNascimento, 10);
         }
+
         if (filtros.anoFalecimento !== undefined) {
-            where.anoFalecimento = parseFloat(filtros.anoFalecimento);
-        }
-        if (filtros.biografia) {
-            where.biografia = { contains: filtros.biografia, mode: 'insensitive' };
-        }
-        if (filtros.biografiaEn) {
-            where.biografiaEn = { contains: filtros.biografiaEn, mode: 'insensitive' };
-        }
-        if (filtros.movimentosLiterario) {
-            where.movimentosLiterario = { contains: filtros.movimentosLiterario, mode: 'insensitive' };
-        }
-        if (filtros.fotoURL) {
-            where.fotoURL = { contains: filtros.fotoURL, mode: 'insensitive' };
+            where.anoFalecimento = parseInt(filtros.anoFalecimento, 10);
         }
 
-        if (filtros.idDoLivro !== undefined) {
-            where.idDoLivro = parseFloat(filtros.idDoLivro);
-        }
-
-        return prisma.autores.findMany({ where });
+        return prisma.autores.findMany({ where, include: { livros: true } });
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.autores.findUnique({ where: { id } });
-        if (!data) {
-            return null;
-        }
+        const data = await prisma.autores.findUnique({
+            where: { id: parseInt(id, 10) },
+            include: { livros: true },
+        });
+
+        if (!data) return null;
+
         return new AutoresModel(data);
     }
 }

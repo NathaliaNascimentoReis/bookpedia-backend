@@ -1,8 +1,18 @@
 import prisma from '../lib/services/prismaClient.js';
 
 export default class EnredosModel {
-    constructor({ id = null, introducao, introducaoEn, conflito, conflitoEn, climax, climaxEn, desfecho, desfechoEn, idDoLivro
-} = {}) {
+    constructor({
+        id = null,
+        introducao,
+        introducaoEn,
+        conflito,
+        conflitoEn,
+        climax,
+        climaxEn,
+        desfecho,
+        desfechoEn,
+        idDoLivro,
+    } = {}) {
         this.id = id;
         this.introducao = introducao;
         this.introducaoEn = introducaoEn;
@@ -26,14 +36,18 @@ export default class EnredosModel {
                 climaxEn: this.climaxEn,
                 desfecho: this.desfecho,
                 desfechoEn: this.desfechoEn,
-                idDoLivro: this.idDoLivro
+                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro, 10) : undefined,
             },
         });
     }
 
     async atualizar() {
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
         return prisma.enredos.update({
-            where: { id: this.id },
+            where: { id: parseInt(this.id, 10) },
             data: {
                 introducao: this.introducao,
                 introducaoEn: this.introducaoEn,
@@ -43,53 +57,37 @@ export default class EnredosModel {
                 climaxEn: this.climaxEn,
                 desfecho: this.desfecho,
                 desfechoEn: this.desfechoEn,
-                idDoLivro: this.idDoLivro
+                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro, 10) : undefined,
             },
         });
     }
 
     async deletar() {
-        return prisma.enredos.delete({ where: { id: this.id } });
+        if (!this.id) {
+            throw new Error('ID não fornecido');
+        }
+
+        return prisma.enredos.delete({ where: { id: parseInt(this.id, 10) } });
     }
 
     static async buscarTodos(filtros = {}) {
         const where = {};
 
-        if (filtros.introducao) {
-            where.introducao = { contains: filtros.introducao, mode: 'insensitive' };
+        if (filtros.idDoLivro !== undefined && filtros.idDoLivro !== '') {
+            where.idDoLivro = parseInt(filtros.idDoLivro, 10);
         }
-        if (filtros.introducaoEn) {
-            where.introducaoEn = { contains: filtros.introducaoEn, mode: 'insensitive' };
-        }
-        if (filtros.conflito) {
-            where.conflito = { contains: filtros.conflito, mode: 'insensitive' };
-        }
-        if (filtros.conflitoEn) {
-            where.conflitoEn = { contains: filtros.conflitoEn, mode: 'insensitive' };
-        }
-        if (filtros.climax) {where.climax = {contains: filtros.climax,mode: 'insensitive',
-            };
-        }
-        if (filtros.climaxEn) {where.climaxEn = {contains: filtros.climaxEn,mode: 'insensitive',
-            };
-        }
-        if (filtros.desfecho) {
-            where.desfecho = { contains: filtros.desfecho, mode: 'insensitive' };
-        }
-        if (filtros.desfechoEn) {
-            where.desfechoEn = { contains: filtros.desfechoEn, mode: 'insensitive' };
-        }
-        if (filtros.idDoLivro !== undefined) {
-            where.idDoLivro = parseFloat(filtros.idDoLivro);
-        }
-        return prisma.enredos.findMany({ where });
+
+        return prisma.enredos.findMany({ where, include: { livro: true } });
     }
 
     static async buscarPorId(id) {
-        const data = await prisma.enredos.findUnique({ where: { id } });
-        if (!data) {
-            return null;
-        }
+        const data = await prisma.enredos.findUnique({
+            where: { id: parseInt(id, 10) },
+            include: { livro: true },
+        });
+
+        if (!data) return null;
+
         return new EnredosModel(data);
     }
 }
