@@ -29,20 +29,96 @@ export default class MembrosModel {
         this.idDoProjeto = idDoProjeto;
     }
 
+    validar() {
+        if (!this.nome) {
+            throw new Error('O nome é um campo obrigatório.');
+        }
+
+        if (this.idade === undefined || this.idade === null || this.idade === '') {
+            throw new Error('A idade é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.idade, 10)) || parseInt(this.idade, 10) < 0) {
+            throw new Error('A idade deve ser um número válido.');
+        }
+
+        if (!this.curso) {
+            throw new Error('O curso é um campo obrigatório.');
+        }
+
+        if (!this.cursoEn) {
+            throw new Error('O curso em inglês é um campo obrigatório.');
+        }
+
+        if (!this.descricao) {
+            throw new Error('A descrição é um campo obrigatório.');
+        }
+
+        if (!this.descricaoEn) {
+            throw new Error('A descrição em inglês é um campo obrigatório.');
+        }
+
+        if (!this.cargo) {
+            throw new Error('O cargo é um campo obrigatório.');
+        }
+
+        if (
+            this.avaliacaoDaObra === undefined ||
+            this.avaliacaoDaObra === null ||
+            this.avaliacaoDaObra === ''
+        ) {
+            throw new Error('A avaliação da obra é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.avaliacaoDaObra, 10)) || parseInt(this.avaliacaoDaObra, 10) < 0) {
+            throw new Error('A avaliação da obra deve ser um número válido.');
+        }
+
+        if (
+            this.diasDeLeitura === undefined ||
+            this.diasDeLeitura === null ||
+            this.diasDeLeitura === ''
+        ) {
+            throw new Error('Os dias de leitura são um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.diasDeLeitura, 10)) || parseInt(this.diasDeLeitura, 10) < 0) {
+            throw new Error('Os dias de leitura devem ser um número válido.');
+        }
+
+        if (!this.opiniao) {
+            throw new Error('A opinião é um campo obrigatório.');
+        }
+
+        if (
+            this.idDoProjeto === undefined ||
+            this.idDoProjeto === null ||
+            this.idDoProjeto === ''
+        ) {
+            throw new Error('O projeto é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.idDoProjeto, 10)) || parseInt(this.idDoProjeto, 10) < 0) {
+            throw new Error('O projeto deve ser um número válido.');
+        }
+    }
+
     async criar() {
+        this.validar();
+
         return prisma.membros.create({
             data: {
                 nome: this.nome,
-                idade: this.idade ? parseInt(this.idade, 10) : null,
+                idade: parseInt(this.idade, 10),
                 curso: this.curso,
                 cursoEn: this.cursoEn,
                 descricao: this.descricao,
                 descricaoEn: this.descricaoEn,
                 cargo: this.cargo,
-                avaliacaoDaObra: this.avaliacaoDaObra ? parseInt(this.avaliacaoDaObra, 10) : null,
-                diasDeLeitura: this.diasDeLeitura ? parseInt(this.diasDeLeitura, 10) : null,
+                avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
+                diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
-                idDoProjeto: this.idDoProjeto ? parseInt(this.idDoProjeto, 10) : undefined,
+                idDoProjeto: parseInt(this.idDoProjeto, 10),
             },
         });
     }
@@ -52,21 +128,23 @@ export default class MembrosModel {
             throw new Error('ID não fornecido');
         }
 
+        this.validar();
+
         return prisma.membros.update({
             where: { id: parseInt(this.id, 10) },
 
             data: {
                 nome: this.nome,
-                idade: this.idade ? parseInt(this.idade, 10) : null,
+                idade: parseInt(this.idade, 10),
                 curso: this.curso,
                 cursoEn: this.cursoEn,
                 descricao: this.descricao,
                 descricaoEn: this.descricaoEn,
                 cargo: this.cargo,
-                avaliacaoDaObra: this.avaliacaoDaObra ? parseInt(this.avaliacaoDaObra, 10) : null,
-                diasDeLeitura: this.diasDeLeitura ? parseInt(this.diasDeLeitura, 10) : null,
+                avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
+                diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
-                idDoProjeto: this.idDoProjeto ? parseInt(this.idDoProjeto, 10) : undefined,
+                idDoProjeto: parseInt(this.idDoProjeto, 10),
             },
         });
     }

@@ -31,7 +31,59 @@ export default class ProjetosModel {
         this.integracaoAPIEn = integracaoAPIEn;
     }
 
+    validar() {
+        if (!this.nome) {
+            throw new Error('O nome é um campo obrigatório.');
+        }
+
+        if (!this.introducao) {
+            throw new Error('A introdução é um campo obrigatório.');
+        }
+
+        if (!this.introducaoEn) {
+            throw new Error('A introdução em inglês é um campo obrigatório.');
+        }
+
+        if (!this.objetivoProjeto) {
+            throw new Error('O objetivo do projeto é um campo obrigatório.');
+        }
+
+        if (!this.objetivoProjetoEn) {
+            throw new Error('O objetivo do projeto em inglês é um campo obrigatório.');
+        }
+
+        if (!this.sobreAEquipe) {
+            throw new Error('O texto sobre a equipe é um campo obrigatório.');
+        }
+
+        if (!this.sobreAEquipeEn) {
+            throw new Error('O texto sobre a equipe em inglês é um campo obrigatório.');
+        }
+
+        if (!this.desenvolvimentoTecnico) {
+            throw new Error('O desenvolvimento técnico é um campo obrigatório.');
+        }
+
+        if (!this.desenvolvimentoTecnicoEn) {
+            throw new Error('O desenvolvimento técnico em inglês é um campo obrigatório.');
+        }
+
+        if (!this.tecnologias) {
+            throw new Error('As tecnologias são um campo obrigatório.');
+        }
+
+        if (!this.integracaoAPI) {
+            throw new Error('A integração com API é um campo obrigatório.');
+        }
+
+        if (!this.integracaoAPIEn) {
+            throw new Error('A integração com API em inglês é um campo obrigatório.');
+        }
+    }
+
     async criar() {
+        this.validar();
+
         return prisma.projetos.create({
             data: {
                 nome: this.nome,
@@ -54,6 +106,8 @@ export default class ProjetosModel {
         if (!this.id) {
             throw new Error('ID não fornecido');
         }
+
+        this.validar();
 
         return prisma.projetos.update({
             where: { id: parseInt(this.id, 10) },
