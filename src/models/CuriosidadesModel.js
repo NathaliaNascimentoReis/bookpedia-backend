@@ -17,22 +17,52 @@ export default class CuriosidadesModel {
         this.idDoLivro = idDoLivro;
     }
 
+    validar() {
+        if (!this.tituloCuriosidade || this.tituloCuriosidade.trim() === '') {
+            throw new Error('O título da curiosidade é um campo obrigatório.');
+        }
+
+        if (!this.tituloCuriosidadeEn || this.tituloCuriosidadeEn.trim() === '') {
+            throw new Error('O título da curiosidade em inglês é um campo obrigatório.');
+        }
+
+        if (!this.curiosidade || this.curiosidade.trim() === '') {
+            throw new Error('A curiosidade é um campo obrigatório.');
+        }
+
+        if (!this.curiosidadeEn || this.curiosidadeEn.trim() === '') {
+            throw new Error('A curiosidade em inglês é um campo obrigatório.');
+        }
+
+        if (this.idDoLivro === undefined || this.idDoLivro === null) {
+            throw new Error('O ID do livro é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
+            throw new Error('O ID do livro deve ser um número válido.');
+        }
+    }
+
     async criar() {
+        this.validar();
+
         return prisma.curiosidades.create({
             data: {
                 tituloCuriosidade: this.tituloCuriosidade,
                 tituloCuriosidadeEn: this.tituloCuriosidadeEn,
                 curiosidade: this.curiosidade,
                 curiosidadeEn: this.curiosidadeEn,
-                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro) : undefined,
+                idDoLivro: parseInt(this.idDoLivro),
             },
         });
     }
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
+
+        this.validar();
 
         return prisma.curiosidades.update({
             where: { id: parseInt(this.id, 10) },
@@ -41,14 +71,14 @@ export default class CuriosidadesModel {
                 tituloCuriosidadeEn: this.tituloCuriosidadeEn,
                 curiosidade: this.curiosidade,
                 curiosidadeEn: this.curiosidadeEn,
-                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro) : undefined,
+                idDoLivro: parseInt(this.idDoLivro),
             },
         });
     }
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.curiosidades.delete({ where: { id: parseInt(this.id, 10) } });

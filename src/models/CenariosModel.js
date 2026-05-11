@@ -23,7 +23,47 @@ export default class CenariosModel {
         this.idDoLivro = idDoLivro;
     }
 
+    validar() {
+        if (!this.nome || this.nome.trim() === '') {
+            throw new Error('O nome é um campo obrigatório.');
+        }
+
+        if (!this.nomeEn || this.nomeEn.trim() === '') {
+            throw new Error('O nome em inglês é um campo obrigatório.');
+        }
+
+        if (!this.caracteristicas || this.caracteristicas.trim() === '') {
+            throw new Error('As características são um campo obrigatório.');
+        }
+
+        if (!this.caracteristicasEn || this.caracteristicasEn.trim() === '') {
+            throw new Error('As características em inglês são um campo obrigatório.');
+        }
+
+        if (!this.descricao || this.descricao.trim() === '') {
+            throw new Error('A descrição é um campo obrigatório.');
+        }
+
+        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
+            throw new Error('A descrição em inglês é um campo obrigatório.');
+        }
+
+        if (!this.fotoURL || this.fotoURL.trim() === '') {
+            throw new Error('A foto é um campo obrigatório.');
+        }
+
+        if (this.idDoLivro === undefined || this.idDoLivro === null) {
+            throw new Error('O ID do livro é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
+            throw new Error('O ID do livro deve ser um número válido.');
+        }
+    }
+
     async criar() {
+        this.validar();
+        
         return prisma.cenarios.create({
             data: {
                 nome: this.nome,
