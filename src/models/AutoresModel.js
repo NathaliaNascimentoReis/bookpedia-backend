@@ -27,14 +27,68 @@ export default class AutoresModel {
         this.fotoURL = fotoURL;
     }
 
+    validar() {
+        if (!this.nome || this.nome.trim() === '') {
+            throw new Error('O nome é um campo obrigatório.');
+        }
+
+        if (!this.descricao || this.descricao.trim() === '') {
+            throw new Error('A descrição é um campo obrigatório.');
+        }
+
+        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
+            throw new Error('A descrição em inglês é um campo obrigatório.');
+        }
+
+        if (!this.contextoHistorico || this.contextoHistorico.trim() === '') {
+            throw new Error('O contexto histórico é um campo obrigatório.');
+        }
+
+        if (!this.contextoHistoricoEn || this.contextoHistoricoEn.trim() === '') {
+            throw new Error('O contexto histórico em inglês é um campo obrigatório.');
+        }
+
+        if (this.anoNascimento === undefined || this.anoNascimento === null) {
+            throw new Error('O ano de nascimento é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.anoNascimento, 10)) || parseInt(this.anoNascimento, 10) < 0) {
+            throw new Error('O ano de nascimento deve ser um número válido.');
+        }
+
+        if (!this.biografia || this.biografia.trim() === '') {
+            throw new Error('A biografia é um campo obrigatório.');
+        }
+
+        if (!this.biografiaEn || this.biografiaEn.trim() === '') {
+            throw new Error('A biografia em inglês é um campo obrigatório.');
+        }
+
+        if (!this.fotoURL || this.fotoURL.trim() === '') {
+            throw new Error('A foto é um campo obrigatório.');
+        }
+
+        if (this.anoFalecimento !== null && this.anoFalecimento !== undefined) {
+            if (isNaN(parseInt(this.anoFalecimento, 10)) || parseInt(this.anoFalecimento, 10) < 0) {
+                throw new Error('O ano de falecimento deve ser um número válido.');
+            }
+
+            if (parseInt(this.anoFalecimento, 10) < parseInt(this.anoNascimento, 10)) {
+                throw new Error('O ano de falecimento não pode ser anterior ao ano de nascimento.');
+            }
+        }
+    }
+
     async criar(idLivroParaConectar = null) {
+        this.validar();
+
         const data = {
             nome: this.nome,
             descricao: this.descricao,
             descricaoEn: this.descricaoEn,
             contextoHistorico: this.contextoHistorico,
             contextoHistoricoEn: this.contextoHistoricoEn,
-            anoNascimento: this.anoNascimento ? parseInt(this.anoNascimento, 10) : undefined,
+            anoNascimento: parseInt(this.anoNascimento, 10),
             anoFalecimento: this.anoFalecimento ? parseInt(this.anoFalecimento, 10) : null,
             biografia: this.biografia,
             biografiaEn: this.biografiaEn,
@@ -50,8 +104,10 @@ export default class AutoresModel {
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
+
+        this.validar();
 
         return prisma.autores.update({
             where: { id: parseInt(this.id) },
@@ -61,7 +117,7 @@ export default class AutoresModel {
                 descricaoEn: this.descricaoEn,
                 contextoHistorico: this.contextoHistorico,
                 contextoHistoricoEn: this.contextoHistoricoEn,
-                anoNascimento: this.anoNascimento ? parseInt(this.anoNascimento, 10) : undefined,
+                anoNascimento: parseInt(this.anoNascimento, 10),
                 anoFalecimento: this.anoFalecimento ? parseInt(this.anoFalecimento, 10) : null,
                 biografia: this.biografia,
                 biografiaEn: this.biografiaEn,
@@ -72,7 +128,7 @@ export default class AutoresModel {
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.autores.delete({ where: { id: parseInt(this.id, 10) } });

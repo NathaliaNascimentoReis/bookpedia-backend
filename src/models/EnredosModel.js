@@ -25,7 +25,51 @@ export default class EnredosModel {
         this.idDoLivro = idDoLivro;
     }
 
+    validar() {
+        if (!this.introducao || this.introducao.trim() === '') {
+            throw new Error('A introdução é um campo obrigatório.');
+        }
+
+        if (!this.introducaoEn || this.introducaoEn.trim() === '') {
+            throw new Error('A introdução em inglês é um campo obrigatório.');
+        }
+
+        if (!this.conflito || this.conflito.trim() === '') {
+            throw new Error('O conflito é um campo obrigatório.');
+        }
+
+        if (!this.conflitoEn || this.conflitoEn.trim() === '') {
+            throw new Error('O conflito em inglês é um campo obrigatório.');
+        }
+
+        if (!this.climax || this.climax.trim() === '') {
+            throw new Error('O clímax é um campo obrigatório.');
+        }
+
+        if (!this.climaxEn || this.climaxEn.trim() === '') {
+            throw new Error('O clímax em inglês é um campo obrigatório.');
+        }
+
+        if (!this.desfecho || this.desfecho.trim() === '') {
+            throw new Error('O desfecho é um campo obrigatório.');
+        }
+
+        if (!this.desfechoEn || this.desfechoEn.trim() === '') {
+            throw new Error('O desfecho em inglês é um campo obrigatório.');
+        }
+
+        if (this.idDoLivro === undefined || this.idDoLivro === null) {
+            throw new Error('O ID do livro é um campo obrigatório.');
+        }
+
+        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
+            throw new Error('O ID do livro deve ser um número válido.');
+        }
+    }
+
     async criar() {
+        this.validar();
+
         return prisma.enredos.create({
             data: {
                 introducao: this.introducao,
@@ -36,15 +80,17 @@ export default class EnredosModel {
                 climaxEn: this.climaxEn,
                 desfecho: this.desfecho,
                 desfechoEn: this.desfechoEn,
-                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro, 10) : undefined,
+                idDoLivro: parseInt(this.idDoLivro, 10),
             },
         });
     }
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
+
+        this.validar();
 
         return prisma.enredos.update({
             where: { id: parseInt(this.id, 10) },
@@ -57,14 +103,14 @@ export default class EnredosModel {
                 climaxEn: this.climaxEn,
                 desfecho: this.desfecho,
                 desfechoEn: this.desfechoEn,
-                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro, 10) : undefined,
+                idDoLivro: parseInt(this.idDoLivro, 10),
             },
         });
     }
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.enredos.delete({ where: { id: parseInt(this.id, 10) } });
