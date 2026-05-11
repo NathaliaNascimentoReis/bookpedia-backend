@@ -23,7 +23,43 @@ export default class MovimentosLiterariosModel {
         this.influencia = influencia;
     }
 
+    validar() {
+        if (!this.nome) {
+            throw new Error('O nome é um campo obrigatório.');
+        }
+
+        if (!this.contextoHistorico) {
+            throw new Error('O contexto histórico é um campo obrigatório.');
+        }
+
+        if (!this.contextoHistoricoEn) {
+            throw new Error('O contexto histórico em inglês é um campo obrigatório.');
+        }
+
+        if (!this.caracteristicas) {
+            throw new Error('As características são um campo obrigatório.');
+        }
+
+        if (!this.caracteristicasEn) {
+            throw new Error('As características em inglês são um campo obrigatório.');
+        }
+
+        if (!this.periodo) {
+            throw new Error('O período é um campo obrigatório.');
+        }
+
+        if (!this.fase) {
+            throw new Error('A fase é um campo obrigatório.');
+        }
+
+        if (!this.influencia) {
+            throw new Error('A influência é um campo obrigatório.');
+        }
+    }
+
     async criar(idLivroParaConectar = null) {
+        this.validar();
+
         const data = {
             nome: this.nome,
             contextoHistorico: this.contextoHistorico,
@@ -49,6 +85,8 @@ export default class MovimentosLiterariosModel {
         if (!this.id) {
             throw new Error('ID não fornecido');
         }
+
+        this.validar();
 
         return prisma.movimentosLiterarios.update({
             where: { id: parseInt(this.id, 10) },
