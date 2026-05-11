@@ -117,21 +117,60 @@ async function main() {
     await prisma.personagens.createMany({
         data: [
             {
-                nome: '...',
-                idade: '...',
-                descricao: '...',
-                descricaoEn: '...',
-                historia: '...',
-                historiaEn: '...',
+                nome: 'Peri',
+                idade: '25',
+                descricao: 'Indígena corajoso, leal e protetor',
+                descricaoEn: 'Brave, loyal and protective indigenous man',
+                historia:
+                    'É o herói da história e dedica sua vida a proteger Cecília e sua família.',
+                historiaEn:
+                    'He is the hero of the story and dedicates his life to protecting Cecília and her family.',
                 idDoLivro: livro.id,
             },
             {
-                nome: '...',
-                idade: '...',
-                descricao: '...',
-                descricaoEn: '...',
-                historia: '...',
-                historiaEn:'...',
+                nome: 'Cecília',
+                idade: '18',
+                descricao: 'Jovem doce, delicada e bondosa.',
+                descricaoEn: 'Young, sweet, delicate and kind.',
+                historia: 'Filha de Dom Antônio de Mariz, desperta o amor e a proteção de Peri.',
+                historiaEn:
+                    'Daughter of Dom Antônio de Mariz, she awakens the love and protection of Peri.',
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Dom Antônio de Mariz',
+                idade: 50,
+                descricao: 'Fidalgo português respeitado e líder da família.',
+                descricaoEn: 'Respected Portuguese noble and family leader.',
+                historia: 'Dono da fazenda onde a história acontece e pai de Cecília.',
+                historiaEn: 'Owner of the farm where the story takes place and father of Cecília.',
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Isabel',
+                idade: 20,
+                descricao: 'Moça forte e ciumenta.',
+                descricaoEn: 'Strong and jealous girl.',
+                historia: 'Prima de Cecília, vive conflitos emocionais ao longo da trama.',
+                historiaEn: "Cecília's cousin, experiences emotional conflicts throughout the plot.",
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Álvaro',
+                idade: 27,
+                descricao: 'Cavaleiro honrado e valente.',
+                descricaoEn: 'Honorable and brave knight.',
+                historia: 'Aliado de Dom Antônio e apaixonado por Isabel.',
+                historiaEn: 'Ally of Dom Antônio and in love with Isabel.',
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Loredano',
+                idade: 40,
+                descricao: 'Homem ambicioso e traiçoeiro.',
+                descricaoEn: 'Ambitious and treacherous man.',
+                historia: 'Vilão da história, tenta destruir a família de Dom Antônio.',
+                historiaEn: "The villain of the story, tries to destroy Dom Antônio's family.",
                 idDoLivro: livro.id,
             },
         ],
@@ -139,14 +178,17 @@ async function main() {
 
     await prisma.enredos.create({
         data: {
-            introducao: '...',
-            introducaoEn: '...',
-            conflito: '...',
-            conflitoEn: '...',
-            climax: '...',
-            climaxEn: '...',
-            desfecho: '...',
-            desfechoEn: '...',
+            introducao:
+                'A história apresenta Peri, um indígena guerreiro que vive próximo à fazenda de Dom Antônio de Mariz e se torna protetor de Cecília.',
+            introducaoEn: "The story presents Peri, a warrior indigenous man who lives near Dom Antônio de Mariz's farm and becomes Cecília's protector.",
+            conflito:
+                'A família de Dom Antônio passa a enfrentar ataques indígenas e a traição de Loredano, que deseja destruir a família e tomar riquezas.',
+            conflitoEn: "Dom Antônio's family begins to face attacks from indigenous people and the betrayal of Loredano, who wants to destroy the family and take their wealth.",
+            climax: 'A fazenda é atacada e destruída, colocando Cecília e todos os moradores em grande perigo.',
+            climaxEn: "The farm is attacked and destroyed, putting Cecília and all the residents in great danger.",
+            desfecho:
+                'Peri salva Cecília e foge com ela pela floresta e pelos rios, deixando o destino dos dois em aberto.',
+            desfechoEn: "Peri saves Cecília and flees with her through the forest and rivers, leaving the fate of both in uncertainty.",
             idDoLivro: livro.id,
         },
     });
@@ -299,7 +341,7 @@ async function main() {
                     },
                     {
                         nome: 'Gustavo Durães',
-                        idade: '?',
+                        idade: '17',
                         curso: 'Eletro Eletrônica',
                         cursoEn: 'Electronics Engineering',
                         descricao: '...',
@@ -311,7 +353,7 @@ async function main() {
                     },
                     {
                         nome: 'Henry',
-                        idade: '?',
+                        idade: '17',
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
@@ -323,7 +365,7 @@ async function main() {
                     },
                     {
                         nome: 'Enzo Vecchi',
-                        idade: '?',
+                        idade: '17',
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
