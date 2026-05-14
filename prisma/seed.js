@@ -71,12 +71,11 @@ async function main() {
             palavra: '...',
             palavraEn: '...',
             significado: '...',
-            significadoEn:
-                '...',
+            significadoEn: '...',
         },
     });
 
-    const livro = await prisma.livros.create({
+    const livro = await prisma.livro.create({
         data: {
             tituloDoLivro: 'O Guarani',
             tituloDoLivroEn: 'The Guarani',
@@ -84,11 +83,14 @@ async function main() {
                 'A história se passa no século XVII e conta o amor impossível entre Peri, um índio guarani nobre e corajoso, e Cecília, filha de um fidalgo português. Ambientado em uma fazenda-fortaleza no interior do Brasil, o romance mistura aventura, heroísmo, perigos da floresta e intrigas indígenas.',
             descricaoEn:
                 'The story takes place in the 17th century and tells the impossible love between Peri, a noble and brave Guarani Indian, and Cecília, daughter of a Portuguese nobleman. Set in a farm-fortress in the interior of Brazil, the novel combines adventure, heroism, forest dangers, and indigenous intrigues.',
-            contextoHistorico: 'O Guarani, de José de Alencar, foi publicado em 1857, no período do Romantismo brasileiro. A obra faz parte do indianismo, movimento que valorizava o indígena como símbolo nacional após a independência do Brasil. A história se passa no período colonial e apresenta o índio Peri como herói idealizado.',
-            contextoHistoricoEn: 'The Guarani, by José de Alencar, was published in 1857, during the Brazilian Romanticism period. The work is part of the indianism movement, which valued the indigenous people as a national symbol after Brazil\'s independence. The story takes place in the colonial period and presents the indigenous hero Peri.',
+            contextoHistorico:
+                'O Guarani, de José de Alencar, foi publicado em 1857, no período do Romantismo brasileiro. A obra faz parte do indianismo, movimento que valorizava o indígena como símbolo nacional após a independência do Brasil. A história se passa no período colonial e apresenta o índio Peri como herói idealizado.',
+            contextoHistoricoEn:
+                "The Guarani, by José de Alencar, was published in 1857, during the Brazilian Romanticism period. The work is part of the indianism movement, which valued the indigenous people as a national symbol after Brazil's independence. The story takes place in the colonial period and presents the indigenous hero Peri.",
             anoDeLancamento: 1857,
             resumo: 'O Guarani conta a história de Peri, um indígena corajoso e leal que protege Cecília, filha de um fidalgo português. Durante a trama, eles enfrentam ataques indígenas, traições e perigos na floresta. O livro mistura romance e aventura, mostrando o amor idealizado entre Peri e Cecília.',
-            resumoEn: 'The Guarani tells the story of Peri, a brave and loyal indigenous man who protects Cecília, daughter of a Portuguese nobleman. Throughout the plot, they face indigenous attacks, betrayals, and dangers in the forest. The book combines romance and adventure, showing the idealized love between Peri and Cecília.',
+            resumoEn:
+                'The Guarani tells the story of Peri, a brave and loyal indigenous man who protects Cecília, daughter of a Portuguese nobleman. Throughout the plot, they face indigenous attacks, betrayals, and dangers in the forest. The book combines romance and adventure, showing the idealized love between Peri and Cecília.',
             analise: '...',
             analiseEn: '...',
             capaURL: 'https://m.media-amazon.com/images/I/7125-MeD+KL._AC_UF1000,1000_QL80_.jpg',
@@ -108,7 +110,8 @@ async function main() {
                 "The main characteristics of O Guarani's scenarios are exuberant nature, with forests, rivers and mountains described in a grandiose and idealized way. The environment is full of adventures, dangers and mystery, in addition to representing the appreciation of the Brazilian landscape, typical of Romanticism.",
             descricao:
                 'Fazenda de Dom Antônio: local seguro e organizado onde vive a família de Cecília, representando a sociedade colonial. Floresta: ambiente selvagem e perigoso, cheio de aventuras e contato com a natureza. Rios e montanhas: cenários usados nas fugas e batalhas, mostrando a grandiosidade da paisagem brasileira.',
-            descricaoEn: "Dom Antônio's farm: a safe and organized place where Cecília's family lives, representing the colonial society. Forest: a wild and dangerous environment, full of adventures and contact with nature. Rivers and mountains: scenarios used in escapes and battles, showing the grandiosity of the Brazilian landscape.",
+            descricaoEn:
+                "Dom Antônio's farm: a safe and organized place where Cecília's family lives, representing the colonial society. Forest: a wild and dangerous environment, full of adventures and contact with nature. Rivers and mountains: scenarios used in escapes and battles, showing the grandiosity of the Brazilian landscape.",
             fotoURL: 'https://example.com/cenarios/rio-de-janeiro.jpg',
             idDoLivro: livro.id,
         },
@@ -118,7 +121,7 @@ async function main() {
         data: [
             {
                 nome: 'Peri',
-                idade: '25',
+                idade: 25,
                 descricao: 'Indígena corajoso, leal e protetor',
                 descricaoEn: 'Brave, loyal and protective indigenous man',
                 historia:
@@ -129,7 +132,7 @@ async function main() {
             },
             {
                 nome: 'Cecília',
-                idade: '18',
+                idade: 18,
                 descricao: 'Jovem doce, delicada e bondosa.',
                 descricaoEn: 'Young, sweet, delicate and kind.',
                 historia: 'Filha de Dom Antônio de Mariz, desperta o amor e a proteção de Peri.',
@@ -152,7 +155,8 @@ async function main() {
                 descricao: 'Moça forte e ciumenta.',
                 descricaoEn: 'Strong and jealous girl.',
                 historia: 'Prima de Cecília, vive conflitos emocionais ao longo da trama.',
-                historiaEn: "Cecília's cousin, experiences emotional conflicts throughout the plot.",
+                historiaEn:
+                    "Cecília's cousin, experiences emotional conflicts throughout the plot.",
                 idDoLivro: livro.id,
             },
             {
@@ -180,15 +184,19 @@ async function main() {
         data: {
             introducao:
                 'A história apresenta Peri, um indígena guerreiro que vive próximo à fazenda de Dom Antônio de Mariz e se torna protetor de Cecília.',
-            introducaoEn: "The story presents Peri, a warrior indigenous man who lives near Dom Antônio de Mariz's farm and becomes Cecília's protector.",
+            introducaoEn:
+                "The story presents Peri, a warrior indigenous man who lives near Dom Antônio de Mariz's farm and becomes Cecília's protector.",
             conflito:
                 'A família de Dom Antônio passa a enfrentar ataques indígenas e a traição de Loredano, que deseja destruir a família e tomar riquezas.',
-            conflitoEn: "Dom Antônio's family begins to face attacks from indigenous people and the betrayal of Loredano, who wants to destroy the family and take their wealth.",
+            conflitoEn:
+                "Dom Antônio's family begins to face attacks from indigenous people and the betrayal of Loredano, who wants to destroy the family and take their wealth.",
             climax: 'A fazenda é atacada e destruída, colocando Cecília e todos os moradores em grande perigo.',
-            climaxEn: "The farm is attacked and destroyed, putting Cecília and all the residents in great danger.",
+            climaxEn:
+                'The farm is attacked and destroyed, putting Cecília and all the residents in great danger.',
             desfecho:
                 'Peri salva Cecília e foge com ela pela floresta e pelos rios, deixando o destino dos dois em aberto.',
-            desfechoEn: "Peri saves Cecília and flees with her through the forest and rivers, leaving the fate of both in uncertainty.",
+            desfechoEn:
+                'Peri saves Cecília and flees with her through the forest and rivers, leaving the fate of both in uncertainty.',
             idDoLivro: livro.id,
         },
     });
@@ -219,7 +227,7 @@ async function main() {
             enunciado: '...',
             enunciadoEn: '...',
             vestibular: '...',
-            anoVestibular: '...',
+            anoVestibular: 2000,
             idDoLivro: livro.id,
             alternativas: {
                 create: {
@@ -244,15 +252,21 @@ async function main() {
             nome: 'Bookpedia',
             introducao: 'Projeto educacional para explorar obras literárias de forma organizada.',
             introducaoEn: 'Educational project to explore literary works in an organized way.',
-            objetivoProjeto: 'Ajudar estudantes a estudar literatura com contexto, análise e exercícios.',
-            objetivoProjetoEn: 'Help students study literature with context, analysis, and exercises.',
-            sobreAEquipe: 'Equipe multidisciplinar focada em conteúdo, tecnologia e experiência do usuário.',
-            sobreAEquipeEn: 'A multidisciplinary team focused on content, technology, and user experience.',
+            objetivoProjeto:
+                'Ajudar estudantes a estudar literatura com contexto, análise e exercícios.',
+            objetivoProjetoEn:
+                'Help students study literature with context, analysis, and exercises.',
+            sobreAEquipe:
+                'Equipe multidisciplinar focada em conteúdo, tecnologia e experiência do usuário.',
+            sobreAEquipeEn:
+                'A multidisciplinary team focused on content, technology, and user experience.',
             desenvolvimentoTecnico: 'API em Node.js com Prisma e banco relacional.',
             desenvolvimentoTecnicoEn: 'Node.js API with Prisma and a relational database.',
             tecnologias: 'Node.js, Express, Prisma, PostgreSQL',
-            integracaoAPI: 'Consumo de dados estruturados para livros, questões e materiais de apoio.',
-            integracaoAPIEn: 'Consumption of structured data for books, questions, and support materials.',
+            integracaoAPI:
+                'Consumo de dados estruturados para livros, questões e materiais de apoio.',
+            integracaoAPIEn:
+                'Consumption of structured data for books, questions, and support materials.',
             membros: {
                 create: [
                     {
@@ -263,8 +277,8 @@ async function main() {
                         descricao: 'Responsável pelo projeto.',
                         descricaoEn: 'Responsible for the project.',
                         cargo: 'PO',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
@@ -275,8 +289,8 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
@@ -287,8 +301,8 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
@@ -299,8 +313,8 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
@@ -311,83 +325,82 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Nicolas',
-                        idade: '16',
+                        idade: 16,
                         curso: 'Desenvolvimento de Sistemas',
                         cursoEn: 'Systems Development',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Designer',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Isadora',
-                        idade: '16',
+                        idade: 16,
                         curso: 'Eletro Eletrônica',
                         cursoEn: 'Electronics Engineering',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: '...',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Gustavo Durães',
-                        idade: '17',
+                        idade: 17,
                         curso: 'Eletro Eletrônica',
                         cursoEn: 'Electronics Engineering',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: '...',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Henry',
-                        idade: '17',
+                        idade: 17,
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: '...',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Enzo Vecchi',
-                        idade: '17',
+                        idade: 17,
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: '...',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
                     },
                     {
                         nome: 'Matheus Duarte',
-                        idade: '16',
+                        idade: 16,
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: '...',
-                        avaliacaoDaObra: '?',
-                        diasDeLeitura: '?',
+                        avaliacaoDaObra: 5,
+                        diasDeLeitura: 5,
                         opiniao: '...',
-                    }
-
+                    },
                 ],
             },
         },
