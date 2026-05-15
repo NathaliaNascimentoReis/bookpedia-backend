@@ -15,7 +15,6 @@ export default class LivroModel {
         analise,
         analiseEn,
         capaURL,
-        emDestaque = false
     } = {}) {
         this.id = id;
         this.tituloDoLivro = tituloDoLivro;
@@ -30,7 +29,6 @@ export default class LivroModel {
         this.analise = analise;
         this.analiseEn = analiseEn;
         this.capaURL = capaURL;
-        this.emDestaque = emDestaque;
     }
 
     validar() {
@@ -90,18 +88,6 @@ export default class LivroModel {
     async criar() {
         this.validar();
 
-        if (this.emDestaque) {
-            const destqueExistente = await prisma.livro.findFirst({
-                where: { emDestaque: true }
-            });
-
-            if (destqueExistente) {
-                throw new Error(
-                    `Já existe um livro em destaque: "${destqueExistente.tituloDoLivro}". Remvova o destaque dele antes de criar um novo.`
-                );
-            }
-        }
-
         return prisma.livro.create({
             data: {
                 tituloDoLivro: this.tituloDoLivro,
@@ -116,7 +102,6 @@ export default class LivroModel {
                 analise: this.analise,
                 analiseEn: this.analiseEn,
                 capaURL: this.capaURL,
-                emDestaque: this.emDestaque,
             },
         });
     }
@@ -127,21 +112,6 @@ export default class LivroModel {
         }
 
         this.validar();
-
-        if (this.emDestaque) {
-            const destqueExistente = await prisma.livro.findFirst({
-                where: {
-                    emDestaque: true,
-                    NOT: { id: parseInt(this.id, 10) },
-                },
-            })
-
-            if (destqueExistente) {
-                throw new Error(
-                    `Já existe um livro em destaque: "${destqueExistente.tituloDoLivro}". Remvova o destaque dele antes de criar um novo.`
-                );
-            }
-        }
 
         return prisma.livro.update({
             where: { id: parseInt(this.id, 10) },
@@ -158,7 +128,6 @@ export default class LivroModel {
                 analise: this.analise,
                 analiseEn: this.analiseEn,
                 capaURL: this.capaURL,
-                emDestaque: this.emDestaque,
             },
         });
     }
@@ -186,10 +155,6 @@ export default class LivroModel {
             where.anoDeLancamento = parseInt(filtros.anoDeLancamento);
         }
 
-        if (filtros.emDestaque !== undefined) {
-            where.emDestaque = filtros.emDestaque === 'true' || filtros.emDestaque === true;
-        }
-
         return prisma.livro.findMany({
             where,
             include: {
@@ -211,26 +176,5 @@ export default class LivroModel {
         });
         if (!data) return null;
         return data;
-    }
-
-    static async buscarDestaque() {
-        const livro = await prisma.livro.findFirst({
-            where: { emDestaque: true },
-            include: {
-                autores: true,
-                enredos: true,
-                cenarios: true,
-                personagens: true,
-                movimentoLiterario: true,
-                vocabularios: true,
-                videos: true,
-                curiosidades: true,
-                questoes: true,
-            },
-        });
-
-        if (!livro) return null;
-
-        return livro;
     }
 }
