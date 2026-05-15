@@ -24,35 +24,35 @@ export default class MovimentosLiterariosModel {
     }
 
     validar() {
-        if (!this.nome) {
+        if (!this.nome || this.nome.trim() === '') {
             throw new Error('O nome é um campo obrigatório.');
         }
 
-        if (!this.contextoHistorico) {
+        if (!this.contextoHistorico || this.contextoHistorico.trim() === '') {
             throw new Error('O contexto histórico é um campo obrigatório.');
         }
 
-        if (!this.contextoHistoricoEn) {
+        if (!this.contextoHistoricoEn || this.contextoHistoricoEn.trim() === '') {
             throw new Error('O contexto histórico em inglês é um campo obrigatório.');
         }
 
-        if (!this.caracteristicas) {
+        if (!this.caracteristicas || this.caracteristicas.trim() === '') {
             throw new Error('As características são um campo obrigatório.');
         }
 
-        if (!this.caracteristicasEn) {
+        if (!this.caracteristicasEn || this.caracteristicasEn.trim() === '') {
             throw new Error('As características em inglês são um campo obrigatório.');
         }
 
-        if (!this.periodo) {
+        if (!this.periodo || this.periodo.trim() === '') {
             throw new Error('O período é um campo obrigatório.');
         }
 
-        if (!this.fase) {
+        if (!this.fase || this.fase.trim() === '') {
             throw new Error('A fase é um campo obrigatório.');
         }
 
-        if (!this.influencia) {
+        if (!this.influencia || this.influencia.trim() === '') {
             throw new Error('A influência é um campo obrigatório.');
         }
     }
@@ -71,7 +71,6 @@ export default class MovimentosLiterariosModel {
             influencia: this.influencia,
         };
 
-        // Lógica para relação N:N do Schema
         if (idLivroParaConectar) {
             data.livros = {
                 connect: { id: parseInt(idLivroParaConectar, 10) },
@@ -83,7 +82,7 @@ export default class MovimentosLiterariosModel {
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         this.validar();
@@ -105,7 +104,7 @@ export default class MovimentosLiterariosModel {
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.movimentosLiterarios.delete({ where: { id: parseInt(this.id, 10) } });
@@ -139,9 +138,7 @@ export default class MovimentosLiterariosModel {
             include: { livros: true },
         });
 
-        if (!data) {
-            return null;
-        }
+        if (!data) return null;
 
         return new MovimentosLiterariosModel(data);
     }

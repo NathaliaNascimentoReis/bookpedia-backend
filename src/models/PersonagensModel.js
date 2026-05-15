@@ -22,7 +22,7 @@ export default class PersonagensModel {
     }
 
     validar() {
-        if (!this.nome) {
+        if (!this.nome || this.nome.trim() === '') {
             throw new Error('O nome é um campo obrigatório.');
         }
 
@@ -34,19 +34,19 @@ export default class PersonagensModel {
             throw new Error('A idade deve ser um número válido.');
         }
 
-        if (!this.descricao) {
+        if (!this.descricao || this.descricao.trim() === '') {
             throw new Error('A descrição é um campo obrigatório.');
         }
 
-        if (!this.descricaoEn) {
+        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
             throw new Error('A descrição em inglês é um campo obrigatório.');
         }
 
-        if (!this.historia) {
+        if (!this.historia || this.historia.trim() === '') {
             throw new Error('A história é um campo obrigatório.');
         }
 
-        if (!this.historiaEn) {
+        if (!this.historiaEn || this.historiaEn.trim() === '') {
             throw new Error('A história em inglês é um campo obrigatório.');
         }
 
@@ -77,7 +77,7 @@ export default class PersonagensModel {
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         this.validar();
@@ -98,7 +98,7 @@ export default class PersonagensModel {
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.personagens.delete({ where: { id: parseInt(this.id, 10) } });
