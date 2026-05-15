@@ -32,51 +32,51 @@ export default class ProjetosModel {
     }
 
     validar() {
-        if (!this.nome) {
+        if (!this.nome || this.nome.trim() === '') {
             throw new Error('O nome é um campo obrigatório.');
         }
 
-        if (!this.introducao) {
+        if (!this.introducao || this.introducao.trim() === '') {
             throw new Error('A introdução é um campo obrigatório.');
         }
 
-        if (!this.introducaoEn) {
+        if (!this.introducaoEn || this.introducaoEn.trim() === '') {
             throw new Error('A introdução em inglês é um campo obrigatório.');
         }
 
-        if (!this.objetivoProjeto) {
+        if (!this.objetivoProjeto || this.objetivoProjeto.trim() === '') {
             throw new Error('O objetivo do projeto é um campo obrigatório.');
         }
 
-        if (!this.objetivoProjetoEn) {
+        if (!this.objetivoProjetoEn || this.objetivoProjetoEn.trim() === '') {
             throw new Error('O objetivo do projeto em inglês é um campo obrigatório.');
         }
 
-        if (!this.sobreAEquipe) {
+        if (!this.sobreAEquipe || this.sobreAEquipe.trim() === '') {
             throw new Error('O texto sobre a equipe é um campo obrigatório.');
         }
 
-        if (!this.sobreAEquipeEn) {
+        if (!this.sobreAEquipeEn || this.sobreAEquipeEn.trim() === '') {
             throw new Error('O texto sobre a equipe em inglês é um campo obrigatório.');
         }
 
-        if (!this.desenvolvimentoTecnico) {
+        if (!this.desenvolvimentoTecnico || this.desenvolvimentoTecnico.trim() === '') {
             throw new Error('O desenvolvimento técnico é um campo obrigatório.');
         }
 
-        if (!this.desenvolvimentoTecnicoEn) {
+        if (!this.desenvolvimentoTecnicoEn || this.desenvolvimentoTecnicoEn.trim() === '') {
             throw new Error('O desenvolvimento técnico em inglês é um campo obrigatório.');
         }
 
-        if (!this.tecnologias) {
+        if (!this.tecnologias || this.tecnologias.trim() === '') {
             throw new Error('As tecnologias são um campo obrigatório.');
         }
 
-        if (!this.integracaoAPI) {
+        if (!this.integracaoAPI || this.integracaoAPI.trim() === '') {
             throw new Error('A integração com API é um campo obrigatório.');
         }
 
-        if (!this.integracaoAPIEn) {
+        if (!this.integracaoAPIEn || this.integracaoAPIEn.trim() === '') {
             throw new Error('A integração com API em inglês é um campo obrigatório.');
         }
     }
@@ -104,14 +104,13 @@ export default class ProjetosModel {
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         this.validar();
 
         return prisma.projetos.update({
             where: { id: parseInt(this.id, 10) },
-
             data: {
                 nome: this.nome,
                 introducao: this.introducao,
@@ -131,7 +130,7 @@ export default class ProjetosModel {
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.projetos.delete({ where: { id: parseInt(this.id, 10) } });

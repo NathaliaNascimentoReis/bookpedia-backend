@@ -30,7 +30,7 @@ export default class MembrosModel {
     }
 
     validar() {
-        if (!this.nome) {
+        if (!this.nome || this.nome.trim() === '') {
             throw new Error('O nome é um campo obrigatório.');
         }
 
@@ -42,31 +42,27 @@ export default class MembrosModel {
             throw new Error('A idade deve ser um número válido.');
         }
 
-        if (!this.curso) {
+        if (!this.curso || this.curso.trim() === '') {
             throw new Error('O curso é um campo obrigatório.');
         }
 
-        if (!this.cursoEn) {
+        if (!this.cursoEn || this.cursoEn.trim() === '') {
             throw new Error('O curso em inglês é um campo obrigatório.');
         }
 
-        if (!this.descricao) {
+        if (!this.descricao || this.descricao.trim() === '') {
             throw new Error('A descrição é um campo obrigatório.');
         }
 
-        if (!this.descricaoEn) {
+        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
             throw new Error('A descrição em inglês é um campo obrigatório.');
         }
 
-        if (!this.cargo) {
+        if (!this.cargo || this.cargo.trim() === '') {
             throw new Error('O cargo é um campo obrigatório.');
         }
 
-        if (
-            this.avaliacaoDaObra === undefined ||
-            this.avaliacaoDaObra === null ||
-            this.avaliacaoDaObra === ''
-        ) {
+        if (this.avaliacaoDaObra === undefined || this.avaliacaoDaObra === null || this.avaliacaoDaObra === '') {
             throw new Error('A avaliação da obra é um campo obrigatório.');
         }
 
@@ -74,11 +70,7 @@ export default class MembrosModel {
             throw new Error('A avaliação da obra deve ser um número válido.');
         }
 
-        if (
-            this.diasDeLeitura === undefined ||
-            this.diasDeLeitura === null ||
-            this.diasDeLeitura === ''
-        ) {
+        if (this.diasDeLeitura === undefined || this.diasDeLeitura === null || this.diasDeLeitura === '') {
             throw new Error('Os dias de leitura são um campo obrigatório.');
         }
 
@@ -86,15 +78,11 @@ export default class MembrosModel {
             throw new Error('Os dias de leitura devem ser um número válido.');
         }
 
-        if (!this.opiniao) {
+        if (!this.opiniao || this.opiniao.trim() === '') {
             throw new Error('A opinião é um campo obrigatório.');
         }
 
-        if (
-            this.idDoProjeto === undefined ||
-            this.idDoProjeto === null ||
-            this.idDoProjeto === ''
-        ) {
+        if (this.idDoProjeto === undefined || this.idDoProjeto === null || this.idDoProjeto === '') {
             throw new Error('O projeto é um campo obrigatório.');
         }
 
@@ -125,14 +113,13 @@ export default class MembrosModel {
 
     async atualizar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         this.validar();
 
         return prisma.membros.update({
             where: { id: parseInt(this.id, 10) },
-
             data: {
                 nome: this.nome,
                 idade: parseInt(this.idade, 10),
@@ -151,7 +138,7 @@ export default class MembrosModel {
 
     async deletar() {
         if (!this.id) {
-            throw new Error('ID não fornecido');
+            throw new Error('ID não fornecido.');
         }
 
         return prisma.membros.delete({ where: { id: parseInt(this.id, 10) } });
