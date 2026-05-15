@@ -52,6 +52,21 @@ export const buscarPorId = async (req, res) => {
     }
 };
 
+export const buscarDestaque = async (req, res) => {
+    try {
+        const livroDestaque = await LivroModel.buscarDestaque();
+
+        if (!livroDestaque) {
+            return res.status(404).json({ message: 'Nenhum livro em destaque.' });
+        }
+
+        return res.status(200).json(livroDestaque);
+    } catch (error) {
+        console.error('Erro ao buscar destaque:', error);
+        return res.status(500).json({ error: 'Erro ao buscar livro em destaque.' });
+    }
+};
+
 export const atualizar = async (req, res) => {
     try {
         const { id } = req.params;

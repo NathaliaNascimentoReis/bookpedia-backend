@@ -7,7 +7,7 @@ datasource db {
 }
 
 model Livro {
-    id                  Int    @id @default(autoincrement())
+    id                  Int     @id @default(autoincrement())
     tituloDoLivro       String
     tituloDoLivroEn     String
     descricao           String
@@ -20,6 +20,7 @@ model Livro {
     analise             String
     analiseEn           String
     capaURL             String
+    emDestaque          Boolean
 
     autores            Autores[]
     enredos            Enredos[]
@@ -47,7 +48,7 @@ model Autores {
     biografiaEn         String
     fotoURL             String
 
-    livros              Livro[]
+    livros Livro[]
 
     @@map("autores")
 }
@@ -61,8 +62,8 @@ model Personagens {
     historia    String
     historiaEn  String
 
-    idDoLivro   Int
-    livro       Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("personagens")
 }
@@ -78,8 +79,8 @@ model Enredos {
     desfecho     String
     desfechoEn   String
 
-    idDoLivro    Int
-    livro        Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("enredos")
 }
@@ -94,8 +95,8 @@ model Cenarios {
     descricaoEn       String
     fotoURL           String
 
-    idDoLivro         Int
-    livro             Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("cenarios")
 }
@@ -107,7 +108,7 @@ model Vocabulario {
     significado   String
     significadoEn String
 
-    livros         Livro[]
+    livros Livro[]
 
     @@map("vocabulario")
 }
@@ -123,7 +124,7 @@ model MovimentosLiterarios {
     fase                String
     influencia          String
 
-    livros              Livro[]
+    livros Livro[]
 
     @@map("movimentosLiterarios")
 }
@@ -136,8 +137,8 @@ model Videos {
     descricaoEn String
     url         String
 
-    idDoLivro   Int
-    livro       Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("videos")
 }
@@ -149,8 +150,8 @@ model Curiosidades {
     curiosidade         String
     curiosidadeEn       String
 
-    idDoLivro           Int
-    livro               Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("curiosidades")
 }
@@ -164,8 +165,8 @@ model Questoes {
 
     alternativas Alternativas?
 
-    idDoLivro     Int
-    livro         Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("questoes")
 }
@@ -184,8 +185,8 @@ model Alternativas {
     justificativa   String
     justificativaEn String
 
-    idQuestao       Int      @unique
-    questoes        Questoes @relation(fields: [idQuestao], references: [id], onDelete: Cascade)
+    idQuestao Int      @unique
+    questoes  Questoes @relation(fields: [idQuestao], references: [id], onDelete: Cascade)
 
     @@map("alternativas")
 }
@@ -203,8 +204,8 @@ model Membros {
     diasDeLeitura   Int
     opiniao         String
 
-    idDoProjeto     Int
-    projetos        Projetos @relation(fields: [idDoProjeto], references: [id], onDelete: Cascade)
+    idDoProjeto Int
+    projetos    Projetos @relation(fields: [idDoProjeto], references: [id], onDelete: Cascade)
 
     @@map("membros")
 }
@@ -224,7 +225,7 @@ model Projetos {
     integracaoAPI            String
     integracaoAPIEn          String
 
-    membros                  Membros[]
+    membros Membros[]
 
     @@map("projetos")
 }
