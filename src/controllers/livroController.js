@@ -8,7 +8,6 @@ export const criar = async (req, res) => {
 
         const livro = new LivroModel(req.body);
         const data = await livro.criar();
-
         return res.status(201).json({ message: 'Registro criado com sucesso!', data });
     } catch (error) {
         console.error('Erro ao criar:', error);
@@ -51,22 +50,6 @@ export const buscarPorId = async (req, res) => {
         return res.status(500).json({ error: 'Erro ao buscar registro.' });
     }
 };
-
-export const buscarDestaque = async (req, res) => {
-    try {
-        const livroDestaque = await LivroModel.buscarDestaque();
-
-        if (!livroDestaque) {
-            return res.status(404).json({ message: 'Nenhum livro em destaque.' });
-        }
-
-        return res.status(200).json(livroDestaque);
-    } catch (error) {
-        console.error('Erro ao buscar destaque:', error);
-        return res.status(500).json({ error: 'Erro ao buscar livro em destaque.' });
-    }
-};
-
 export const atualizar = async (req, res) => {
     try {
         const { id } = req.params;
@@ -106,7 +89,9 @@ export const atualizar = async (req, res) => {
         const data = await livro.atualizar();
 
         return res.status(200).json({
-            message: `O registro "${data.tituloDoLivro || data.nome || data.id}" foi atualizado com sucesso!`,
+            message: `O registro "${
+                data.tituloDoLivro || data.nome || data.id
+            }" foi atualizado com sucesso!`,
             data,
         });
     } catch (error) {
@@ -132,7 +117,9 @@ export const deletar = async (req, res) => {
         await livro.deletar();
 
         return res.status(200).json({
-            message: `O registro "${livro.tituloDoLivro || livro.nome || livro.id}" foi deletado com sucesso!`,
+            message: `O registro "${
+                livro.tituloDoLivro || livro.nome || livro.id
+            }" foi deletado com sucesso!`,
             deletado: livro,
         });
     } catch (error) {

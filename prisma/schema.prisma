@@ -7,7 +7,7 @@ datasource db {
 }
 
 model Livro {
-    id                  Int     @id @default(autoincrement())
+    id                  Int    @id @default(autoincrement())
     tituloDoLivro       String
     tituloDoLivroEn     String
     descricao           String
@@ -20,7 +20,6 @@ model Livro {
     analise             String
     analiseEn           String
     capaURL             String
-    emDestaque          Boolean
 
     autores            Autores[]
     enredos            Enredos[]

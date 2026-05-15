@@ -149,11 +149,6 @@ export default class AutoresModel {
             where.anoFalecimento = parseInt(filtros.anoFalecimento, 10);
         }
 
-        if (filtros.emDestaque !== undefined) {
-            const emDestaque = filtros.emDestaque === 'true' || filtros.emDestaque === true;
-            where.livros = { some: { emDestaque } };
-        }
-
         return prisma.autores.findMany({ where, include: { livros: true } });
     }
 
@@ -164,10 +159,6 @@ export default class AutoresModel {
         });
 
         if (!data) return null;
-
-        const autor = new AutoresModel(data);
-        autor.emDestaque = data.livros.some((livro) => livro.emDestaque);
-        return autor;
-        
+        return data;
     }
 }
