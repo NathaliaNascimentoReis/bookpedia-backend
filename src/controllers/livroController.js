@@ -1,15 +1,16 @@
+import { apiKey } from '../lib/middlewares/apiKey.js';
 import LivroModel from '../models/LivroModel.js';
 
 export const criar = async (req, res) => {
     try {
-        const { 
-            tituloDoLivro, tituloDoLivroEn, 
-            descricao, descricaoEn, 
-            contextoHistorico, contextoHistoricoEn, 
-            anoDeLancamento, 
-            resumo, resumoEn, 
-            analise, analiseEn, 
-            capaURL 
+        const {
+            tituloDoLivro, tituloDoLivroEn,
+            descricao, descricaoEn,
+            contextoHistorico, contextoHistoricoEn,
+            anoDeLancamento,
+            resumo, resumoEn,
+            analise, analiseEn,
+            capaURL
         } = req.body;
 
         // Validações de presença para TODOS os campos obrigatórios
@@ -44,6 +45,8 @@ export const buscarTodos = async (req, res) => {
         }
 
         return res.status(200).json(registros);
+
+
     } catch (error) {
         console.error('Erro ao buscar:', error);
         return res.status(500).json({ error: 'Erro ao buscar registros.' });
