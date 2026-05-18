@@ -2,17 +2,21 @@ import DicasDeVestibularModel from '../models/DicasDeVestibularModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { titulo, tituloEn, dica, dicaEn } = req.body;
+
+        // Validações básicas de presença
+        if (!titulo) return res.status(400).json({ error: 'O campo "titulo" é obrigatório.' });
+        if (!tituloEn) return res.status(400).json({ error: 'O campo "tituloEn" é obrigatório.' });
+        if (!dica) return res.status(400).json({ error: 'O campo "dica" é obrigatório.' });
+        if (!dicaEn) return res.status(400).json({ error: 'O campo "dicaEn" é obrigatório.' });
 
         const item = new DicasDeVestibularModel(req.body);
         const data = await item.criar();
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        return res.status(201).json({ message: 'Dica criada com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar a dica.' });
     }
 };
 

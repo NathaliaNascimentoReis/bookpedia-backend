@@ -2,17 +2,25 @@ import CenariosModel from '../models/CenariosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { nome, nomeEn, caracteristicas, caracteristicasEn, descricao, descricaoEn, fotoURL, idDoLivro } = req.body;
+
+        // Validações básicas de presença
+        if (!nome) return res.status(400).json({ error: 'O campo "nome" é obrigatório.' });
+        if (!nomeEn) return res.status(400).json({ error: 'O campo "nomeEn" é obrigatório.' });
+        if (!caracteristicas) return res.status(400).json({ error: 'O campo "caracteristicas" é obrigatório.' });
+        if (!caracteristicasEn) return res.status(400).json({ error: 'O campo "caracteristicasEn" é obrigatório.' });
+        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!fotoURL) return res.status(400).json({ error: 'O campo "fotoURL" é obrigatório.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
         const item = new CenariosModel(req.body);
         const data = await item.criar();
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        return res.status(201).json({ message: 'Cenário criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro ao salvar o cenário.' });
     }
 };
 

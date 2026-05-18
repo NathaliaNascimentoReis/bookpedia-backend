@@ -2,17 +2,32 @@ import EnredosModel from '../models/EnredosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            introducao, introducaoEn, 
+            conflito, conflitoEn, 
+            climax, climaxEn, 
+            desfecho, desfechoEn, 
+            idDoLivro 
+        } = req.body;
 
-        const enredo = new EnredosModel(req.body);
-        const data = await enredo.criar();
+        // Validações básicas de presença (sem trim)
+        if (!introducao) return res.status(400).json({ error: 'O campo "introducao" é obrigatório.' });
+        if (!introducaoEn) return res.status(400).json({ error: 'O campo "introducaoEn" é obrigatório.' });
+        if (!conflito) return res.status(400).json({ error: 'O campo "conflito" é obrigatório.' });
+        if (!conflitoEn) return res.status(400).json({ error: 'O campo "conflitoEn" é obrigatório.' });
+        if (!climax) return res.status(400).json({ error: 'O campo "climax" é obrigatório.' });
+        if (!climaxEn) return res.status(400).json({ error: 'O campo "climaxEn" é obrigatório.' });
+        if (!desfecho) return res.status(400).json({ error: 'O campo "desfecho" é obrigatório.' });
+        if (!desfechoEn) return res.status(400).json({ error: 'O campo "desfechoEn" é obrigatório.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const item = new EnredosModel(req.body);
+        const data = await item.criar();
+
+        return res.status(201).json({ message: 'Enredo criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o enredo.' });
     }
 };
 

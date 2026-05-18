@@ -9,26 +9,7 @@ export default class DicasDeVestibularModel {
         this.dicaEn = dicaEn;
     }
 
-    validar() {
-        if (!this.titulo || this.titulo.trim() === '') {
-            throw new Error('O título é um campo obrigatório.');
-        }
-
-        if (!this.tituloEn || this.tituloEn.trim() === '') {
-            throw new Error('O título em inglês é um campo obrigatório.');
-        }
-
-        if (!this.dica || this.dica.trim() === '') {
-            throw new Error('A dica é um campo obrigatório.');
-        }
-
-        if (!this.dicaEn || this.dicaEn.trim() === '') {
-            throw new Error('A dica em inglês é um campo obrigatório.');
-        }
-    }
-
     async criar() {
-        this.validar();
 
         return prisma.dicasDeVestibular.create({
             data: {
@@ -44,8 +25,6 @@ export default class DicasDeVestibularModel {
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
-        this.validar();
 
         return prisma.dicasDeVestibular.update({
             where: { id: parseInt(this.id, 10) },
@@ -68,21 +47,8 @@ export default class DicasDeVestibularModel {
 
     static async buscarTodos(filtros = {}) {
         const where = {};
-
         if (filtros.titulo) {
             where.titulo = { contains: filtros.titulo, mode: 'insensitive' };
-        }
-
-        if (filtros.tituloEn) {
-            where.tituloEn = { contains: filtros.tituloEn, mode: 'insensitive' };
-        }
-
-        if (filtros.dica) {
-            where.dica = { contains: filtros.dica, mode: 'insensitive' };
-        }
-
-        if (filtros.dicaEn) {
-            where.dicaEn = { contains: filtros.dicaEn, mode: 'insensitive' };
         }
 
         return prisma.dicasDeVestibular.findMany({ where });
