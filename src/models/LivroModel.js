@@ -31,62 +31,8 @@ export default class LivroModel {
         this.capaURL = capaURL;
     }
 
-    validar() {
-        if (!this.tituloDoLivro || this.tituloDoLivro.trim() === '') {
-            throw new Error('O título do livro é um campo obrigatório.');
-        }
-
-        if (!this.tituloDoLivroEn || this.tituloDoLivroEn.trim() === '') {
-            throw new Error('O título do livro em inglês é um campo obrigatório.');
-        }
-
-        if (!this.descricao || this.descricao.trim() === '') {
-            throw new Error('A descrição é um campo obrigatório.');
-        }
-
-        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
-            throw new Error('A descrição em inglês é um campo obrigatório.');
-        }
-
-        if (!this.contextoHistorico || this.contextoHistorico.trim() === '') {
-            throw new Error('O contexto histórico é um campo obrigatório.');
-        }
-
-        if (!this.contextoHistoricoEn || this.contextoHistoricoEn.trim() === '') {
-            throw new Error('O contexto histórico em inglês é um campo obrigatório.');
-        }
-
-        if (this.anoDeLancamento === undefined || this.anoDeLancamento === null) {
-            throw new Error('O ano de lançamento é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.anoDeLancamento, 10)) || parseInt(this.anoDeLancamento, 10) < 0) {
-            throw new Error('O ano de lançamento deve ser um número válido.');
-        }
-
-        if (!this.resumo || this.resumo.trim() === '') {
-            throw new Error('O resumo é um campo obrigatório.');
-        }
-
-        if (!this.resumoEn || this.resumoEn.trim() === '') {
-            throw new Error('O resumo em inglês é um campo obrigatório.');
-        }
-
-        if (!this.analise || this.analise.trim() === '') {
-            throw new Error('A análise é um campo obrigatório.');
-        }
-
-        if (!this.analiseEn || this.analiseEn.trim() === '') {
-            throw new Error('A análise em inglês é um campo obrigatório.');
-        }
-
-        if (!this.capaURL || this.capaURL.trim() === '') {
-            throw new Error('A capa é um campo obrigatório.');
-        }
-    }
-
     async criar() {
-        this.validar();
+
 
         return prisma.livro.create({
             data: {
@@ -110,8 +56,6 @@ export default class LivroModel {
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
-        this.validar();
 
         return prisma.livro.update({
             where: { id: parseInt(this.id, 10) },
@@ -175,6 +119,6 @@ export default class LivroModel {
             },
         });
         if (!data) return null;
-        return data;
+        return new LivroModel(data);
     }
 }

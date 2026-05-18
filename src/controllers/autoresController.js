@@ -2,17 +2,39 @@ import AutoresModel from '../models/AutoresModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            nome, 
+            descricao, 
+            descricaoEn, 
+            contextoHistorico, 
+            contextoHistoricoEn, 
+            anoNascimento, 
+            anoFalecimento, 
+            biografia, 
+            biografiaEn, 
+            fotoURL 
+        } = req.body;
 
-        const item = new AutoresModel(req.body);
-        const data = await item.criar();
+        // Validações básicas de presença
+        if (!nome) return res.status(400).json({ error: 'O campo "nome" é obrigatório.' });
+        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!contextoHistorico) return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
+        if (!contextoHistoricoEn) return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
+        if (!anoNascimento) return res.status(400).json({ error: 'O campo "anoNascimento" é obrigatório.' });
+        if (!anoFalecimento) return res.status(400).json({ error: 'O campo "anoFalecimento" é obrigatório.' });
+        if (!biografia) return res.status(400).json({ error: 'O campo "biografia" é obrigatório.' });
+        if (!biografiaEn) return res.status(400).json({ error: 'O campo "biografiaEn" é obrigatório.' });
+        if (!fotoURL) return res.status(400).json({ error: 'O campo "fotoURL" é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const autor = new AutoresModel(req.body);
+        const data = await autor.criar(req.body.idLivroParaConectar);
+
+        return res.status(201).json({ message: 'Autor criado com sucesso!', data });
+
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro ao salvar o autor.' });
     }
 };
 

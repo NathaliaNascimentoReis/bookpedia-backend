@@ -2,19 +2,39 @@ import LivroModel from '../models/LivroModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            tituloDoLivro, tituloDoLivroEn, 
+            descricao, descricaoEn, 
+            contextoHistorico, contextoHistoricoEn, 
+            anoDeLancamento, 
+            resumo, resumoEn, 
+            analise, analiseEn, 
+            capaURL 
+        } = req.body;
+
+        // Validações de presença para TODOS os campos obrigatórios
+        if (!tituloDoLivro) return res.status(400).json({ error: 'O campo "tituloDoLivro" é obrigatório.' });
+        if (!tituloDoLivroEn) return res.status(400).json({ error: 'O campo "tituloDoLivroEn" é obrigatório.' });
+        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!contextoHistorico) return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
+        if (!contextoHistoricoEn) return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
+        if (!anoDeLancamento) return res.status(400).json({ error: 'O campo "anoDeLancamento" é obrigatório.' });
+        if (!resumo) return res.status(400).json({ error: 'O campo "resumo" é obrigatório.' });
+        if (!resumoEn) return res.status(400).json({ error: 'O campo "resumoEn" é obrigatório.' });
+        if (!analise) return res.status(400).json({ error: 'O campo "analise" é obrigatório.' });
+        if (!analiseEn) return res.status(400).json({ error: 'O campo "analiseEn" é obrigatório.' });
+        if (!capaURL) return res.status(400).json({ error: 'O campo "capaURL" é obrigatório.' });
 
         const livro = new LivroModel(req.body);
         const data = await livro.criar();
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+
+        return res.status(201).json({ message: 'Livro criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o livro.' });
     }
 };
-
 export const buscarTodos = async (req, res) => {
     try {
         const registros = await LivroModel.buscarTodos(req.query);

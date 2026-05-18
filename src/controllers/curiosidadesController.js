@@ -2,17 +2,22 @@ import CuriosidadesModel from '../models/CuriosidadesModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { tituloCuriosidade, tituloCuriosidadeEn, curiosidade, curiosidadeEn, idDoLivro } = req.body;
+
+        // Validações básicas de presença
+        if (!tituloCuriosidade) return res.status(400).json({ error: 'O campo "tituloCuriosidade" é obrigatório.' });
+        if (!tituloCuriosidadeEn) return res.status(400).json({ error: 'O campo "tituloCuriosidadeEn" é obrigatório.' });
+        if (!curiosidade) return res.status(400).json({ error: 'O campo "curiosidade" é obrigatório.' });
+        if (!curiosidadeEn) return res.status(400).json({ error: 'O campo "curiosidadeEn" é obrigatório.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
         const item = new CuriosidadesModel(req.body);
         const data = await item.criar();
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        return res.status(201).json({ message: 'Curiosidade criada com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar a curiosidade.' });
     }
 };
 

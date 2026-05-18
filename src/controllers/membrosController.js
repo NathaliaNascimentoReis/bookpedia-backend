@@ -2,17 +2,28 @@ import MembrosModel from '../models/MembrosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            nome, idade, curso, cursoEn, descricao, descricaoEn, 
+            cargo, avaliacaoDaObra, diasDeLeitura, opiniao, idDoProjeto 
+        } = req.body;
 
-        const item = new MembrosModel(req.body);
-        const data = await item.criar();
+        // Validações de presença
+        if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
+        if (!idade) return res.status(400).json({ error: 'A idade é obrigatória.' });
+        if (!curso) return res.status(400).json({ error: 'O curso é obrigatório.' });
+        if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
+        if (!cargo) return res.status(400).json({ error: 'O cargo é obrigatório.' });
+        if (!avaliacaoDaObra) return res.status(400).json({ error: 'A avaliação da obra é obrigatória.' });
+        if (!diasDeLeitura) return res.status(400).json({ error: 'Os dias de leitura são obrigatórios.' });
+        if (!idDoProjeto) return res.status(400).json({ error: 'O ID do projeto é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const membro = new MembrosModel(req.body);
+        const data = await membro.criar();
+
+        return res.status(201).json({ message: 'Membro criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o membro.' });
     }
 };
 
