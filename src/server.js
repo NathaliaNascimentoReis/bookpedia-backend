@@ -1,4 +1,5 @@
 import express from 'express';
+import { apiKey } from './lib/middlewares/apiKey.js';
 import 'dotenv/config';
 import autoresRoutes from './routes/autoresRoute.js';
 import cenariosRoutes from './routes/cenariosRoute.js';
@@ -25,19 +26,19 @@ app.get('/', (req, res) => {
 
 // Rotas
 
-app.use('/autores', autoresRoutes);
-app.use('/cenarios', cenariosRoutes);
-app.use('/curiosidades', curiosidadesRoutes);
-app.use('/dicas-de-vestibular', dicasDeVestibularRoutes);
-app.use('/enredos', enredosRoutes);
-app.use('/livros', livroRoutes);
-app.use('/membros', membrosRoutes);
-app.use('/movimentos-literarios', movimentosLiterariosRoutes);
-app.use('/personagens', personagensRoutes);
-app.use('/projetos', projetosRoutes);
-app.use('/questoes', questoesRoutes);
-app.use('/videos', videosRoutes);
-app.use('/vocabulario', vocabularioRoutes);
+app.use('/autores',apiKey, autoresRoutes);
+app.use('/cenarios',apiKey, cenariosRoutes);
+app.use('/curiosidades',apiKey, curiosidadesRoutes);
+app.use('/dicas-de-vestibular', apiKey, dicasDeVestibularRoutes);
+app.use('/enredos', apiKey, enredosRoutes);
+app.use('/livros', apiKey, livroRoutes);
+app.use('/membros', apiKey, membrosRoutes);
+app.use('/movimentos-literarios', apiKey, movimentosLiterariosRoutes);
+app.use('/personagens', apiKey, personagensRoutes);
+app.use('/projetos', apiKey, projetosRoutes);
+app.use('/questoes', apiKey, questoesRoutes);
+app.use('/videos', apiKey, videosRoutes);
+app.use('/vocabulario', apiKey, vocabularioRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ error: 'Rota não encontrada' });
