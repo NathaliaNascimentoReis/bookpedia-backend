@@ -66,14 +66,180 @@ async function main() {
         },
     });
 
-    const palavra = await prisma.vocabulario.create({
-        data: {
-            palavra: '...',
-            palavraEn: '...',
-            significado: '...',
-            significadoEn: '...',
+    const vocabularioItems = [
+        {
+            palavra: 'Catachisna',
+            palavraEn: 'Cataclysm',
+            significado: 'Desastre natural de grandes proporções',
+            significadoEn: 'A natural disaster of great proportions',
         },
-    });
+        {
+            palavra: 'Sertões',
+            palavraEn: 'Backlands',
+            significado: 'Lugar de “sertão”, refere-se ao termo após o interior',
+            significadoEn: 'Remote inland regions, countryside, reservoirs / seasonal rains',
+        },
+        {
+            palavra: 'Monções',
+            palavraEn: 'Monsoons',
+            significado: 'Reservatórios naturais de água',
+            significadoEn: 'Seasonal rains and water reservoirs',
+        },
+        {
+            palavra: 'Cabeços',
+            palavraEn: 'Hilltops',
+            significado: 'Pequenos montes de cume, elevação de terreno',
+            significadoEn: 'Small hills or elevated landforms',
+        },
+        {
+            palavra: 'Várzea',
+            palavraEn: 'Floodplain',
+            significado: 'Terreno plano, fértil e extenso',
+            significadoEn: 'Flat, fertile, and extensive land',
+        },
+        {
+            palavra: 'Suserano',
+            palavraEn: 'Suzerain',
+            significado: 'Senhor feudal que doava feudos a outro nobre',
+            significadoEn: 'A feudal lord who granted lands to another noble',
+        },
+        {
+            palavra: 'Vassalo',
+            palavraEn: 'Vassal',
+            significado: 'Um nobre que recebia feudos de outro nobre',
+            significadoEn: 'A noble who received lands from another noble',
+        },
+        {
+            palavra: 'Sobranceiro',
+            palavraEn: 'Overbearing',
+            significado: 'Alguém em uma posição superior, arrogante',
+            significadoEn: 'Someone arrogant or in a superior position',
+        },
+        {
+            palavra: 'Ressvalar',
+            palavraEn: 'Slip',
+            significado: 'Escorregar, deslize',
+            significadoEn: 'To slide or slip',
+        },
+        {
+            palavra: 'Indômito',
+            palavraEn: 'Untamed',
+            significado: 'Algo ou alguém indomável, rebelde',
+            significadoEn: 'Someone or something rebellious or impossible to tame',
+        },
+        {
+            palavra: 'Tapir',
+            palavraEn: 'Tapir',
+            significado: 'Mamíferos herbívoros, ou como conhecemos anta',
+            significadoEn: 'A herbivorous mammal known in Brazil as “anta”',
+        },
+        {
+            palavra: 'Lajedo',
+            palavraEn: 'Rocky Plateau',
+            significado: 'Grande extensão de rocha plana, pavimento de pedra',
+            significadoEn: 'A large flat rock formation',
+        },
+        {
+            palavra: 'Gameleiras',
+            palavraEn: 'Gameleira Trees',
+            significado: 'Árvores nativas do Brasil, mata-pau',
+            significadoEn: 'Native Brazilian trees, also called strangler figs',
+        },
+        {
+            palavra: 'Jacarandá',
+            palavraEn: 'Jacaranda',
+            significado: 'Árvore de madeira dura',
+            significadoEn: 'A hardwood tree',
+        },
+        {
+            palavra: 'Cingidos',
+            palavraEn: 'Bound/Covered',
+            significado: 'Envolvido, cercado, ou coberto',
+            significadoEn: 'Surrounded, wrapped, or covered',
+        },
+        {
+            palavra: 'Fidalguia',
+            palavraEn: 'Nobility',
+            significado: 'Nobreza, classe social dos fidalgos',
+            significadoEn: 'The noble social class',
+        },
+        {
+            palavra: 'Imbuída',
+            palavraEn: 'Imbued',
+            significado: 'Convencido de uma ideia, preenchido emocionalmente',
+            significadoEn: 'Filled or emotionally convinced by an idea',
+        },
+        {
+            palavra: 'Faceirice',
+            palavraEn: 'Vanity/Coquetry',
+            significado: 'Se exibir, vaidoso, demonstrar elegância',
+            significadoEn: 'Showing off, vanity, elegance',
+        },
+        {
+            palavra: 'Parafina',
+            palavraEn: 'Paraffin/Organic Layer',
+            significado: 'Camada de matéria orgânica',
+            significadoEn: 'A layer of organic material',
+        },
+        {
+            palavra: 'Alcatroada',
+            palavraEn: 'Tarred',
+            significado: 'Coberta, revestido com alcatrão',
+            significadoEn: 'Covered or coated with tar',
+        },
+        {
+            palavra: 'Enfado',
+            palavraEn: 'Weariness',
+            significado: 'Mal-estar, tédio, algo maçante ou monótono',
+            significadoEn: 'Boredom, discomfort, something tedious or monotonous',
+        },
+        {
+            palavra: 'Anexim',
+            palavraEn: 'Proverb',
+            significado: 'Frase curta rimada, dito popular',
+            significadoEn: 'A short rhyming popular saying',
+        },
+        {
+            palavra: 'Diáfano',
+            palavraEn: 'Diaphanous',
+            significado: 'Transparente, algo claro, translúcido',
+            significadoEn: 'Transparent, clear, translucent',
+        },
+        {
+            palavra: 'Móbil',
+            palavraEn: 'Mobile',
+            significado: 'Capaz de se mover ou ser movido',
+            significadoEn: 'Able to move or be moved',
+        },
+        {
+            palavra: 'Cabocla',
+            palavraEn: 'Cabocla',
+            significado: 'Mestiça de indígena com europeu',
+            significadoEn: 'A person of mixed Indigenous and European ancestry',
+        },
+        {
+            palavra: 'Clavina',
+            palavraEn: 'Small Club',
+            significado: 'Pequena clava',
+            significadoEn: 'A small mace or club',
+        },
+        {
+            palavra: 'Dileastes',
+            palavraEn: 'Warriors/Fighters',
+            significado: 'Pessoas que lutavam, batalhavam',
+            significadoEn: 'People who fought or battled',
+        },
+        {
+            palavra: 'Abnegação',
+            palavraEn: 'Self-denial',
+            significado: 'Renúncia voluntária aos próprios interesses',
+            significadoEn: 'Voluntary renunciation of one’s own interests',
+        },
+    ];
+
+    const vocabularios = await Promise.all(
+        vocabularioItems.map((item) => prisma.vocabulario.create({ data: item }))
+    );
 
     const livro = await prisma.livro.create({
         data: {
@@ -96,7 +262,7 @@ async function main() {
             capaURL: 'https://m.media-amazon.com/images/I/7125-MeD+KL._AC_UF1000,1000_QL80_.jpg',
             autores: { connect: { id: autor.id } },
             movimentoLiterario: { connect: { id: movimento.id } },
-            vocabularios: { connect: { id: palavra.id } },
+            vocabularios: { connect: vocabularios.map((item) => ({ id: item.id })) },
         },
     });
 
