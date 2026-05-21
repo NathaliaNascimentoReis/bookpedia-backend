@@ -43,7 +43,7 @@ export default class MembrosModel {
                 avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
                 diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
-                idDoProjeto: parseInt(this.idDoProjeto, 10),
+                idDoProjeto: Number(this.idDoProjeto),
             },
         });
     }
@@ -67,7 +67,7 @@ export default class MembrosModel {
                 avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
                 diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
-                idDoProjeto: parseInt(this.idDoProjeto, 10),
+                idDoProjeto: this.idDoProjeto ? Number(this.idDoProjeto) : undefined,
             },
         });
     }
@@ -77,11 +77,12 @@ export default class MembrosModel {
             throw new Error('ID não fornecido.');
         }
 
-        return prisma.membros.delete({ where: { id: parseInt(this.id, 10) } });
+        return prisma.membros.delete({ where: { id: Number(this.id) } });
     }
 
     static async buscarTodos(filtros = {}) {
         const where = {};
+        const idDoProjeto = filtros.idDoProjeto;
 
         if (filtros.nome) {
             where.nome = { contains: filtros.nome, mode: 'insensitive' };
@@ -104,15 +105,25 @@ export default class MembrosModel {
         }
 
         return prisma.membros.findMany({
-            where,
-            include: { projeto: true },
+            where: {
+                idDoProjeto: idDoProjeto ? Number(idDoProjeto) : undefined,
+            },
+            include: {
+                projetos: true,
+            }
+
+           
         });
     }
 
     static async buscarPorId(id) {
         const data = await prisma.membros.findUnique({
-            where: { id: parseInt(id, 10) },
-            include: { projeto: true },
+           where: {
+            id: Number(id),
+           },
+           include: {
+            projetos: true,
+           }
         });
 
         if (!data) return null;

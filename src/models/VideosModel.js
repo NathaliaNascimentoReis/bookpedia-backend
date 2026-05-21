@@ -19,38 +19,9 @@ export default class VideosModel {
         this.idDoLivro = idDoLivro;
     }
 
-    validar() {
-        if (!this.titulo || this.titulo.trim() === '') {
-            throw new Error('O título é um campo obrigatório.');
-        }
-
-        if (!this.tituloEn || this.tituloEn.trim() === '') {
-            throw new Error('O título em inglês é um campo obrigatório.');
-        }
-
-        if (!this.descricao || this.descricao.trim() === '') {
-            throw new Error('A descrição é um campo obrigatório.');
-        }
-
-        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
-            throw new Error('A descrição em inglês é um campo obrigatório.');
-        }
-
-        if (!this.url || this.url.trim() === '') {
-            throw new Error('A URL é um campo obrigatório.');
-        }
-
-        if (this.idDoLivro === undefined || this.idDoLivro === null || this.idDoLivro === '') {
-            throw new Error('O livro é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
-            throw new Error('O livro deve ser um número válido.');
-        }
-    }
-
+    
     async criar() {
-        this.validar();
+        
 
         return prisma.videos.create({
             data: {
@@ -69,7 +40,7 @@ export default class VideosModel {
             throw new Error('ID não fornecido.');
         }
 
-        this.validar();
+       
 
         return prisma.videos.update({
             where: { id: parseInt(this.id, 10) },

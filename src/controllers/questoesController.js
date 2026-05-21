@@ -2,17 +2,23 @@ import QuestoesModel from '../models/QuestoesModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
+        const { enunciado, vestibular, anoVestibular, idDoLivro, alternativas } = req.body;
+
+        if (!enunciado) return res.status(400).json({ error: 'O enunciado é obrigatório.' });
+        if (!vestibular) return res.status(400).json({ error: 'O vestibular é obrigatório.' });
+        if (!anoVestibular) return res.status(400).json({ error: 'O ano do vestibular é obrigatório.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
+        if (!alternativas || !alternativas.respostaCorreta) {
+            return res.status(400).json({ error: 'Os dados das alternativas e a resposta correta são obrigatórios.' });
         }
 
-        const item = new QuestoesModel(req.body);
-        const data = await item.criar(req.body.alternativas);
+        const questao = new QuestoesModel(req.body);
+        const data = await questao.criar(alternativas);
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        return res.status(201).json({ message: 'Questão criada com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar a questão.' });
     }
 };
 

@@ -2,17 +2,26 @@ import MovimentosLiterariosModel from '../models/MovimentosLiterariosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            nome, contextoHistorico, contextoHistoricoEn, 
+            caracteristicas, caracteristicasEn, periodo, 
+            fase, influencia, idDoLivro 
+        } = req.body;
 
-        const item = new MovimentosLiterariosModel(req.body);
-        const data = await item.criar();
+        // Validações de presença
+        if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
+        if (!contextoHistorico) return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
+        if (!caracteristicas) return res.status(400).json({ error: 'As características são obrigatórias.' });
+        if (!periodo) return res.status(400).json({ error: 'O período é obrigatório.' });
+        if (!fase) return res.status(400).json({ error: 'A fase é obrigatória.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const movimento = new MovimentosLiterariosModel(req.body);
+        const data = await movimento.criar(idDoLivro);
+
+        return res.status(201).json({ message: 'Movimento literário criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o movimento.' });
     }
 };
 

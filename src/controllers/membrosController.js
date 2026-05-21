@@ -7,7 +7,6 @@ export const criar = async (req, res) => {
             cargo, avaliacaoDaObra, diasDeLeitura, opiniao, idDoProjeto 
         } = req.body;
 
-        // Validações de presença
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!idade) return res.status(400).json({ error: 'A idade é obrigatória.' });
         if (!curso) return res.status(400).json({ error: 'O curso é obrigatório.' });

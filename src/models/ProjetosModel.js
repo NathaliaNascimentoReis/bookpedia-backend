@@ -31,58 +31,9 @@ export default class ProjetosModel {
         this.integracaoAPIEn = integracaoAPIEn;
     }
 
-    validar() {
-        if (!this.nome || this.nome.trim() === '') {
-            throw new Error('O nome é um campo obrigatório.');
-        }
-
-        if (!this.introducao || this.introducao.trim() === '') {
-            throw new Error('A introdução é um campo obrigatório.');
-        }
-
-        if (!this.introducaoEn || this.introducaoEn.trim() === '') {
-            throw new Error('A introdução em inglês é um campo obrigatório.');
-        }
-
-        if (!this.objetivoProjeto || this.objetivoProjeto.trim() === '') {
-            throw new Error('O objetivo do projeto é um campo obrigatório.');
-        }
-
-        if (!this.objetivoProjetoEn || this.objetivoProjetoEn.trim() === '') {
-            throw new Error('O objetivo do projeto em inglês é um campo obrigatório.');
-        }
-
-        if (!this.sobreAEquipe || this.sobreAEquipe.trim() === '') {
-            throw new Error('O texto sobre a equipe é um campo obrigatório.');
-        }
-
-        if (!this.sobreAEquipeEn || this.sobreAEquipeEn.trim() === '') {
-            throw new Error('O texto sobre a equipe em inglês é um campo obrigatório.');
-        }
-
-        if (!this.desenvolvimentoTecnico || this.desenvolvimentoTecnico.trim() === '') {
-            throw new Error('O desenvolvimento técnico é um campo obrigatório.');
-        }
-
-        if (!this.desenvolvimentoTecnicoEn || this.desenvolvimentoTecnicoEn.trim() === '') {
-            throw new Error('O desenvolvimento técnico em inglês é um campo obrigatório.');
-        }
-
-        if (!this.tecnologias || this.tecnologias.trim() === '') {
-            throw new Error('As tecnologias são um campo obrigatório.');
-        }
-
-        if (!this.integracaoAPI || this.integracaoAPI.trim() === '') {
-            throw new Error('A integração com API é um campo obrigatório.');
-        }
-
-        if (!this.integracaoAPIEn || this.integracaoAPIEn.trim() === '') {
-            throw new Error('A integração com API em inglês é um campo obrigatório.');
-        }
-    }
+   
 
     async criar() {
-        this.validar();
 
         return prisma.projetos.create({
             data: {
@@ -106,8 +57,6 @@ export default class ProjetosModel {
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
-        this.validar();
 
         return prisma.projetos.update({
             where: { id: parseInt(this.id, 10) },

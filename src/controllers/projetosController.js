@@ -2,17 +2,25 @@ import ProjetosModel from '../models/ProjetosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            nome, introducao, objetivoProjeto, sobreAEquipe, 
+            desenvolvimentoTecnico, tecnologias, integracaoAPI 
+        } = req.body;
 
-        const item = new ProjetosModel(req.body);
-        const data = await item.criar();
+        if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
+        if (!introducao) return res.status(400).json({ error: 'A introdução é obrigatória.' });
+        if (!objetivoProjeto) return res.status(400).json({ error: 'O objetivo é obrigatório.' });
+        if (!sobreAEquipe) return res.status(400).json({ error: 'O texto sobre a equipe é obrigatório.' });
+        if (!desenvolvimentoTecnico) return res.status(400).json({ error: 'O desenvolvimento técnico é obrigatório.' });
+        if (!tecnologias) return res.status(400).json({ error: 'As tecnologias são obrigatórias.' });
+        if (!integracaoAPI) return res.status(400).json({ error: 'A integração API é obrigatória.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const projeto = new ProjetosModel(req.body);
+        const data = await projeto.criar();
+
+        return res.status(201).json({ message: 'Projeto criado!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        return res.status(500).json({ error: 'Erro interno ao salvar.' });
     }
 };
 
