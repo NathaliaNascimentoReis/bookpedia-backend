@@ -2,17 +2,18 @@ import VocabularioModel from '../models/VocabularioModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { palavra, significado, idDoLivro } = req.body;
 
-        const item = new VocabularioModel(req.body);
-        const data = await item.criar();
+        if (!palavra) return res.status(400).json({ error: 'A palavra é obrigatória.' });
+        if (!significado) return res.status(400).json({ error: 'O significado é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const vocabulario = new VocabularioModel(req.body);
+        const data = await vocabulario.criar(idDoLivro);
+
+        return res.status(201).json({ message: 'Vocabulário criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o vocabulário.' });
     }
 };
 

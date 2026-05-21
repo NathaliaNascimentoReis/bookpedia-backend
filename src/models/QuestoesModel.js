@@ -19,39 +19,8 @@ export default class QuestoesModel {
         this.alternativas = alternativas;
     }
 
-    validar() {
-        if (!this.enunciado || this.enunciado.trim() === '') {
-            throw new Error('O enunciado é um campo obrigatório.');
-        }
-
-        if (!this.enunciadoEn || this.enunciadoEn.trim() === '') {
-            throw new Error('O enunciado em inglês é um campo obrigatório.');
-        }
-
-        if (!this.vestibular || this.vestibular.trim() === '') {
-            throw new Error('O vestibular é um campo obrigatório.');
-        }
-
-        if (this.anoVestibular === undefined || this.anoVestibular === null || this.anoVestibular === '') {
-            throw new Error('O ano do vestibular é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.anoVestibular, 10)) || parseInt(this.anoVestibular, 10) < 0) {
-            throw new Error('O ano do vestibular deve ser um número válido.');
-        }
-
-        if (this.idDoLivro === undefined || this.idDoLivro === null || this.idDoLivro === '') {
-            throw new Error('O livro é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
-            throw new Error('O livro deve ser um número válido.');
-        }
-    }
-
     async criar(dadosAlternativas) {
-        this.validar();
-
+       
         return prisma.questoes.create({
             data: {
                 enunciado: this.enunciado,
@@ -84,7 +53,7 @@ export default class QuestoesModel {
             throw new Error('ID não fornecido.');
         }
 
-        this.validar();
+      
 
         const data = {
             enunciado: this.enunciado,

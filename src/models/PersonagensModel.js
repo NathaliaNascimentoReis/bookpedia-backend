@@ -21,46 +21,8 @@ export default class PersonagensModel {
         this.idDoLivro = idDoLivro;
     }
 
-    validar() {
-        if (!this.nome || this.nome.trim() === '') {
-            throw new Error('O nome é um campo obrigatório.');
-        }
-
-        if (this.idade === undefined || this.idade === null || this.idade === '') {
-            throw new Error('A idade é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.idade, 10)) || parseInt(this.idade, 10) < 0) {
-            throw new Error('A idade deve ser um número válido.');
-        }
-
-        if (!this.descricao || this.descricao.trim() === '') {
-            throw new Error('A descrição é um campo obrigatório.');
-        }
-
-        if (!this.descricaoEn || this.descricaoEn.trim() === '') {
-            throw new Error('A descrição em inglês é um campo obrigatório.');
-        }
-
-        if (!this.historia || this.historia.trim() === '') {
-            throw new Error('A história é um campo obrigatório.');
-        }
-
-        if (!this.historiaEn || this.historiaEn.trim() === '') {
-            throw new Error('A história em inglês é um campo obrigatório.');
-        }
-
-        if (this.idDoLivro === undefined || this.idDoLivro === null || this.idDoLivro === '') {
-            throw new Error('O livro é um campo obrigatório.');
-        }
-
-        if (isNaN(parseInt(this.idDoLivro, 10)) || parseInt(this.idDoLivro, 10) < 0) {
-            throw new Error('O livro deve ser um número válido.');
-        }
-    }
 
     async criar() {
-        this.validar();
 
         return prisma.personagens.create({
             data: {
@@ -80,7 +42,6 @@ export default class PersonagensModel {
             throw new Error('ID não fornecido.');
         }
 
-        this.validar();
 
         return prisma.personagens.update({
             where: { id: parseInt(this.id, 10) },

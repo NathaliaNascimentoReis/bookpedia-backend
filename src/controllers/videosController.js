@@ -2,17 +2,19 @@ import VideosModel from '../models/VideosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { titulo, descricao, url, idDoLivro } = req.body;
 
-        const item = new VideosModel(req.body);
-        const data = await item.criar();
+        if (!titulo) return res.status(400).json({ error: 'O título é obrigatório.' });
+        if (!url) return res.status(400).json({ error: 'A URL do vídeo é obrigatória.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const video = new VideosModel(req.body);
+        const data = await video.criar();
+
+        return res.status(201).json({ message: 'Vídeo registrado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar o vídeo.' });
     }
 };
 

@@ -2,17 +2,25 @@ import PersonagensModel from '../models/PersonagensModel.js';
 
 export const criar = async (req, res) => {
     try {
-        if (!req.body) {
-            return res.status(400).json({ error: 'Corpo da requisição vazio. Envie os dados!' });
-        }
+        const { 
+            nome, idade, descricao, descricaoEn, 
+            historia, historiaEn, idDoLivro 
+        } = req.body;
 
-        const item = new PersonagensModel(req.body);
-        const data = await item.criar();
+        // Validações de presença
+        if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
+        if (!idade) return res.status(400).json({ error: 'A idade é obrigatória.' });
+        if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
+        if (!historia) return res.status(400).json({ error: 'A história é obrigatória.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
 
-        return res.status(201).json({ message: 'Registro criado com sucesso!', data });
+        const personagem = new PersonagensModel(req.body);
+        const data = await personagem.criar();
+
+        return res.status(201).json({ message: 'Personagem criado com sucesso!', data });
     } catch (error) {
-        console.error('Erro ao criar:', error);
-        return res.status(500).json({ error: 'Erro interno ao salvar o registro.' });
+        console.error(error);
+        return res.status(500).json({ error: 'Erro interno ao salvar personagem.' });
     }
 };
 
