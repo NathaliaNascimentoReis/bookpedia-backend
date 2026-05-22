@@ -1,15 +1,22 @@
 import QuestoesModel from '../models/QuestoesModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar uma nova questão.
+    // Valida os campos obrigatórios e delega a criação ao modelo.
     try {
         const { enunciado, vestibular, anoVestibular, idDoLivro, alternativas } = req.body;
 
         if (!enunciado) return res.status(400).json({ error: 'O enunciado é obrigatório.' });
         if (!vestibular) return res.status(400).json({ error: 'O vestibular é obrigatório.' });
-        if (!anoVestibular) return res.status(400).json({ error: 'O ano do vestibular é obrigatório.' });
+        if (!anoVestibular)
+            return res.status(400).json({ error: 'O ano do vestibular é obrigatório.' });
         if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!alternativas || !alternativas.respostaCorreta) {
-            return res.status(400).json({ error: 'Os dados das alternativas e a resposta correta são obrigatórios.' });
+            return res
+                .status(400)
+                .json({
+                    error: 'Os dados das alternativas e a resposta correta são obrigatórios.',
+                });
         }
 
         const questao = new QuestoesModel(req.body);
@@ -23,6 +30,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador para buscar todas as questões com filtros opcionais.
+    // Retorna a lista de registros ou mensagem caso não encontre nenhum.
     try {
         const registros = await QuestoesModel.buscarTodos(req.query);
 
@@ -38,6 +47,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar uma questão por id.
+    // Verifica se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -59,6 +70,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar uma questão existente.
+    // Atualiza apenas os campos enviados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -93,6 +106,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir uma questão pelo id.
+    // Garante que o registro exista antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 

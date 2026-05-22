@@ -2,29 +2,44 @@ import { apiKey } from '../lib/middlewares/apiKey.js';
 import LivroModel from '../models/LivroModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador que cria um novo livro.
+    // Recebe os dados via req.body, valida campos obrigatórios e usa o modelo para salvar.
     try {
         const {
-            tituloDoLivro, tituloDoLivroEn,
-            descricao, descricaoEn,
-            contextoHistorico, contextoHistoricoEn,
+            tituloDoLivro,
+            tituloDoLivroEn,
+            descricao,
+            descricaoEn,
+            contextoHistorico,
+            contextoHistoricoEn,
             anoDeLancamento,
-            resumo, resumoEn,
-            analise, analiseEn,
-            capaURL
+            resumo,
+            resumoEn,
+            analise,
+            analiseEn,
+            capaURL,
         } = req.body;
 
         // Validações de presença para TODOS os campos obrigatórios
-        if (!tituloDoLivro) return res.status(400).json({ error: 'O campo "tituloDoLivro" é obrigatório.' });
-        if (!tituloDoLivroEn) return res.status(400).json({ error: 'O campo "tituloDoLivroEn" é obrigatório.' });
-        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
-        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
-        if (!contextoHistorico) return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
-        if (!contextoHistoricoEn) return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
-        if (!anoDeLancamento) return res.status(400).json({ error: 'O campo "anoDeLancamento" é obrigatório.' });
+        if (!tituloDoLivro)
+            return res.status(400).json({ error: 'O campo "tituloDoLivro" é obrigatório.' });
+        if (!tituloDoLivroEn)
+            return res.status(400).json({ error: 'O campo "tituloDoLivroEn" é obrigatório.' });
+        if (!descricao)
+            return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn)
+            return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!contextoHistorico)
+            return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
+        if (!contextoHistoricoEn)
+            return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
+        if (!anoDeLancamento)
+            return res.status(400).json({ error: 'O campo "anoDeLancamento" é obrigatório.' });
         if (!resumo) return res.status(400).json({ error: 'O campo "resumo" é obrigatório.' });
         if (!resumoEn) return res.status(400).json({ error: 'O campo "resumoEn" é obrigatório.' });
         if (!analise) return res.status(400).json({ error: 'O campo "analise" é obrigatório.' });
-        if (!analiseEn) return res.status(400).json({ error: 'O campo "analiseEn" é obrigatório.' });
+        if (!analiseEn)
+            return res.status(400).json({ error: 'O campo "analiseEn" é obrigatório.' });
         if (!capaURL) return res.status(400).json({ error: 'O campo "capaURL" é obrigatório.' });
 
         const livro = new LivroModel(req.body);
@@ -37,6 +52,8 @@ export const criar = async (req, res) => {
     }
 };
 export const buscarTodos = async (req, res) => {
+    // Controlador que busca todos os livros com filtros opcionais.
+    // Retorna a lista de registros ou mensagem caso nenhum seja encontrado.
     try {
         const registros = await LivroModel.buscarTodos(req.query);
 
@@ -45,8 +62,6 @@ export const buscarTodos = async (req, res) => {
         }
 
         return res.status(200).json(registros);
-
-
     } catch (error) {
         console.error('Erro ao buscar:', error);
         return res.status(500).json({ error: 'Erro ao buscar registros.' });
@@ -54,6 +69,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um único livro por id.
+    // Verifica se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -74,6 +91,8 @@ export const buscarPorId = async (req, res) => {
     }
 };
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um livro existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -124,6 +143,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um livro pelo id.
+    // Garante que o item exista antes de chamar o método de deleção.
     try {
         const { id } = req.params;
 

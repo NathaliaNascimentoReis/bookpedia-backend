@@ -1,19 +1,30 @@
 import ProjetosModel from '../models/ProjetosModel.js';
 
 export const criar = async (req, res) => {
+    // Cria um novo projeto.
+    // Valida os campos obrigatórios enviados no corpo da requisição.
     try {
-        const { 
-            nome, introducao, objetivoProjeto, sobreAEquipe, 
-            desenvolvimentoTecnico, tecnologias, integracaoAPI 
+        const {
+            nome,
+            introducao,
+            objetivoProjeto,
+            sobreAEquipe,
+            desenvolvimentoTecnico,
+            tecnologias,
+            integracaoAPI,
         } = req.body;
 
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!introducao) return res.status(400).json({ error: 'A introdução é obrigatória.' });
         if (!objetivoProjeto) return res.status(400).json({ error: 'O objetivo é obrigatório.' });
-        if (!sobreAEquipe) return res.status(400).json({ error: 'O texto sobre a equipe é obrigatório.' });
-        if (!desenvolvimentoTecnico) return res.status(400).json({ error: 'O desenvolvimento técnico é obrigatório.' });
-        if (!tecnologias) return res.status(400).json({ error: 'As tecnologias são obrigatórias.' });
-        if (!integracaoAPI) return res.status(400).json({ error: 'A integração API é obrigatória.' });
+        if (!sobreAEquipe)
+            return res.status(400).json({ error: 'O texto sobre a equipe é obrigatório.' });
+        if (!desenvolvimentoTecnico)
+            return res.status(400).json({ error: 'O desenvolvimento técnico é obrigatório.' });
+        if (!tecnologias)
+            return res.status(400).json({ error: 'As tecnologias são obrigatórias.' });
+        if (!integracaoAPI)
+            return res.status(400).json({ error: 'A integração API é obrigatória.' });
 
         const projeto = new ProjetosModel(req.body);
         const data = await projeto.criar();
@@ -25,6 +36,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Busca todos os projetos, com filtros opcionais na query string.
+    // Retorna a lista de registros ou mensagem quando nenhum encontrado.
     try {
         const registros = await ProjetosModel.buscarTodos(req.query);
 
@@ -40,6 +53,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Busca um projeto por id.
+    // Valida se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -61,6 +76,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Atualiza um projeto existente.
+    // Aplica somente os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -107,6 +124,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Exclui um projeto pelo id.
+    // Confirma a existência do registro antes de deletar.
     try {
         const { id } = req.params;
 

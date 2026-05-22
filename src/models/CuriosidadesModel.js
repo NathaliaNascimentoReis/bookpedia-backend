@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para acessar o banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class CuriosidadesModel {
@@ -9,6 +10,8 @@ export default class CuriosidadesModel {
         curiosidadeEn,
         idDoLivro,
     } = {}) {
+        // Inicializa os campos da curiosidade a partir do objeto recebido.
+
         this.id = id;
         this.tituloCuriosidade = tituloCuriosidade;
         this.tituloCuriosidadeEn = tituloCuriosidadeEn;
@@ -18,6 +21,7 @@ export default class CuriosidadesModel {
     }
 
     async criar() {
+        // Cria um novo registro de curiosidade no banco de dados.
 
         return prisma.curiosidades.create({
             data: {
@@ -31,6 +35,8 @@ export default class CuriosidadesModel {
     }
 
     async atualizar() {
+        // Atualiza a curiosidade existente com base no id da instância.
+        // Lança erro se não houver id definido.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -47,6 +53,8 @@ export default class CuriosidadesModel {
     }
 
     async deletar() {
+        // Exclui a curiosidade do banco pelo id.
+        // Se não houver id, impede a operação com um erro.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -55,6 +63,8 @@ export default class CuriosidadesModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca várias curiosidades aplicando filtros opcionais de título e livro.
+        // O resultado inclui também o livro associado.
         const where = {};
 
         if (filtros.tituloCuriosidade) {
@@ -76,6 +86,8 @@ export default class CuriosidadesModel {
     }
 
     static async buscarPorId(id) {
+        // Busca uma curiosidade por id e retorna o objeto do modelo.
+        // Retorna null se não encontrar nenhum registro.
         const data = await prisma.curiosidades.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livro: true },

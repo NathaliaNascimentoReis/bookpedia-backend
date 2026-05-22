@@ -1,10 +1,21 @@
 import MembrosModel from '../models/MembrosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar um novo membro.
+    // Valida campos obrigatórios e delega a criação ao modelo.
     try {
-        const { 
-            nome, idade, curso, cursoEn, descricao, descricaoEn, 
-            cargo, avaliacaoDaObra, diasDeLeitura, opiniao, idDoProjeto 
+        const {
+            nome,
+            idade,
+            curso,
+            cursoEn,
+            descricao,
+            descricaoEn,
+            cargo,
+            avaliacaoDaObra,
+            diasDeLeitura,
+            opiniao,
+            idDoProjeto,
         } = req.body;
 
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
@@ -12,8 +23,10 @@ export const criar = async (req, res) => {
         if (!curso) return res.status(400).json({ error: 'O curso é obrigatório.' });
         if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
         if (!cargo) return res.status(400).json({ error: 'O cargo é obrigatório.' });
-        if (!avaliacaoDaObra) return res.status(400).json({ error: 'A avaliação da obra é obrigatória.' });
-        if (!diasDeLeitura) return res.status(400).json({ error: 'Os dias de leitura são obrigatórios.' });
+        if (!avaliacaoDaObra)
+            return res.status(400).json({ error: 'A avaliação da obra é obrigatória.' });
+        if (!diasDeLeitura)
+            return res.status(400).json({ error: 'Os dias de leitura são obrigatórios.' });
         if (!idDoProjeto) return res.status(400).json({ error: 'O ID do projeto é obrigatório.' });
 
         const membro = new MembrosModel(req.body);
@@ -27,6 +40,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador para listar todos os membros.
+    // Aceita filtros pela query string e retorna os resultados encontrados.
     try {
         const registros = await MembrosModel.buscarTodos(req.query);
 
@@ -42,6 +57,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um membro por id.
+    // Valida se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -63,6 +80,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um membro existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -109,6 +128,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um membro pelo id.
+    // Confirma a existência do registro antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 

@@ -1,7 +1,10 @@
+// Importa o Prisma Client configurado para conexão com o banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class VocabularioModel {
     constructor({ id = null, palavra, palavraEn, significado, significadoEn } = {}) {
+        // Inicializa os campos do vocabulário com os valores recebidos.
+        // Esse modelo representa uma entrada de vocabulário associada a livros.
         this.id = id;
         this.palavra = palavra;
         this.palavraEn = palavraEn;
@@ -9,9 +12,10 @@ export default class VocabularioModel {
         this.significadoEn = significadoEn;
     }
 
-
     async criar(idLivroParaConectar = null) {
-        
+        // Prepara os dados do vocabulário para criação no banco de dados.
+        // Permite conectar a entrada a um livro existente, quando fornecido.
+
         const data = {
             palavra: this.palavra,
             palavraEn: this.palavraEn,
@@ -20,6 +24,7 @@ export default class VocabularioModel {
         };
 
         if (idLivroParaConectar) {
+            // Se um id de livro for informado, cria o relacionamento com o livro.
             data.livros = {
                 connect: { id: parseInt(idLivroParaConectar, 10) },
             };
@@ -29,6 +34,8 @@ export default class VocabularioModel {
     }
 
     async atualizar() {
+        // Atualiza a entrada de vocabulário existente no banco de dados.
+        // Verifica se o id está definido antes de tentar a atualização.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -45,6 +52,8 @@ export default class VocabularioModel {
     }
 
     async deletar() {
+        // Remove a entrada de vocabulário do banco de dados usando o id.
+        // Se não houver id, a operação é interrompida com um erro.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -53,6 +62,8 @@ export default class VocabularioModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todas as entradas de vocabulário, aplicando filtros opcionais.
+        // Retorna também os livros relacionados a cada item de vocabulário.
         const where = {};
 
         if (filtros.palavra) {
@@ -75,6 +86,8 @@ export default class VocabularioModel {
     }
 
     static async buscarPorId(id) {
+        // Busca uma entrada de vocabulário pelo id e inclui os livros associados.
+        // Retorna null se nenhum registro for encontrado.
         const data = await prisma.vocabulario.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livros: true },

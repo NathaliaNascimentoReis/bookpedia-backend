@@ -1,11 +1,10 @@
 import PersonagensModel from '../models/PersonagensModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar um novo personagem.
+    // Valida campos obrigatórios e chama o modelo para salvar no banco.
     try {
-        const { 
-            nome, idade, descricao, descricaoEn, 
-            historia, historiaEn, idDoLivro 
-        } = req.body;
+        const { nome, idade, descricao, descricaoEn, historia, historiaEn, idDoLivro } = req.body;
 
         // Validações de presença
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
@@ -25,6 +24,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todos os personagens de acordo com os filtros enviados.
+    // Retorna lista de registros ou mensagem caso não exista nenhum.
     try {
         const registros = await PersonagensModel.buscarTodos(req.query);
 
@@ -40,6 +41,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um único personagem pelo id.
+    // Valida se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -61,6 +64,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador que atualiza um personagem existente.
+    // Aplica apenas os campos enviados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -101,6 +106,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um personagem pelo id.
+    // Garante que o registro exista antes de deletar.
     try {
         const { id } = req.params;
 

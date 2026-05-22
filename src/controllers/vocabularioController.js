@@ -1,6 +1,8 @@
 import VocabularioModel from '../models/VocabularioModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador para criar uma nova entrada de vocabulário.
+    // Valida os campos obrigatórios e utiliza o modelo para persistência.
     try {
         const { palavra, significado, idDoLivro } = req.body;
 
@@ -18,6 +20,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todas as entradas de vocabulário com filtros opcionais.
+    // Quando não existirem registros, retorna uma mensagem adequada.
     try {
         const registros = await VocabularioModel.buscarTodos(req.query);
 
@@ -33,6 +37,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar uma entrada de vocabulário pelo id.
+    // Verifica o id como numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -54,6 +60,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar uma entrada de vocabulário existente.
+    // Aplica apenas os campos enviados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -91,6 +99,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir uma entrada de vocabulário pelo id.
+    // Garante que o registro exista antes de deletar.
     try {
         const { id } = req.params;
 

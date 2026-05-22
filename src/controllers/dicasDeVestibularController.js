@@ -1,6 +1,8 @@
 import DicasDeVestibularModel from '../models/DicasDeVestibularModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar uma nova dica de vestibular.
+    // Valida campos obrigatórios e utiliza o modelo para persistir o registro.
     try {
         const { titulo, tituloEn, dica, dicaEn } = req.body;
 
@@ -21,6 +23,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todas as dicas de vestibular conforme filtros de consulta.
+    // Retorna uma lista ou mensagem de nenhum registro encontrado.
     try {
         const registros = await DicasDeVestibularModel.buscarTodos(req.query);
 
@@ -36,6 +40,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar uma dica por id.
+    // Verifica se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -57,6 +63,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador que atualiza uma dica existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -92,6 +100,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir uma dica pelo id.
+    // Garante que o registro exista antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 
