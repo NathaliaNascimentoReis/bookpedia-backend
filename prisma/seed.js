@@ -441,7 +441,7 @@ async function main() {
                         alternativaC:
                             'O heroísmo de Peri é desmistificado ao longo da narrativa, revelando sua incapacidade de se adaptar aos valores da civilização cristã-portuguesa. ',
                         alternativaCEn:
-                            "Peri's heroism is demystified throughout the narrative, revealing his inability to adapt to the values of Christian-Portuguese civilization",
+                            'Peri’s heroism is demystified throughout the narrative, revealing his inability to adapt to the values of Christian-Portuguese civilization',
                         alternativaD:
                             'O autor utiliza a figura do indígena para criticar abertamente a colonização portuguesa e denunciar o massacre das tribos nativas.',
                         alternativaDEn:
@@ -473,7 +473,7 @@ async function main() {
                         alternativaC:
                             'A fuga do casal para Portugal, onde Peri é formalmente aceito pela corte do Rei.',
                         alternativaCEn:
-                            "The couple's escape to Portugal, where Peri is formally accepted by the King's court.",
+                            'The couple’s escape to Portugal, where Peri is formally accepted by the King’s court.',
                         alternativaD:
                             'A aceitação de Cecília como membra legítima da tribo dos Goitacases após o ritual do casamento.',
                         alternativaDEn:
@@ -501,7 +501,7 @@ async function main() {
                         alternativaB:
                             'É um nobre espanhol enviado pela Coroa para fiscalizar as terras de Dom Antônio de Mariz. ',
                         alternativaBEn:
-                            "He is a Spanish nobleman sent by the Crown to inspect Dom Antônio de Mariz's lands. ",
+                            'He is a Spanish nobleman sent by the Crown to inspect Dom Antônio de Mariz’s lands. ',
                         alternativaC:
                             'É um ex-frade italiano, movido pela ambição material e pelo desejo carnal por Cecília, que lidera uma revolta interna.',
                         alternativaCEn:
@@ -519,7 +519,8 @@ async function main() {
             {
                 enunciado:
                     'Sobre a estrutura narrativa e o contexto de publicação de O Guarani, assinale a afirmativa correta:',
-                enunciadoEn: '...',
+                enunciadoEn:
+                    'Regarding the narrative structure and the context of publication of O Guarani, choose the correct statement:',
                 vestibular: 'MACKENZIE',
                 anoVestibular: '?',
                 idDoLivro: livro.id,
@@ -527,19 +528,298 @@ async function main() {
                     create: {
                         alternativaA:
                             'O livro foi publicado diretamente em formato de volume encadernado, financiado pelo governo imperial para distribuição nas escolas. ',
-                        alternativaAEn: '...',
+                        alternativaAEn:
+                            'The book was published directly in a bound volume format, funded by the imperial government for school distribution. ',
                         alternativaB:
                             'A obra foi publicada originalmente sob a forma de folhetim, o que justifica o dinamismo da ação, a profusão de perigos imprevistos e os ganchos de suspense ao final dos capítulos.',
                         alternativaBEn:
-                            '...',
+                            'The work was originally published in serial format (folhetim), which explains the dynamic action, the abundance of unforeseen dangers, and the suspenseful cliffhangers at the end of chapters. ',
                         alternativaC:
-                            'É um ex-frade italiano, movido pela ambição material e pelo desejo carnal por Cecília, que lidera uma revolta interna.',
+                            'O romance insere-se na vertente do realismo histórico, pois Alencar não ficcionaliza os fatos documentados da União Ibérica.',
                         alternativaCEn:
-                            'He is an Italian ex-friar, driven by material ambition and carnal desire for Cecília, who leads an internal revolt. ',
+                            'The novel falls within the scope of historical realism, as Alencar does not fictionalize the documented facts of the Iberian Union. ',
                         alternativaD:
-                            'Representa a força da lei e da ordem da metrópole, chocando-se contra o isolamento feudal de Dom Antônio.',
+                            'O foco narrativo é em primeira pessoa, sendo a história inteiramente contada do ponto de vista de Cecília na sua velhice.',
                         alternativaDEn:
-                            ' He represents the force of law and order from the metropolis, clashing with the feudal isolation of Dom Antônio.',
+                            'The narrative focus is in the first person, with the story told entirely from Cecília’s perspective in her old age.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado:
+                    ' Considere as afirmações abaixo sobre as personagens femininas Cecília e Isabel em O Guarani: I. Cecília é a típica heroína romântica idealizada: loira, de olhos azuis, frágil e associada à pureza. II. Isabel carrega o estigma da miscigenação (filha de Dom Antônio com uma indígena), representando uma paixão mais sombria, realista e infeliz. III. Isabel e Cecília disputam ferozmente o amor de Peri, que constitui o principal triângulo amoroso da trama principal.Está(ão) correta(s): ',
+                enunciadoEn:
+                    'Consider the statements below regarding the female characters Cecília and Isabel in O Guarani: I. Cecília is the typical idealized romantic heroine: blonde, blue-eyed, fragile, and associated with purity. II. Isabel carries the stigma of miscegenation (the daughter of Dom Antônio with an indigenous woman), representing a darker, more realistic, and unhappy passion. III. Isabel and Cecília fiercely dispute Peri’s love, which constitutes the main love triangle of the primary plot. Which statement(s) is/are correct? ',
+                vestibular: 'UFRGS',
+                anoVestibular: '?',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: 'Apenas I.',
+                        alternativaAEn: 'Only I.',
+                        alternativaB: 'Apenas I e II. ',
+                        alternativaBEn: 'Only I and II.',
+                        alternativaC: 'Apenas II e III. ',
+                        alternativaCEn: 'Only II and III.',
+                        alternativaD: ' I, II e III',
+                        alternativaDEn: 'I, II, and III.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado:
+                    'O cenário em O Guarani, particularmente a natureza que cerca o Rio Paquequer e a habitação de Dom Antônio de Mariz, cumpre um papel fundamental na estética romântica. Esse papel consiste em: ',
+                enunciadoEn:
+                    'The setting in O Guarani, particularly the nature surrounding the Paquequer River and the household of Dom Antônio de Mariz, plays a fundamental role in Romantic aesthetics. This role consists of:',
+                vestibular: 'FUVEST',
+                anoVestibular: '?',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA:
+                            'Servir como mero pano de fundo decorativo, sem qualquer relação com os sentimentos ou ações das personagens.',
+                        alternativaAEn:
+                            'Serving as a mere decorative backdrop, without any relation to the feelings or actions of the characters. ',
+                        alternativaB:
+                            'Manifestar uma natureza hostil e puramente destrutiva, que reflete o pessimismo do autor em relação ao futuro do Brasil.  ',
+                        alternativaBEn:
+                            'Manifesting a hostile and purely destructive nature, which reflects the author’s pessimism regarding the future of Brazil. ',
+                        alternativaC:
+                            ' Espelhar e amplificar os conflitos humanos, funcionando como uma "natureza cúmplice" que se agita nos momentos de drama e se acalma nos momentos de idílio. ',
+                        alternativaCEn:
+                            'Mirroring and amplifying human conflicts, functioning as a "sympathetic nature" (natureza cúmplice) that grows turbulent in moments of drama and calms down in moments of idyll. ',
+                        alternativaD:
+                            'Apresentar uma visão puramente científica e geográfica do território fluminense.',
+                        alternativaDEn:
+                            'Presenting a purely scientific and geographical view of the territory of Rio de Janeiro.',
+                        respostaCorreta: 'C',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado:
+                    'O desfecho de O Guarani apresenta uma cena célebre em que Peri e Cecília se veem isolados em meio a uma violenta inundação, flutuando sobre a copa de uma palmeira arrancada pelas águas. Essa famosa cena final carrega um forte simbolismo que representa: ',
+                enunciadoEn:
+                    'The ending of O Guarani features a famous scene in which Peri and Cecília find themselves isolated in the middle of a violent flood, floating on the canopy of a palm tree torn apart by the waters. This famous final scene carries a strong symbolism that represents: ',
+                vestibular: 'PUC-PR',
+                anoVestibular: '?',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA:
+                            'O fracasso total do projeto colonizador português e o retorno inevitável do Brasil ao estado selvagem.',
+                        alternativaAEn:
+                            'The total failure of the Portuguese colonizing project and the inevitable return of Brazil to a wild state.',
+                        alternativaB:
+                            ' Uma alegoria mística de um "novo mundo", onde Peri e Cecília figuram como uma espécie de Adão e Eva brasileiros, simbolizando a fusão das raças. ',
+                        alternativaBEn:
+                            'A mystical allegory of a "new world", where Peri and Cecília figure as a sort of Brazilian Adam and Eve, symbolizing the fusion of races.',
+                        alternativaC:
+                            'A punição divina contra os excessos cometidos por Dom Antônio de Mariz e seus homens na exploração da terra.',
+                        alternativaCEn:
+                            ' Divine punishment against the excesses committed by Dom Antônio de Mariz and his men in exploiting the land. ',
+                        alternativaD:
+                            'Um recurso puramente melodramático de entretenimento, sem qualquer intenção política ou ideológica por parte de José de Alencar.',
+                        alternativaDEn:
+                            'A purely melodramatic entertainment device, without any political or ideological intention on the part of José de Alencar.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado:
+                    'Considerando a relação de Peri com a família de Dom Antônio de Mariz, em especial com Cecília, é correto afirmar que sua submissão e servidão voluntária:  ',
+                enunciadoEn:
+                    'Considering Peri’s relationship with Dom Antônio de Mariz’s family, especially with Cecília, it is correct to state that his submission and voluntary servitude:',
+                vestibular: 'FUVEST',
+                anoVestibular: '?',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA:
+                            'Entram em contradição com o projeto nacionalista do Romantismo, que exigia um índio totalmente rebelde e hostil ao homem branco.',
+                        alternativaAEn:
+                            'Contradict the nationalist project of Romanticism, which demanded an indigenous person who was completely rebellious and hostile to the white man. ',
+                        alternativaB:
+                            '  Refletem a mentalidade da elite imperial brasileira do século XIX, que idealizava o indígena desde que este se mostrasse dócil, leal e integrado à ordem patriarcal e cristã. ',
+                        alternativaBEn:
+                            ' Reflect the mindset of the 19th-century Brazilian imperial elite, who idealized the indigenous person as long as he proved to be docile, loyal, and integrated into the patriarchal and Christian order. ',
+                        alternativaC:
+                            'São fruto de um acordo financeiro e comercial estabelecido entre o chefe da tribo dos Goitacases e o fidalgo português. ',
+                        alternativaCEn:
+                            'Are the result of a financial and commercial agreement established between the chief of the Goitacás tribe and the Portuguese nobleman. ',
+                        alternativaD:
+                            'Demonstram a superioridade militar dos colonos, que conseguiram subjugar Peri por meio da força das armas de fogo.',
+                        alternativaDEn:
+                            'Demonstrate the military superiority of the colonists, who managed to subjugate Peri through the force of firearms.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn:
+                    'Many events had taken place between them during these two days; there are circumstances in which feelings move with extraordinary speed and consume months and years in a single minute. The narrator’s reflection reveals:',
+                vestibular: 'VUNESP ',
+                anoVestibular: 2017,
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'The superiority of reason over feelings. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'The illusory nature of human passions.',
+                        alternativaC: '...',
+                        alternativaCEn: 'The subjective perception of the passage of time.',
+                        alternativaD: '...',
+                        alternativaDEn: 'The romantic criticism of marriage.',
+                        respostaCorreta: 'C',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn:
+                    'The Romantic Indianism present in O Guarani had as its main objective:',
+                vestibular: 'FUVEST ',
+                anoVestibular: '...',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'To denounce the exploitation of Indigenous people. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'To create a Brazilian national hero.',
+                        alternativaC: '...',
+                        alternativaCEn: 'To bring Brazilian literature closer to Naturalism.',
+                        alternativaD: '...',
+                        alternativaDEn: 'To defend exclusively European customs.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn: 'The character Peri represents:',
+                vestibular: 'UNESP ',
+                anoVestibular: '...',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'The urban antihero of the 19th century. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'The decline of Indigenous values.',
+                        alternativaC: '...',
+                        alternativaCEn: 'The idealization of the Brazilian Indigenous person.',
+                        alternativaD: '...',
+                        alternativaDEn: 'European scientific rationalism.',
+                        respostaCorreta: 'C',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn: 'Nature, in the Romantic Indianist novel by José de Alencar, appears:',
+                vestibular: 'FUVEST ',
+                anoVestibular: '...',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'Only as an unimportant background element. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'Described in an objective and scientific way.',
+                        alternativaC: '...',
+                        alternativaCEn: 'Associated with feelings and national valorization.',
+                        alternativaD: '...',
+                        alternativaDEn: 'As criticism of Brazilian economic backwardness.',
+                        respostaCorreta: 'C',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn:
+                    '"He loved, or thought he still loved Cecília; he had promised his father to become her husband…" The verb form “had promised” indicates:',
+                vestibular: 'VUNESP',
+                anoVestibular: '2017',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'A later action. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'A simultaneous action.',
+                        alternativaC: '...',
+                        alternativaCEn: 'A future hypothesis.',
+                        alternativaD: '...',
+                        alternativaDEn: 'An action prior to another action already in the past.',
+                        respostaCorreta: 'D',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn:
+                    'The Indianist work of José de Alencar contributed to Brazilian Romanticism because it:',
+                vestibular: 'FUVEST',
+                anoVestibular: '',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'Rejected elements of national culture. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'Valued the Indigenous person as a symbol of nationality.',
+                        alternativaC: '...',
+                        alternativaCEn: 'Approached exclusively the European classical model.',
+                        alternativaD: '...',
+                        alternativaDEn: 'Defended scientific objectivity.',
+                        respostaCorreta: 'B',
+                        justificativa: '...',
+                        justificativaEn: '...',
+                    },
+                },
+            },
+            {
+                enunciado: '...',
+                enunciadoEn: 'The relationship between Peri and Cecília symbolizes:',
+                vestibular: 'UNESP',
+                anoVestibular: '',
+                idDoLivro: livro.id,
+                alternativas: {
+                    create: {
+                        alternativaA: '...',
+                        alternativaAEn: 'The political conflict between colony and metropolis. ',
+                        alternativaB: '...',
+                        alternativaBEn: 'The criticism of Romantic sentimentalism.',
+                        alternativaC: '...',
+                        alternativaCEn: 'The idealized union between nature and civilization.',
+                        alternativaD: '...',
+                        alternativaDEn: 'The valorization of bourgeois materialism.',
                         respostaCorreta: 'C',
                         justificativa: '...',
                         justificativaEn: '...',
