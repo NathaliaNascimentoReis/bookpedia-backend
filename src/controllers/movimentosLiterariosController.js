@@ -2,16 +2,20 @@ import MovimentosLiterariosModel from '../models/MovimentosLiterariosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        const { 
-            nome, contextoHistorico, contextoHistoricoEn, 
-            caracteristicas, caracteristicasEn, periodo, 
-            fase, influencia, idDoLivro 
+        const {
+            nome, contextoHistorico, contextoHistoricoEn,
+            caracteristicas, caracteristicasEn, periodo,
+            fase, influencia, idDoLivro
         } = req.body;
 
         // Validações de presença
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!contextoHistorico) return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
+         if (!contextoHistoricoEn)
+             return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
         if (!caracteristicas) return res.status(400).json({ error: 'As características são obrigatórias.' });
+        if (!caracteristicasEn)
+            return res.status(400).json({ error: 'As características são obrigatórias.' });
         if (!periodo) return res.status(400).json({ error: 'O período é obrigatório.' });
         if (!fase) return res.status(400).json({ error: 'A fase é obrigatória.' });
 

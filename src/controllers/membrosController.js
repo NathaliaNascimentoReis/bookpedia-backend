@@ -2,18 +2,23 @@ import MembrosModel from '../models/MembrosModel.js';
 
 export const criar = async (req, res) => {
     try {
-        const { 
-            nome, idade, curso, cursoEn, descricao, descricaoEn, 
-            cargo, avaliacaoDaObra, diasDeLeitura, opiniao, idDoProjeto 
+        const {
+            nome, idade, curso, descricao, cursoEn, descricaoEn,
+            cargo, avaliacaoDaObra, diasDeLeitura, opiniao, idDoProjeto
         } = req.body;
 
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!idade) return res.status(400).json({ error: 'A idade é obrigatória.' });
         if (!curso) return res.status(400).json({ error: 'O curso é obrigatório.' });
+        if (!cursoEn) return res.status(400).json({ error: 'O curso é obrigatório.' });
         if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
+         if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatória.' });
         if (!cargo) return res.status(400).json({ error: 'O cargo é obrigatório.' });
         if (!avaliacaoDaObra) return res.status(400).json({ error: 'A avaliação da obra é obrigatória.' });
-        if (!diasDeLeitura) return res.status(400).json({ error: 'Os dias de leitura são obrigatórios.' });
+        if (!opiniao)
+            return res.status(400).json({ error: 'As opiniões são obrigatórios.' });
+        if (!diasDeLeitura)
+            return res.status(400).json({ error: 'Os dias de leitura são obrigatórios.' });
         if (!idDoProjeto) return res.status(400).json({ error: 'O ID do projeto é obrigatório.' });
 
         const membro = new MembrosModel(req.body);
