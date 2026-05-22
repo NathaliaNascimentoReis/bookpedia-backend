@@ -121,7 +121,7 @@ model MovimentosLiterarios {
     caracteristicasEn   String
     periodo             String
     fase                String
-    influencia          String
+    faseTexto          String
 
     livros Livro[]
 
@@ -202,6 +202,7 @@ model Membros {
     avaliacaoDaObra Int
     diasDeLeitura   Int
     opiniao         String
+    opiniaoEn       String
 
     idDoProjeto Int
     projetos    Projetos @relation(fields: [idDoProjeto], references: [id], onDelete: Cascade)
