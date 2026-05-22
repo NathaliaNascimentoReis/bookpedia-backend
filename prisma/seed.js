@@ -62,7 +62,8 @@ async function main() {
                 'José de Alencar, cearense, foi o principal escritor do Romantismo brasileiro. Advogado, jornalista, deputado e ministro da Justiça, ficou famoso por romances como O Guarani e Iracema. Morreu no Rio de Janeiro aos 48 anos.',
             biografiaEn:
                 'José de Alencar, from Ceará, was the main writer of Brazilian Romanticism. Lawyer, journalist, deputy and Minister of Justice, he became famous for novels such as O Guarani and Iracema. He died in Rio de Janeiro at the age of 48.',
-            fotoURL: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Jose_de_Alencar.png',
+            fotoURL:
+                'https://academiacearensedeletras.org.br/wp-content/uploads/2020/11/JOSE-DE-ALENCAR.jpg',
         },
     });
 
@@ -116,7 +117,7 @@ async function main() {
             significadoEn: 'Someone arrogant or in a superior position',
         },
         {
-            palavra: 'Ressvalar',
+            palavra: 'Resvalar',
             palavraEn: 'Slip',
             significado: 'Escorregar, deslize',
             significadoEn: 'To slide or slip',
@@ -238,7 +239,7 @@ async function main() {
     ];
 
     const vocabularios = await Promise.all(
-        vocabularioItems.map((item) => prisma.vocabulario.create({ data: item }))
+        vocabularioItems.map((item) => prisma.vocabulario.create({ data: item })),
     );
 
     const livro = await prisma.livro.create({
@@ -266,21 +267,46 @@ async function main() {
         },
     });
 
-    await prisma.cenarios.create({
-        data: {
-            nome: 'A fazenda de Dom Antônio de Mariz, no interior do Rio de Janeiro colonial, onde vive a família de Cecília. A floresta brasileira, que aparece como um ambiente de aventura, perigo e contato com a natureza. Os rios e montanhas da região, usados nas fugas e conflitos ao longo da história.',
-            nomeEn: "Dom Antônio de Mariz's farm, in the interior of colonial Rio de Janeiro, where Cecília's family lives. The Brazilian forest, which appears as an environment of adventure, danger and contact with nature. The region's rivers and mountains, used in escapes and conflicts throughout history.",
-            caracteristicas:
-                'Os cenários de O Guarani têm como principais características a natureza exuberante, com florestas, rios e montanhas descritos de forma grandiosa e idealizada. O ambiente é cheio de aventuras, perigos e mistério, além de representar a valorização da paisagem brasileira, típica do Romantismo.',
-            caracteristicasEn:
-                "The main characteristics of O Guarani's scenarios are exuberant nature, with forests, rivers and mountains described in a grandiose and idealized way. The environment is full of adventures, dangers and mystery, in addition to representing the appreciation of the Brazilian landscape, typical of Romanticism.",
-            descricao:
-                'Fazenda de Dom Antônio: local seguro e organizado onde vive a família de Cecília, representando a sociedade colonial. Floresta: ambiente selvagem e perigoso, cheio de aventuras e contato com a natureza. Rios e montanhas: cenários usados nas fugas e batalhas, mostrando a grandiosidade da paisagem brasileira.',
-            descricaoEn:
-                "Dom Antônio's farm: a safe and organized place where Cecília's family lives, representing the colonial society. Forest: a wild and dangerous environment, full of adventures and contact with nature. Rivers and mountains: scenarios used in escapes and battles, showing the grandiosity of the Brazilian landscape.",
-            fotoURL: 'https://example.com/cenarios/rio-de-janeiro.jpg',
-            idDoLivro: livro.id,
-        },
+    await prisma.cenarios.createMany({
+        data: [
+            {
+                nome: 'A fazenda de Dom Antônio de Mariz, no interior do Rio de Janeiro colonial, onde vive a família de Cecília. A floresta brasileira, que aparece como um ambiente de aventura, perigo e contato com a natureza. Os rios e montanhas da região, usados nas fugas e conflitos ao longo da história.',
+                nomeEn: "Dom Antônio de Mariz's farm, in the interior of colonial Rio de Janeiro, where Cecília's family lives. The Brazilian forest, which appears as an environment of adventure, danger and contact with nature. The region's rivers and mountains, used in escapes and conflicts throughout history.",
+                caracteristicas:
+                    'Os cenários de O Guarani têm como principais características a natureza exuberante, com florestas, rios e montanhas descritos de forma grandiosa e idealizada. O ambiente é cheio de aventuras, perigos e mistério, além de representar a valorização da paisagem brasileira, típica do Romantismo.',
+                caracteristicasEn:
+                    "The main characteristics of O Guarani's scenarios are exuberant nature, with forests, rivers and mountains described in a grandiose and idealized way. The environment is full of adventures, dangers and mystery, in addition to representing the appreciation of the Brazilian landscape, typical of Romanticism.",
+                descricao:
+                    'Fazenda de Dom Antônio: local seguro e organizado onde vive a família de Cecília, representando a sociedade colonial. Floresta: ambiente selvagem e perigoso, cheio de aventuras e contato com a natureza. Rios e montanhas: cenários usados nas fugas e batalhas, mostrando a grandiosidade da paisagem brasileira.',
+                descricaoEn:
+                    "Dom Antônio's farm: a safe and organized place where Cecília's family lives, representing the colonial society. Forest: a wild and dangerous environment, full of adventures and contact with nature. Rivers and mountains: scenarios used in escapes and battles, showing the grandiosity of the Brazilian landscape.",
+                fotoURL: 'https://example.com/cenarios/rio-de-janeiro.jpg',
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Mata Atlântica',
+                nomeEn: 'Atlantic Forest',
+                caracteristicas:
+                    'Possui muitos rios e árvores(especialmente gameleiras e angelins, que são as mais citadas na obra), é úmida, suas cores são vivas, e seu ambiente é perfumado por baunilhas silvestres.Para os colonizadores, ela é um deserto perigoso, selvagem e impenetrável.',
+                caracteristicasEn:
+                    'It has many rivers and trees (especially wild fig trees and angelim trees, which are the most mentioned in the book), it is humid, its colors are vibrant, and its environment is perfumed by wild vanilla. For the colonizers, it is a dangerous, wild, and impenetrable desert.',
+                descricao:
+                    'No livro a floresta é descrita de forma extremamente positiva e idealizada, quase como uma entidade harmônica para todos os cenários.Os animais e indígenas que nela se abrigam são exaltados e cultuados, como se fossem filhos herdeiros das qualidades da natureza presentes na Mata Atlântica, que possui um vigor primitivo.Segundo o narrador, a impressão que se dá da mata é de que ela protege o feudo de Dom Antônio, atuando como uma "muralha verde".',
+                descricaoEn:
+                    'In the book, the forest is described in an extremely positive and idealized way, almost as a harmonious entity for all the settings.The animals and indigenous people who live there are exalted and worshipped, as if they were heirs to the qualities of nature present in the Atlantic Forest, which possesses a primitive vigor.According to the narrator, the impression given of the forest is that it protects Dom Antônios fiefdom, acting as a "green wall".',
+                fotoUrl: 'https://i.pinimg.com/736x/a1/5f/b3/a15fb3a5c61b96e5ab6c0eecf1d44f3f.jpg',
+                idDoLivro: livro.id,
+            },
+            {
+                nome: 'Mansão de Dom Antônio de Mariz',
+                nomeEn: "Dom Antônio de Mariz's Mansion",
+                caracteristicas: 'A mansão é cercada por uma parte intocada da Mata Atlântica, tendo sua vegetação descrita como "luxuosa" e "cheia de vigor", e por um rio que, segundo o livro, "corria no meio das arcarias de verdura e dos capitéis formados pelos leques das palmeiras".',
+                caracteristicasEn: 'The mansion is surrounded by an untouched part of the Atlantic Forest, its vegetation described as "luxurious" and "full of vigor," and by a river that, according to the book, "flowed through arcades of verdure, with capitals formed by the fans of the palm trees".',
+                descricao: 'A casa apresenta uma arquitetura "simples e grosseira", que foi construída de modo rudimentar, mas também possui um belo jardim que imita a real natureza do Brasil com flores, árvores e um "fio de água". Aos fundos existem armazéns e senzalas, que servem de abrigo para aventureiros e visitantes de Dom Antônio. Em seu interior, a mansão possui um ar "severo e triste", com símbolos da coroa portuguesa em brasões de armas espalhados, porém, esse aspecto muda em outros cômodos, que revelam a presença feminina em brocatéis de seda, tapetes de peles e bancos dourados e charmosos.',
+                descricaoEn: 'The house has a "simple and crude" architecture, built in a rudimentary style, but also boasts a beautiful garden that mimics the true nature of Brazil with flowers, trees, and a "trickle of water." In the back are quarters(referred to as "slave quarters" in the book), which served as shelter for adventurers and visitors of Dom Antônio.Inside, the mansion has a "severe and sad" air, with symbols of the Portuguese crown in coats of arms scattered throughout; however, this aspect changes in other rooms, which reveal a feminine presence in silk brocades, fur rugs, and charming gilded benches.',
+                fotoUrl: 'https://i.pinimg.com/736x/16/ce/3e/16ce3e81eca5809e2609ceeb53056b31.jpg'
+            }
+        ],
     });
 
     await prisma.personagens.createMany({
@@ -390,10 +416,10 @@ async function main() {
 
     await prisma.questoes.create({
         data: {
-            enunciado: '...',
+            enunciado: '"Peri não era mais o índio que há pouco ali estava; era um soberano; a majestade do gênio e da coragem iluminava a sua fronte bronzeada (...)" Considerando a representação de Peri no romance O Guarani, de José de Alencar, e o contexto do Romantismo brasileiro, assinale a alternativa correta:',
             enunciadoEn: '...',
-            vestibular: '...',
-            anoVestibular: 2000,
+            vestibular: 'FUVEST',
+            anoVestibular: '?',
             idDoLivro: livro.id,
             alternativas: {
                 create: {
@@ -410,7 +436,8 @@ async function main() {
                     justificativaEn: '...',
                 },
             },
-        },
+    }
+
     });
 
     const projeto = await prisma.projetos.create({
@@ -455,8 +482,8 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: 5,
-                        diasDeLeitura: 5,
+                        avaliacaoDaObra: 7,
+                        diasDeLeitura: 9,
                         opiniao: '...',
                     },
                     {
@@ -464,12 +491,15 @@ async function main() {
                         idade: 17,
                         curso: 'Desenvolvimento de Sistemas',
                         cursoEn: 'Systems Development',
-                        descricao: 'Gosta de Tecnologia e programação back-end, gosta de ajudar as pessoas do grupo e sempre tem boas ideias para o projeto.',
-                        descricaoEn: 'He likes technology and back-end programming, likes to help people in the group and always has good ideas for the project.',
+                        descricao:
+                            'Gosta de Tecnologia e programação back-end, gosta de ajudar as pessoas do grupo e sempre tem boas ideias para o projeto.',
+                        descricaoEn:
+                            'He likes technology and back-end programming, likes to help people in the group and always has good ideas for the project.',
                         cargo: 'Desenvolvedor',
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 28,
-                        opiniao: 'O livro narra a história de Peri, um indígena que vive para proteger Cecília em meio a conflitos entre colonos e tribos inimigas. A trama é uma mistura de romance com aventura épica, cheia de atos heroicos e um final explosivo. O enredo é interessante, mas a linguagem difícil e as descrições excessivas tornam a leitura bem cansativa e lenta.',
+                        opiniao:
+                            'O livro narra a história de Peri, um indígena que vive para proteger Cecília em meio a conflitos entre colonos e tribos inimigas. A trama é uma mistura de romance com aventura épica, cheia de atos heroicos e um final explosivo. O enredo é interessante, mas a linguagem difícil e as descrições excessivas tornam a leitura bem cansativa e lenta.',
                     },
                     {
                         nome: 'Pedro Brito',
@@ -482,6 +512,7 @@ async function main() {
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
                         opiniao: '...',
+                        opiniaoEn: '...'
                     },
                     {
                         nome: 'Arthur Ferian',
@@ -494,19 +525,22 @@ async function main() {
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 30,
                         opiniao: 'O Guarani é uma obra interessante porque mistura romance, aventura e elementos da cultura indígena brasileira. A história de Peri mostra coragem, lealdade e amor, enquanto também apresenta costumes e paisagens do Brasil da época. Apesar da linguagem ser um pouco antiga, o livro consegue prender a atenção em vários momentos e é importante para entender o romantismo brasileiro.',
+                        opiniaoEn: "The Guarani is an interesting work because it blends romance, adventure, and elements of Brazilian indigenous culture. Peri's story shows courage, loyalty, and love, while also presenting the customs and landscapes of Brazil at that time. Although the language is somewhat archaic, the book manages to hold the reader's attention at various points and is important for understanding Brazilian Romanticism."
                     },
                     {
                         nome: 'Nicolas',
                         idade: 16,
                         curso: 'Desenvolvimento de Sistemas',
                         cursoEn: 'Systems Development',
-                        descricao: 'Tem interesse por livros investigativos e científicos, apesar da diferença de interesse se empenhou na leitura e compreensão da obra. Mostra sempre sua proatividade e vontade de ajudar o grupo a alcançar os objetivos.',
-                        descricaoEn: 'He is interested in investigative and scientific books, and despite the difference in interests, he dedicated himself to reading and understanding the work. He always shows his proactivity and willingness to help the group achieve its goals.',
+                        descricao:
+                            'Tem interesse por livros investigativos e científicos, apesar da diferença de interesse se empenhou na leitura e compreensão da obra. Mostra sempre sua proatividade e vontade de ajudar o grupo a alcançar os objetivos.',
+                        descricaoEn:
+                            'He is interested in investigative and scientific books, and despite the difference in interests, he dedicated himself to reading and understanding the work. He always shows his proactivity and willingness to help the group achieve its goals.',
                         cargo: 'Designer',
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 9,
                         opiniao: 'Como meu interesse principal é voltado para livros científicos e investigativos, ler O Guarani foi um grande desafio fora da minha zona de conforto. Avalio a obra com nota 3. Embora o estilo descritivo e idealizado do Romantismo seja bem diferente do que costumo ler, a trama me envolveu ao longo desses 9 dias pelos seus elementos de ação, mistério e conflito. Foi um excelente exercício de leitura que me ajudou a exercitar a análise crítica e a compreender um dos maiores clássicos da nossa literatura.',
-                    
+                        opiniaoEn: 'Since my main interests lie in scientific and investigative books, reading "O Guarani" was a challenge outside my comfort zone. I rate it 3.5/5. Although the idealized and descriptive style of Brazilian Romanticism is very different from my usual taste, the plot kept me engaged over these 9 days with its elements of action and conflict. It was a great reading exercise that helped me improve my critical analysis and understand a major classic of our literature.'
                     },
                     {
                         nome: 'Isadora',
