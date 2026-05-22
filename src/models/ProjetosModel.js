@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para acessar o banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class ProjetosModel {
@@ -16,6 +17,8 @@ export default class ProjetosModel {
         integracaoAPI,
         integracaoAPIEn,
     } = {}) {
+        // Inicializa os campos do projeto com os valores recebidos.
+        // Esse modelo representa as informações de um projeto na aplicação.
         this.id = id;
         this.nome = nome;
         this.introducao = introducao;
@@ -31,9 +34,8 @@ export default class ProjetosModel {
         this.integracaoAPIEn = integracaoAPIEn;
     }
 
-   
-
     async criar() {
+        // Cria um novo registro de projeto no banco de dados usando os campos da instância.
 
         return prisma.projetos.create({
             data: {
@@ -54,6 +56,8 @@ export default class ProjetosModel {
     }
 
     async atualizar() {
+        // Atualiza um projeto existente.
+        // Exige que o id esteja definido na instância do modelo.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -78,6 +82,8 @@ export default class ProjetosModel {
     }
 
     async deletar() {
+        // Exclui o projeto do banco de dados pelo id.
+        // Se não houver id, lança um erro para evitar exclusão indevida.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -86,6 +92,8 @@ export default class ProjetosModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todos os projetos, aplicando filtro opcional por nome.
+        // Inclui também os membros associados a cada projeto no resultado.
         const where = {};
 
         if (filtros.nome) {
@@ -101,6 +109,8 @@ export default class ProjetosModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um projeto por id e retorna uma instância do modelo.
+        // Retorna null se não encontrar o registro.
         const data = await prisma.projetos.findUnique({
             where: { id: parseInt(id, 10) },
             include: {

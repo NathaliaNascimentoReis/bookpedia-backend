@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para realizar operações no banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class EnredosModel {
@@ -13,6 +14,7 @@ export default class EnredosModel {
         desfechoEn,
         idDoLivro,
     } = {}) {
+        // Esse modelo representa a estrutura narrativa associada a um livro.
         this.id = id;
         this.introducao = introducao;
         this.introducaoEn = introducaoEn;
@@ -26,6 +28,8 @@ export default class EnredosModel {
     }
 
     async criar() {
+        // Cria um novo registro de enredo no banco de dados.
+        // Converte idDoLivro para inteiro antes de salvar.
 
         return prisma.enredos.create({
             data: {
@@ -43,6 +47,8 @@ export default class EnredosModel {
     }
 
     async atualizar() {
+        // Atualiza um enredo existente no banco usando o id da instância.
+        // Exige que o id seja fornecido antes de prosseguir.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -58,12 +64,14 @@ export default class EnredosModel {
                 climaxEn: this.climaxEn,
                 desfecho: this.desfecho,
                 desfechoEn: this.desfechoEn,
-                idDoLivro: parseInt(this.idDoLivro, 10),
+                idDoLivro: this.idDoLivro ? parseInt(this.idDoLivro) : undefined,
             },
         });
     }
 
     async deletar() {
+        // Exclui o enredo do banco de dados usando o id informado.
+        // Se não houver id, uma exceção é lançada.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -72,6 +80,8 @@ export default class EnredosModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todos os enredos, aplicando filtro opcional por id do livro.
+        // Inclui também os dados do livro relacionado no resultado.
         const where = {};
 
         if (filtros.idDoLivro !== undefined && filtros.idDoLivro !== '') {
@@ -82,6 +92,8 @@ export default class EnredosModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um enredo por id e retorna uma instância de EnredosModel.
+        // Retorna null caso o registro não exista.
         const data = await prisma.enredos.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livro: true },

@@ -1,25 +1,36 @@
 import EnredosModel from '../models/EnredosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar um novo enredo.
+    // Recebe dados via req.body, valida campos obrigatórios e persiste usando o modelo.
     try {
-        const { 
-            introducao, introducaoEn, 
-            conflito, conflitoEn, 
-            climax, climaxEn, 
-            desfecho, desfechoEn, 
-            idDoLivro 
+        const {
+            introducao,
+            introducaoEn,
+            conflito,
+            conflitoEn,
+            climax,
+            climaxEn,
+            desfecho,
+            desfechoEn,
+            idDoLivro,
         } = req.body;
 
         // Validações básicas de presença (sem trim)
-        if (!introducao) return res.status(400).json({ error: 'O campo "introducao" é obrigatório.' });
-        if (!introducaoEn) return res.status(400).json({ error: 'O campo "introducaoEn" é obrigatório.' });
+        if (!introducao)
+            return res.status(400).json({ error: 'O campo "introducao" é obrigatório.' });
+        if (!introducaoEn)
+            return res.status(400).json({ error: 'O campo "introducaoEn" é obrigatório.' });
         if (!conflito) return res.status(400).json({ error: 'O campo "conflito" é obrigatório.' });
-        if (!conflitoEn) return res.status(400).json({ error: 'O campo "conflitoEn" é obrigatório.' });
+        if (!conflitoEn)
+            return res.status(400).json({ error: 'O campo "conflitoEn" é obrigatório.' });
         if (!climax) return res.status(400).json({ error: 'O campo "climax" é obrigatório.' });
         if (!climaxEn) return res.status(400).json({ error: 'O campo "climaxEn" é obrigatório.' });
         if (!desfecho) return res.status(400).json({ error: 'O campo "desfecho" é obrigatório.' });
-        if (!desfechoEn) return res.status(400).json({ error: 'O campo "desfechoEn" é obrigatório.' });
-        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
+        if (!desfechoEn)
+            return res.status(400).json({ error: 'O campo "desfechoEn" é obrigatório.' });
+        if (!idDoLivro)
+            return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
         const item = new EnredosModel(req.body);
         const data = await item.criar();
@@ -32,6 +43,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todos os enredos de acordo com os filtros de consulta.
+    // Quando não existem registros, responde com mensagem apropriada.
     try {
         const registros = await EnredosModel.buscarTodos(req.query);
 
@@ -47,6 +60,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um único enredo pelo id.
+    // Valida que o id seja numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -68,6 +83,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um enredo existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -99,7 +116,9 @@ export const atualizar = async (req, res) => {
         const data = await enredo.atualizar();
 
         return res.status(200).json({
-            message: `O registro "${data.titulo || data.nome || data.id}" foi atualizado com sucesso!`,
+            message: `O registro "${
+                data.titulo || data.nome || data.id
+            }" foi atualizado com sucesso!`,
             data,
         });
     } catch (error) {
@@ -109,6 +128,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um enredo pelo id.
+    // Verifica a existência do registro antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 
@@ -125,7 +146,9 @@ export const deletar = async (req, res) => {
         await enredo.deletar();
 
         return res.status(200).json({
-            message: `O registro "${enredo.titulo || enredo.nome || enredo.id}" foi deletado com sucesso!`,
+            message: `O registro "${
+                enredo.titulo || enredo.nome || enredo.id
+            }" foi deletado com sucesso!`,
             deletado: enredo,
         });
     } catch (error) {

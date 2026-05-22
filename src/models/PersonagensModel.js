@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para comunicar com o banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class PersonagensModel {
@@ -11,6 +12,8 @@ export default class PersonagensModel {
         historiaEn,
         idDoLivro = null,
     } = {}) {
+        // Inicializa os campos do personagem com os valores recebidos.
+        // Esse modelo representa uma entidade de personagem vinculada a um livro.
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -21,8 +24,9 @@ export default class PersonagensModel {
         this.idDoLivro = idDoLivro;
     }
 
-
     async criar() {
+        // Cria um novo personagem no banco de dados.
+        // Converte campos numéricos em inteiros antes de salvar.
 
         return prisma.personagens.create({
             data: {
@@ -38,10 +42,11 @@ export default class PersonagensModel {
     }
 
     async atualizar() {
+        // Atualiza um personagem existente utilizando o id da instância.
+        // Caso não haja id, lança um erro para evitar operação inválida.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
 
         return prisma.personagens.update({
             where: { id: parseInt(this.id, 10) },
@@ -58,6 +63,8 @@ export default class PersonagensModel {
     }
 
     async deletar() {
+        // Exclui o personagem do banco de dados com base no id informado.
+        // Se faltar o id, a operação é interrompida.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -66,6 +73,8 @@ export default class PersonagensModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca personagens aplicando filtros opcionais de nome, idade e livro.
+        // Retorna também os dados do livro associado.
         const where = {};
 
         if (filtros.nome) {
@@ -84,6 +93,8 @@ export default class PersonagensModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um personagem único pelo id e inclui o livro relacionado.
+        // Retorna null caso não exista registro.
         const data = await prisma.personagens.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livro: true },

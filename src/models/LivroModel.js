@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para executar operações no banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class LivroModel {
@@ -16,6 +17,7 @@ export default class LivroModel {
         analiseEn,
         capaURL,
     } = {}) {
+        // Esse modelo representa os dados de um livro no sistema.
         this.id = id;
         this.tituloDoLivro = tituloDoLivro;
         this.tituloDoLivroEn = tituloDoLivroEn;
@@ -32,7 +34,8 @@ export default class LivroModel {
     }
 
     async criar() {
-
+        // Cria um novo registro de livro no banco de dados usando os dados da instância.
+        // Converte o ano de lançamento para inteiro.
 
         return prisma.livro.create({
             data: {
@@ -53,6 +56,8 @@ export default class LivroModel {
     }
 
     async atualizar() {
+        // Atualiza um livro existente com base no id da instância.
+        // Lança um erro se o id não estiver presente.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -77,6 +82,8 @@ export default class LivroModel {
     }
 
     async deletar() {
+        // Exclui o livro do banco de dados usando o id informado.
+        // Se não existir id, a operação é interrompida com um erro.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -85,6 +92,8 @@ export default class LivroModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todos os livros e aplica filtros opcionais de título e ano de lançamento.
+        // Retorna também os relacionamentos com autores, movimento literário e personagens.
         const where = {};
 
         if (filtros.tituloDoLivro) {
@@ -110,6 +119,8 @@ export default class LivroModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um livro pelo id e retorna uma instância de LivroModel.
+        // Se não encontrar o registro, retorna null.
         const data = await prisma.livro.findUnique({
             where: { id: parseInt(id, 10) },
             include: {

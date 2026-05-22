@@ -1,15 +1,23 @@
 import CuriosidadesModel from '../models/CuriosidadesModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador para criar uma nova curiosidade.
+    // Valida os campos obrigatórios e chama o modelo para persistir.
     try {
-        const { tituloCuriosidade, tituloCuriosidadeEn, curiosidade, curiosidadeEn, idDoLivro } = req.body;
+        const { tituloCuriosidade, tituloCuriosidadeEn, curiosidade, curiosidadeEn, idDoLivro } =
+            req.body;
 
         // Validações básicas de presença
-        if (!tituloCuriosidade) return res.status(400).json({ error: 'O campo "tituloCuriosidade" é obrigatório.' });
-        if (!tituloCuriosidadeEn) return res.status(400).json({ error: 'O campo "tituloCuriosidadeEn" é obrigatório.' });
-        if (!curiosidade) return res.status(400).json({ error: 'O campo "curiosidade" é obrigatório.' });
-        if (!curiosidadeEn) return res.status(400).json({ error: 'O campo "curiosidadeEn" é obrigatório.' });
-        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
+        if (!tituloCuriosidade)
+            return res.status(400).json({ error: 'O campo "tituloCuriosidade" é obrigatório.' });
+        if (!tituloCuriosidadeEn)
+            return res.status(400).json({ error: 'O campo "tituloCuriosidadeEn" é obrigatório.' });
+        if (!curiosidade)
+            return res.status(400).json({ error: 'O campo "curiosidade" é obrigatório.' });
+        if (!curiosidadeEn)
+            return res.status(400).json({ error: 'O campo "curiosidadeEn" é obrigatório.' });
+        if (!idDoLivro)
+            return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
         const item = new CuriosidadesModel(req.body);
         const data = await item.criar();
@@ -22,6 +30,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador para retornar todas as curiosidades segundo os filtros da query.
+    // Quando não há registros, retorna mensagem apropriada.
     try {
         const registros = await CuriosidadesModel.buscarTodos(req.query);
 
@@ -37,6 +47,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar uma curiosidade por id.
+    // Verifica se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -58,6 +70,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar uma curiosidade existente.
+    // Aplica somente os campos informados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -87,7 +101,9 @@ export const atualizar = async (req, res) => {
         const data = await item.atualizar();
 
         return res.status(200).json({
-            message: `O registro "${data.tituloCuriosidade || data.nome || data.id}" foi atualizado com sucesso!`,
+            message: `O registro "${
+                data.tituloCuriosidade || data.nome || data.id
+            }" foi atualizado com sucesso!`,
             data,
         });
     } catch (error) {
@@ -97,6 +113,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir uma curiosidade pelo id.
+    // Garante que o registro existe antes de deletar.
     try {
         const { id } = req.params;
 
@@ -113,7 +131,9 @@ export const deletar = async (req, res) => {
         await item.deletar();
 
         return res.status(200).json({
-            message: `O registro "${item.tituloCuriosidade || item.nome || item.id}" foi deletado com sucesso!`,
+            message: `O registro "${
+                item.tituloCuriosidade || item.nome || item.id
+            }" foi deletado com sucesso!`,
             deletado: item,
         });
     } catch (error) {
