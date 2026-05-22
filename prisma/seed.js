@@ -40,8 +40,8 @@ async function main() {
                 'Nationalism and Indianism, Subjectivity and sentimentalism, Liberalism.',
             periodo: '1836 à 1880',
             fase: 'Romantismo Brasileiro',
-            influencia:
-                'Criou as bases da literatura nacional, promoveu o nacionalismo, o indianismo e a valorização da natureza brasileira, ajudando o país a construir sua identidade cultural independente de Portugal.',
+            faseTexto: 'O Romantismo no Brasil é dividido em três grandes momentos: a Primeira Geração (Indianista), focada na criação de um herói nacional e na exaltação da natureza; a Segunda Geração (Ultrarromântica), marcada pelo pessimismo, subjetivismo profundo e a Terceira Geração (Condoreira), voltada para questões sociais e a luta abolicionista.',
+        
         },
     });
 
@@ -294,7 +294,7 @@ async function main() {
                     'No livro a floresta é descrita de forma extremamente positiva e idealizada, quase como uma entidade harmônica para todos os cenários.Os animais e indígenas que nela se abrigam são exaltados e cultuados, como se fossem filhos herdeiros das qualidades da natureza presentes na Mata Atlântica, que possui um vigor primitivo.Segundo o narrador, a impressão que se dá da mata é de que ela protege o feudo de Dom Antônio, atuando como uma "muralha verde".',
                 descricaoEn:
                     'In the book, the forest is described in an extremely positive and idealized way, almost as a harmonious entity for all the settings.The animals and indigenous people who live there are exalted and worshipped, as if they were heirs to the qualities of nature present in the Atlantic Forest, which possesses a primitive vigor.According to the narrator, the impression given of the forest is that it protects Dom Antônios fiefdom, acting as a "green wall".',
-                fotoUrl: 'https://i.pinimg.com/736x/a1/5f/b3/a15fb3a5c61b96e5ab6c0eecf1d44f3f.jpg',
+                fotoURL: 'https://i.pinimg.com/736x/a1/5f/b3/a15fb3a5c61b96e5ab6c0eecf1d44f3f.jpg',
                 idDoLivro: livro.id,
             },
             {
@@ -308,7 +308,9 @@ async function main() {
                     'A casa apresenta uma arquitetura "simples e grosseira", que foi construída de modo rudimentar, mas também possui um belo jardim que imita a real natureza do Brasil com flores, árvores e um "fio de água". Aos fundos existem armazéns e senzalas, que servem de abrigo para aventureiros e visitantes de Dom Antônio. Em seu interior, a mansão possui um ar "severo e triste", com símbolos da coroa portuguesa em brasões de armas espalhados, porém, esse aspecto muda em outros cômodos, que revelam a presença feminina em brocatéis de seda, tapetes de peles e bancos dourados e charmosos.',
                 descricaoEn:
                     'The house has a "simple and crude" architecture, built in a rudimentary style, but also boasts a beautiful garden that mimics the true nature of Brazil with flowers, trees, and a "trickle of water." In the back are quarters(referred to as "slave quarters" in the book), which served as shelter for adventurers and visitors of Dom Antônio.Inside, the mansion has a "severe and sad" air, with symbols of the Portuguese crown in coats of arms scattered throughout; however, this aspect changes in other rooms, which reveal a feminine presence in silk brocades, fur rugs, and charming gilded benches.',
-                fotoUrl: 'https://i.pinimg.com/736x/16/ce/3e/16ce3e81eca5809e2609ceeb53056b31.jpg',
+                fotoURL: 'https://i.pinimg.com/736x/16/ce/3e/16ce3e81eca5809e2609ceeb53056b31.jpg',
+                 idDoLivro: livro.id,
+                
             },
         ],
     });
@@ -418,8 +420,9 @@ async function main() {
         },
     });
 
-    await prisma.questoes.createMany({
-        data: [
+    // Substituímos o método createMany pelo loop for...of com create. Isso foi necessário porque o Prisma não permite criar relações (como as alternativas conectadas a uma questão) usando o comando de inserção em massa (createMany).
+
+    const questoesData = [
             {
                 enunciado:
                     '"Peri não era mais o índio que há pouco ali estava; era um soberano; a majestade do gênio e da coragem iluminava a sua fronte bronzeada (...)" Considerando a representação de Peri no romance O Guarani, de José de Alencar, e o contexto do Romantismo brasileiro, assinale a alternativa correta:',
@@ -861,8 +864,13 @@ async function main() {
                     },
                 },
             },
-        ],
-    });
+        ];
+
+    for (const questao of questoesData) {
+        await prisma.questoes.create({
+            data: questao
+        });
+    }
 
     const projeto = await prisma.projetos.create({
         data: {
