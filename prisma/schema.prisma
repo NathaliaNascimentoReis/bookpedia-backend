@@ -55,7 +55,7 @@ model Autores {
 model Personagens {
     id          Int    @id @default(autoincrement())
     nome        String
-    idade       Int
+    idade       Int?
     descricao   String
     descricaoEn String
     historia    String
