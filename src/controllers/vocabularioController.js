@@ -4,10 +4,12 @@ export const criar = async (req, res) => {
     // Controlador para criar uma nova entrada de vocabulário.
     // Valida os campos obrigatórios e utiliza o modelo para persistência.
     try {
-        const { palavra, significado, idDoLivro } = req.body;
+        const { palavra, palavraEn, significado, significadoEn, idDoLivro } = req.body;
 
         if (!palavra) return res.status(400).json({ error: 'A palavra é obrigatória.' });
+        if (!palavraEn) return res.status(400).json({ error: 'A palavra é obrigatória.' });
         if (!significado) return res.status(400).json({ error: 'O significado é obrigatório.' });
+        if (!significadoEn) return res.status(400).json({ error: 'O significado é obrigatório.' });
 
         const vocabulario = new VocabularioModel(req.body);
         const data = await vocabulario.criar(idDoLivro);

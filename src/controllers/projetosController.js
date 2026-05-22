@@ -7,24 +7,37 @@ export const criar = async (req, res) => {
         const {
             nome,
             introducao,
+            introducaoEn,
             objetivoProjeto,
+            objetivoProjetoEn,
             sobreAEquipe,
+            sobreAEquipeEn,
             desenvolvimentoTecnico,
+            desenvolvimentoTecnicoEn,
             tecnologias,
             integracaoAPI,
+            integracaoAPIEn,
         } = req.body;
 
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!introducao) return res.status(400).json({ error: 'A introdução é obrigatória.' });
+          if (!introducaoEn) return res.status(400).json({ error: 'A introdução é obrigatória.' });
         if (!objetivoProjeto) return res.status(400).json({ error: 'O objetivo é obrigatório.' });
+        if (!objetivoProjetoEn) return res.status(400).json({ error: 'O objetivo é obrigatório.' });
         if (!sobreAEquipe)
             return res.status(400).json({ error: 'O texto sobre a equipe é obrigatório.' });
+         if (!sobreAEquipeEn)
+             return res.status(400).json({ error: 'O texto sobre a equipe é obrigatório.' });
         if (!desenvolvimentoTecnico)
             return res.status(400).json({ error: 'O desenvolvimento técnico é obrigatório.' });
+         if (!desenvolvimentoTecnicoEn)
+             return res.status(400).json({ error: 'O desenvolvimento técnico é obrigatório.' });
         if (!tecnologias)
             return res.status(400).json({ error: 'As tecnologias são obrigatórias.' });
         if (!integracaoAPI)
             return res.status(400).json({ error: 'A integração API é obrigatória.' });
+         if (!integracaoAPIEn)
+             return res.status(400).json({ error: 'A integração API é obrigatória.' });
 
         const projeto = new ProjetosModel(req.body);
         const data = await projeto.criar();

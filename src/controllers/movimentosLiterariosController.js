@@ -7,7 +7,7 @@ export const criar = async (req, res) => {
         const {
             nome, contextoHistorico, contextoHistoricoEn,
             caracteristicas, caracteristicasEn, periodo,
-            fase, influencia, idDoLivro
+            fase, faseTexto, idDoLivro
         } = req.body;
 
         // Validações de presença
@@ -20,6 +20,7 @@ export const criar = async (req, res) => {
             return res.status(400).json({ error: 'As características são obrigatórias.' });
         if (!periodo) return res.status(400).json({ error: 'O período é obrigatório.' });
         if (!fase) return res.status(400).json({ error: 'A fase é obrigatória.' });
+        if (!faseTexto) return res.status(400).json({ error: 'A fase é obrigatória.' });
 
         const movimento = new MovimentosLiterariosModel(req.body);
         const data = await movimento.criar(idDoLivro);
@@ -101,7 +102,7 @@ export const atualizar = async (req, res) => {
             item.caracteristicasEn = req.body.caracteristicasEn;
         if (req.body.periodo !== undefined) item.periodo = req.body.periodo;
         if (req.body.fase !== undefined) item.fase = req.body.fase;
-        if (req.body.influencia !== undefined) item.influencia = req.body.influencia;
+        if (req.body.faseTexto !== undefined) item.faseTexto = req.body.faseTexto;
         if (req.body.idDoLivro !== undefined && req.body.idDoLivro !== null)
             item.idDoLivro = parseInt(req.body.idDoLivro);
 
