@@ -4,9 +4,10 @@ export const criar = async (req, res) => {
     // Controlador responsável por criar uma nova questão.
     // Valida os campos obrigatórios e delega a criação ao modelo.
     try {
-        const { enunciado, vestibular, anoVestibular, idDoLivro, alternativas } = req.body;
+        const { enunciado, enunciadoEn, vestibular, anoVestibular, idDoLivro, alternativas } = req.body;
 
         if (!enunciado) return res.status(400).json({ error: 'O enunciado é obrigatório.' });
+        if (!enunciadoEn) return res.status(400).json({ error: 'O enunciado é obrigatório.' });
         if (!vestibular) return res.status(400).json({ error: 'O vestibular é obrigatório.' });
         if (!anoVestibular)
             return res.status(400).json({ error: 'O ano do vestibular é obrigatório.' });

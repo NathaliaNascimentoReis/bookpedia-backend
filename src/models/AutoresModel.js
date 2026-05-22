@@ -116,6 +116,6 @@ export default class AutoresModel {
 
         if (!data) return null;
         // Retorna null quando o autor não é encontrado, mantendo a consistência do serviço.
-        return data;
+        return new AutoresModel(data);
     }
 }

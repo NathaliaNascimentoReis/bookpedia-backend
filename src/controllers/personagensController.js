@@ -10,7 +10,9 @@ export const criar = async (req, res) => {
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!idade) return res.status(400).json({ error: 'A idade é obrigatória.' });
         if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatória.' });
         if (!historia) return res.status(400).json({ error: 'A história é obrigatória.' });
+        if (!historiaEn) return res.status(400).json({ error: 'A história é obrigatória.' });
         if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
 
         const personagem = new PersonagensModel(req.body);

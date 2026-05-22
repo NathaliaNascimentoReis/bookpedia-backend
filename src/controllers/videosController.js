@@ -4,11 +4,14 @@ export const criar = async (req, res) => {
     // Controlador responsável por criar um novo vídeo.
     // Valida campos obrigatórios e usa o modelo para persistir o registro.
     try {
-        const { titulo, descricao, url, idDoLivro } = req.body;
+        const { titulo, tituloEn, descricao, descricaoEn, url, idDoLivro } = req.body;
 
         if (!titulo) return res.status(400).json({ error: 'O título é obrigatório.' });
+        if (!tituloEn) return res.status(400).json({ error: 'O título é obrigatório.' });
         if (!url) return res.status(400).json({ error: 'A URL do vídeo é obrigatória.' });
         if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
+        if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatório.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatório.' });
 
         const video = new VideosModel(req.body);
         const data = await video.criar();

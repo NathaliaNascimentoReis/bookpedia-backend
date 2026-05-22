@@ -11,6 +11,7 @@ export default class MembrosModel {
         descricao,
         descricaoEn,
         cargo,
+        cargoEn,
         avaliacaoDaObra,
         diasDeLeitura,
         opiniao,
@@ -25,6 +26,7 @@ export default class MembrosModel {
         this.descricao = descricao;
         this.descricaoEn = descricaoEn;
         this.cargo = cargo;
+        this.cargoEn = cargoEn;
         this.avaliacaoDaObra = avaliacaoDaObra;
         this.diasDeLeitura = diasDeLeitura;
         this.opiniao = opiniao;
@@ -43,6 +45,7 @@ export default class MembrosModel {
                 descricao: this.descricao,
                 descricaoEn: this.descricaoEn,
                 cargo: this.cargo,
+                cargoEn: this.cargoEn,
                 avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
                 diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
@@ -68,6 +71,7 @@ export default class MembrosModel {
                 descricao: this.descricao,
                 descricaoEn: this.descricaoEn,
                 cargo: this.cargo,
+                cargoEn: this.cargoEn,
                 avaliacaoDaObra: parseInt(this.avaliacaoDaObra, 10),
                 diasDeLeitura: parseInt(this.diasDeLeitura, 10),
                 opiniao: this.opiniao,
@@ -105,6 +109,9 @@ export default class MembrosModel {
         }
 
         if (filtros.cargo) {
+            where.cargo = { contains: filtros.cargo, mode: 'insensitive' };
+        }
+        if (filtros.cargoEn) {
             where.cargo = { contains: filtros.cargo, mode: 'insensitive' };
         }
 

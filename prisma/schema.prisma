@@ -199,6 +199,7 @@ model Membros {
     descricao       String
     descricaoEn     String
     cargo           String
+    cargoEn         String
     avaliacaoDaObra Int
     diasDeLeitura   Int
     opiniao         String
