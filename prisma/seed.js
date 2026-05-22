@@ -69,7 +69,7 @@ async function main() {
 
     const vocabularioItems = [
         {
-            palavra: 'Cataclisma: ',
+            palavra: 'Cataclisma',
             palavraEn: 'Cataclysm',
             significado: 'Desastre natural de grandes proporções',
             significadoEn: 'A natural disaster of great proportions',
