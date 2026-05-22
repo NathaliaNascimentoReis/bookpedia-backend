@@ -1,37 +1,46 @@
 import AutoresModel from '../models/AutoresModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador que trata a criação de um novo autor.
+    // Recebe os dados no corpo da requisição e chama o modelo para persistir.
     try {
-        const { 
-            nome, 
-            descricao, 
-            descricaoEn, 
-            contextoHistorico, 
-            contextoHistoricoEn, 
-            anoNascimento, 
-            anoFalecimento, 
-            biografia, 
-            biografiaEn, 
-            fotoURL 
+        const {
+            nome,
+            descricao,
+            descricaoEn,
+            contextoHistorico,
+            contextoHistoricoEn,
+            anoNascimento,
+            anoFalecimento,
+            biografia,
+            biografiaEn,
+            fotoURL,
         } = req.body;
 
-        // Validações básicas de presença
+        // Validações de presença
         if (!nome) return res.status(400).json({ error: 'O campo "nome" é obrigatório.' });
-        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
-        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
-        if (!contextoHistorico) return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
-        if (!contextoHistoricoEn) return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
-        if (!anoNascimento) return res.status(400).json({ error: 'O campo "anoNascimento" é obrigatório.' });
-        if (!anoFalecimento) return res.status(400).json({ error: 'O campo "anoFalecimento" é obrigatório.' });
-        if (!biografia) return res.status(400).json({ error: 'O campo "biografia" é obrigatório.' });
-        if (!biografiaEn) return res.status(400).json({ error: 'O campo "biografiaEn" é obrigatório.' });
+        if (!descricao)
+            return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn)
+            return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!contextoHistorico)
+            return res.status(400).json({ error: 'O campo "contextoHistorico" é obrigatório.' });
+        if (!contextoHistoricoEn)
+            return res.status(400).json({ error: 'O campo "contextoHistoricoEn" é obrigatório.' });
+        if (!anoNascimento)
+            return res.status(400).json({ error: 'O campo "anoNascimento" é obrigatório.' });
+        if (!anoFalecimento)
+            return res.status(400).json({ error: 'O campo "anoFalecimento" é obrigatório.' });
+        if (!biografia)
+            return res.status(400).json({ error: 'O campo "biografia" é obrigatório.' });
+        if (!biografiaEn)
+            return res.status(400).json({ error: 'O campo "biografiaEn" é obrigatório.' });
         if (!fotoURL) return res.status(400).json({ error: 'O campo "fotoURL" é obrigatório.' });
 
         const autor = new AutoresModel(req.body);
         const data = await autor.criar(req.body.idLivroParaConectar);
 
         return res.status(201).json({ message: 'Autor criado com sucesso!', data });
-
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'Erro ao salvar o autor.' });
@@ -39,6 +48,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todos os autores de acordo com os filtros informados.
+    // Chamadas sem filtros retornam todos os registros disponíveis.
     try {
         const registros = await AutoresModel.buscarTodos(req.query);
 
@@ -54,6 +65,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para recuperar um autor por seu id.
+    // Valida se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -75,6 +88,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar campos de um autor existente.
+    // Verifica a existência do registro antes de aplicar alterações parciais.
     try {
         const { id } = req.params;
 
@@ -124,6 +139,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um autor pelo id.
+    // Garante que o registro exista antes de deletar.
     try {
         const { id } = req.params;
 

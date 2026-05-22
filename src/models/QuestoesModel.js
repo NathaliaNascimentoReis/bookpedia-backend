@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para executar operações de banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class QuestoesModel {
@@ -10,6 +11,8 @@ export default class QuestoesModel {
         idDoLivro = null,
         alternativas = null,
     } = {}) {
+        // Inicializa os campos do modelo de questão com os valores fornecidos.
+        // Isso permite criar e atualizar questões com os dados recebidos.
         this.id = id;
         this.enunciado = enunciado;
         this.enunciadoEn = enunciadoEn;
@@ -20,7 +23,9 @@ export default class QuestoesModel {
     }
 
     async criar(dadosAlternativas) {
-       
+        // Cria uma nova questão no banco de dados e adiciona as alternativas.
+        // O campo idDoLivro é convertido para inteiro antes da criação.
+
         return prisma.questoes.create({
             data: {
                 enunciado: this.enunciado,
@@ -49,11 +54,11 @@ export default class QuestoesModel {
     }
 
     async atualizar(dadosAlternativas = null) {
+        // Atualiza uma questão existente e, se fornecido, atualiza suas alternativas.
+        // Garante que o id esteja presente antes de executar a atualização.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
-      
 
         const data = {
             enunciado: this.enunciado,
@@ -64,6 +69,7 @@ export default class QuestoesModel {
         };
 
         if (dadosAlternativas) {
+            // Atualiza o registro das alternativas quando os dados são informados.
             data.alternativas = {
                 update: {
                     ...dadosAlternativas,
@@ -79,6 +85,8 @@ export default class QuestoesModel {
     }
 
     async deletar() {
+        // Remove a questão do banco de dados pelo id.
+        // Se não houver id definido, evita a exclusão.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -87,6 +95,8 @@ export default class QuestoesModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todas as questões aplicando filtros opcionais.
+        // Inclui as alternativas e o livro associado no resultado.
         const where = {};
 
         if (filtros.enunciado) {
@@ -119,6 +129,8 @@ export default class QuestoesModel {
     }
 
     static async buscarPorId(id) {
+        // Busca uma questão por id e retorna a entidade com alternativas e livro relacionados.
+        // Se não encontrar a questão, retorna null.
         const data = await prisma.questoes.findUnique({
             where: { id: parseInt(id, 10) }, // ← corrigido: era this.id
             include: {

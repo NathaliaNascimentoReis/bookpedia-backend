@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para operações de banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class CenariosModel {
@@ -12,6 +13,7 @@ export default class CenariosModel {
         fotoURL,
         idDoLivro,
     } = {}) {
+        // dados fornecidos. Aqui são atribuídos os campos do cenário.
         this.id = id;
         this.nome = nome;
         this.nomeEn = nomeEn;
@@ -24,7 +26,9 @@ export default class CenariosModel {
     }
 
     async criar() {
-        
+        // Cria um novo registro de cenário no banco de dados usando os dados da instância.
+        // Se idDoLivro estiver presente, o valor é convertido para inteiro antes de salvar.
+
         return prisma.cenarios.create({
             data: {
                 nome: this.nome,
@@ -40,6 +44,8 @@ export default class CenariosModel {
     }
 
     async atualizar() {
+        // Atualiza um cenário existente com base no id da instância.
+        // Lança erro caso o id não esteja definido.
         if (!this.id) {
             throw new Error('ID não fornecido');
         }
@@ -61,6 +67,8 @@ export default class CenariosModel {
     }
 
     async deletar() {
+        // Remove o cenário do banco de dados usando o id da instância.
+        // Caso não haja id, a operação é interrompida com erro.
         if (!this.id) {
             throw new Error('ID não fornecido');
         }
@@ -71,6 +79,8 @@ export default class CenariosModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todos os cenários, aplicando filtros opcionais de nome e livro.
+        // O resultado inclui também o livro relacionado ao cenário.
         const where = {};
 
         if (filtros.nome) {
@@ -89,6 +99,8 @@ export default class CenariosModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um único cenário por id, incluindo o livro associado.
+        // Retorna null se não houver resultado.
         const data = await prisma.cenarios.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livro: true },
@@ -96,6 +108,7 @@ export default class CenariosModel {
 
         if (!data) return null;
 
+        // Cria um novo objeto CenariosModel a partir dos dados retornados.
         return new CenariosModel(data);
     }
 }

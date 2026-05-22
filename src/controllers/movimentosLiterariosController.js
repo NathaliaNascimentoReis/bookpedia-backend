@@ -1,6 +1,8 @@
 import MovimentosLiterariosModel from '../models/MovimentosLiterariosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável pela criação de um movimento literário.
+    // Valida campos obrigatórios e delega a persistência ao modelo.
     try {
         const {
             nome, contextoHistorico, contextoHistoricoEn,
@@ -30,6 +32,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que busca todos os movimentos literários.
+    // Aceita filtros via query string e responde com os registros encontrados.
     try {
         const registros = await MovimentosLiterariosModel.buscarTodos(req.query);
 
@@ -45,6 +49,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um único movimento literário por id.
+    // Valida que o id seja numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -66,6 +72,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um movimento literário existente.
+    // Aplica apenas os campos enviados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -110,6 +118,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um movimento literário pelo id.
+    // Verifica a existência do registro antes de deletar.
     try {
         const { id } = req.params;
 

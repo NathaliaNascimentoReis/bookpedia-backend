@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client para executar consultas e mutações no banco.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class MovimentosLiterariosModel {
@@ -12,6 +13,7 @@ export default class MovimentosLiterariosModel {
         fase,
         influencia,
     } = {}) {
+        // Esses campos representam as propriedades salvas no banco de dados.
         this.id = id;
         this.nome = nome;
         this.contextoHistorico = contextoHistorico;
@@ -23,8 +25,9 @@ export default class MovimentosLiterariosModel {
         this.influencia = influencia;
     }
 
-
     async criar(idLivroParaConectar = null) {
+        // Cria um novo registro de movimento literário no banco.
+        // Caso seja passado um id de livro, conecta o movimento literário a esse livro.
 
         const data = {
             nome: this.nome,
@@ -38,6 +41,7 @@ export default class MovimentosLiterariosModel {
         };
 
         if (idLivroParaConectar) {
+            // Conecta o novo movimento literário ao livro existente pelo id.
             data.livros = {
                 connect: { id: parseInt(idLivroParaConectar, 10) },
             };
@@ -47,6 +51,8 @@ export default class MovimentosLiterariosModel {
     }
 
     async atualizar() {
+        // Atualiza um movimento literário existente no banco de dados.
+        // Exige que o id esteja definido na instância.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -67,6 +73,8 @@ export default class MovimentosLiterariosModel {
     }
 
     async deletar() {
+        // Remove o movimento literário do banco usando seu id.
+        // Se não houver id, lança um erro para evitar exclusão inválida.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -75,6 +83,8 @@ export default class MovimentosLiterariosModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca movimentos literários aplicando filtros opcionais.
+        // Permite pesquisar por nome, influência e livros relacionados.
         const where = {};
 
         if (filtros.nome) {
@@ -97,6 +107,7 @@ export default class MovimentosLiterariosModel {
     }
 
     static async buscarPorId(id) {
+        // Busca um único movimento literário por id e inclui os livros relacionados.
         const data = await prisma.movimentosLiterarios.findUnique({
             where: { id: parseInt(id, 10) },
             include: { livros: true },

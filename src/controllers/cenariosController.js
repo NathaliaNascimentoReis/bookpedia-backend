@@ -1,18 +1,34 @@
 import CenariosModel from '../models/CenariosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador para criação de cenários.
+    // Recebe dados via req.body, valida campos obrigatórios e delega ao modelo.
     try {
-        const { nome, nomeEn, caracteristicas, caracteristicasEn, descricao, descricaoEn, fotoURL, idDoLivro } = req.body;
+        const {
+            nome,
+            nomeEn,
+            caracteristicas,
+            caracteristicasEn,
+            descricao,
+            descricaoEn,
+            fotoURL,
+            idDoLivro,
+        } = req.body;
 
-        // Validações básicas de presença
+        // Validações de presença
         if (!nome) return res.status(400).json({ error: 'O campo "nome" é obrigatório.' });
         if (!nomeEn) return res.status(400).json({ error: 'O campo "nomeEn" é obrigatório.' });
-        if (!caracteristicas) return res.status(400).json({ error: 'O campo "caracteristicas" é obrigatório.' });
-        if (!caracteristicasEn) return res.status(400).json({ error: 'O campo "caracteristicasEn" é obrigatório.' });
-        if (!descricao) return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
-        if (!descricaoEn) return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
+        if (!caracteristicas)
+            return res.status(400).json({ error: 'O campo "caracteristicas" é obrigatório.' });
+        if (!caracteristicasEn)
+            return res.status(400).json({ error: 'O campo "caracteristicasEn" é obrigatório.' });
+        if (!descricao)
+            return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
+        if (!descricaoEn)
+            return res.status(400).json({ error: 'O campo "descricaoEn" é obrigatório.' });
         if (!fotoURL) return res.status(400).json({ error: 'O campo "fotoURL" é obrigatório.' });
-        if (!idDoLivro) return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
+        if (!idDoLivro)
+            return res.status(400).json({ error: 'O campo "idDoLivro" é obrigatório.' });
 
         const item = new CenariosModel(req.body);
         const data = await item.criar();
@@ -25,6 +41,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador para buscar todos os cenários, com filtros opcionais.
+    // Retorna uma lista ou mensagem de nenhum registro encontrado.
     try {
         const registros = await CenariosModel.buscarTodos(req.query);
 
@@ -40,6 +58,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um único cenário pelo id.
+    // Valida o id como numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -61,6 +81,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um cenário existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -101,6 +123,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um cenário pelo id.
+    // Garante que o registro exista antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 

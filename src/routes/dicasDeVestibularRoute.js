@@ -3,6 +3,9 @@ import * as controller from '../controllers/dicasDeVestibularController.js';
 
 const router = express.Router();
 
+
+
+//rotas
 router.post('/', controller.criar);
 router.get('/', controller.buscarTodos);
 router.get('/:id', controller.buscarPorId);

@@ -1,6 +1,8 @@
 import VideosModel from '../models/VideosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar um novo vídeo.
+    // Valida campos obrigatórios e usa o modelo para persistir o registro.
     try {
         const { titulo, descricao, url, idDoLivro } = req.body;
 
@@ -19,6 +21,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador que retorna todos os vídeos conforme filtros enviados.
+    // Retorna mensagem quando nenhum registro é encontrado.
     try {
         const registros = await VideosModel.buscarTodos(req.query);
 
@@ -34,6 +38,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um vídeo pelo id.
+    // Verifica se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -55,6 +61,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar os dados de um vídeo existente.
+    // Atualiza apenas os campos enviados no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -83,7 +91,9 @@ export const atualizar = async (req, res) => {
         const data = await item.atualizar();
 
         return res.status(200).json({
-            message: `O registro "${data.titulo || data.nome || data.id}" foi atualizado com sucesso!`,
+            message: `O registro "${
+                data.titulo || data.nome || data.id
+            }" foi atualizado com sucesso!`,
             data,
         });
     } catch (error) {
@@ -93,6 +103,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um vídeo pelo id.
+    // Confirma a existência do registro antes de deletar.
     try {
         const { id } = req.params;
 
@@ -109,7 +121,9 @@ export const deletar = async (req, res) => {
         await item.deletar();
 
         return res.status(200).json({
-            message: `O registro "${item.titulo || item.nome || item.id}" foi deletado com sucesso!`,
+            message: `O registro "${
+                item.titulo || item.nome || item.id
+            }" foi deletado com sucesso!`,
             deletado: item,
         });
     } catch (error) {

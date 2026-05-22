@@ -1,3 +1,4 @@
+// Importa a instância do Prisma Client usada pelo modelo para acessar o banco de dados.
 import prisma from '../lib/services/prismaClient.js';
 
 export default class MembrosModel {
@@ -15,6 +16,7 @@ export default class MembrosModel {
         opiniao,
         idDoProjeto = null,
     } = {}) {
+        // Esse modelo representa um participante associado a um projeto.
         this.id = id;
         this.nome = nome;
         this.idade = idade;
@@ -30,6 +32,7 @@ export default class MembrosModel {
     }
 
     async criar() {
+        // Cria um novo membro no banco de dados usando os valores da instância.
 
         return prisma.membros.create({
             data: {
@@ -49,10 +52,11 @@ export default class MembrosModel {
     }
 
     async atualizar() {
+        // Atualiza o registro de membro existente identificado pelo id.
+        // Lança erro se o id não estiver presente na instância.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
-
 
         return prisma.membros.update({
             where: { id: parseInt(this.id, 10) },
@@ -73,6 +77,8 @@ export default class MembrosModel {
     }
 
     async deletar() {
+        // Exclui o membro do banco de dados usando seu id.
+        // Caso o id não esteja definido, evita a operação.
         if (!this.id) {
             throw new Error('ID não fornecido.');
         }
@@ -81,6 +87,8 @@ export default class MembrosModel {
     }
 
     static async buscarTodos(filtros = {}) {
+        // Busca todos os membros aplicando filtros opcionais.
+        // Permite pesquisar por nome, curso, cargo e id do projeto.
         const where = {};
         const idDoProjeto = filtros.idDoProjeto;
 
@@ -105,25 +113,26 @@ export default class MembrosModel {
         }
 
         return prisma.membros.findMany({
+            // Aqui é usado o filtro de projeto para retornar apenas membros do projeto informado.
             where: {
                 idDoProjeto: idDoProjeto ? Number(idDoProjeto) : undefined,
             },
             include: {
                 projetos: true,
-            }
-
-           
+            },
         });
     }
 
     static async buscarPorId(id) {
+        // Busca um membro pelo seu id e inclui o projeto associado.
+        // Retorna null caso o registro não exista.
         const data = await prisma.membros.findUnique({
-           where: {
-            id: Number(id),
-           },
-           include: {
-            projetos: true,
-           }
+            where: {
+                id: Number(id),
+            },
+            include: {
+                projetos: true,
+            },
         });
 
         if (!data) return null;

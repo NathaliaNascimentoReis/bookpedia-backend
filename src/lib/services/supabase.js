@@ -1,3 +1,5 @@
+// Este arquivo é responsável por configurar e exportar a instância do cliente Supabase, que é usada para interagir com o banco de dados Supabase em toda a aplicação.
+
 import { createClient } from '@supabase/supabase-js';
 
 import 'dotenv/config';

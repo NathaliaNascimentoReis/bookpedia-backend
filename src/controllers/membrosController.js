@@ -1,6 +1,8 @@
 import MembrosModel from '../models/MembrosModel.js';
 
 export const criar = async (req, res) => {
+    // Controlador responsável por criar um novo membro.
+    // Valida campos obrigatórios e delega a criação ao modelo.
     try {
         const {
             nome, idade, curso, descricao, cursoEn, descricaoEn,
@@ -32,6 +34,8 @@ export const criar = async (req, res) => {
 };
 
 export const buscarTodos = async (req, res) => {
+    // Controlador para listar todos os membros.
+    // Aceita filtros pela query string e retorna os resultados encontrados.
     try {
         const registros = await MembrosModel.buscarTodos(req.query);
 
@@ -47,6 +51,8 @@ export const buscarTodos = async (req, res) => {
 };
 
 export const buscarPorId = async (req, res) => {
+    // Controlador para buscar um membro por id.
+    // Valida se o id é numérico antes de consultar o modelo.
     try {
         const { id } = req.params;
 
@@ -68,6 +74,8 @@ export const buscarPorId = async (req, res) => {
 };
 
 export const atualizar = async (req, res) => {
+    // Controlador para atualizar um membro existente.
+    // Aplica apenas os campos fornecidos no corpo da requisição.
     try {
         const { id } = req.params;
 
@@ -114,6 +122,8 @@ export const atualizar = async (req, res) => {
 };
 
 export const deletar = async (req, res) => {
+    // Controlador para excluir um membro pelo id.
+    // Confirma a existência do registro antes de chamar o modelo para deletar.
     try {
         const { id } = req.params;
 

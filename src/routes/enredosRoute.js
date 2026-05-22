@@ -3,6 +3,7 @@ import * as controller from '../controllers/enredosController.js';
 
 const router = express.Router();
 
+//rotas
 router.post('/', controller.criar);
 router.get('/', controller.buscarTodos);
 router.get('/:id', controller.buscarPorId);
