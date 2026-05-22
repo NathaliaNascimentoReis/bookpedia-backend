@@ -69,7 +69,7 @@ async function main() {
 
     const vocabularioItems = [
         {
-            palavra: 'Catachisna',
+            palavra: 'Cataclisma: ',
             palavraEn: 'Cataclysm',
             significado: 'Desastre natural de grandes proporções',
             significadoEn: 'A natural disaster of great proportions',
@@ -88,7 +88,7 @@ async function main() {
         },
         {
             palavra: 'Cabeços',
-            palavraEn: 'Hilltops',
+            palavraEn: 'Knoll',
             significado: 'Pequenos montes de cume, elevação de terreno',
             significadoEn: 'Small hills or elevated landforms',
         },
@@ -124,7 +124,7 @@ async function main() {
         },
         {
             palavra: 'Indômito',
-            palavraEn: 'Untamed',
+            palavraEn: 'Indomitable',
             significado: 'Algo ou alguém indomável, rebelde',
             significadoEn: 'Someone or something rebellious or impossible to tame',
         },
@@ -136,7 +136,7 @@ async function main() {
         },
         {
             palavra: 'Lajedo',
-            palavraEn: 'Rocky Plateau',
+            palavraEn: 'Slabstone',
             significado: 'Grande extensão de rocha plana, pavimento de pedra',
             significadoEn: 'A large flat rock formation',
         },
@@ -154,7 +154,7 @@ async function main() {
         },
         {
             palavra: 'Cingidos',
-            palavraEn: 'Bound/Covered',
+            palavraEn: 'Girdded',
             significado: 'Envolvido, cercado, ou coberto',
             significadoEn: 'Surrounded, wrapped, or covered',
         },
@@ -178,7 +178,7 @@ async function main() {
         },
         {
             palavra: 'Parafina',
-            palavraEn: 'Paraffin/Organic Layer',
+            palavraEn: 'Paraffin',
             significado: 'Camada de matéria orgânica',
             significadoEn: 'A layer of organic material',
         },
@@ -190,13 +190,13 @@ async function main() {
         },
         {
             palavra: 'Enfado',
-            palavraEn: 'Weariness',
+            palavraEn: 'Boredom',
             significado: 'Mal-estar, tédio, algo maçante ou monótono',
             significadoEn: 'Boredom, discomfort, something tedious or monotonous',
         },
         {
             palavra: 'Anexim',
-            palavraEn: 'Proverb',
+            palavraEn: 'Attachment',
             significado: 'Frase curta rimada, dito popular',
             significadoEn: 'A short rhyming popular saying',
         },
@@ -220,12 +220,12 @@ async function main() {
         },
         {
             palavra: 'Clavina',
-            palavraEn: 'Small Club',
+            palavraEn: 'Clavine',
             significado: 'Pequena clava',
             significadoEn: 'A small mace or club',
         },
         {
-            palavra: 'Dileastes',
+            palavra: 'Dicastes',
             palavraEn: 'Warriors/Fighters',
             significado: 'Pessoas que lutavam, batalhavam',
             significadoEn: 'People who fought or battled',
@@ -426,7 +426,7 @@ async function main() {
                 enunciadoEn:
                     '"Peri was no longer the Indian who had been there just a moment ago; he was a sovereign; the majesty of genius and courage illuminated his bronzed brow (...)" Considering the representation of Peri in the novel O Guarani, by José de Alencar, and the context of Brazilian Romanticism, choose the correct alternative: ',
                 vestibular: 'FUVEST',
-                anoVestibular: '?',
+                anoVestibular: 2019,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -447,8 +447,10 @@ async function main() {
                         alternativaDEn:
                             'The author uses the figure of the indigenous person to openly criticize Portuguese colonization and denounce the massacre of native tribes.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'Peri é um exemplo do “herói indianista” do Romantismo brasileiro. O Guarani idealiza o indígena para criar uma figura nacional heroica, comparável aos cavaleiros medievais europeus.',
+                        justificativaEn:
+                            'Peri is an example of the "Indianist hero" of Brazilian Romanticism. The Guarani idealizes the indigenous person to create a heroic national figure, comparable to medieval European knights.',
                     },
                 },
             },
@@ -458,7 +460,7 @@ async function main() {
                 enunciadoEn:
                     'In O Guarani, the couple Peri and Cecília embodies the founding myth of Brazilian identity. However, for this romantic pair to consolidate at the end of the narrative in accordance with the morality of the time, a highly important symbolic event must take place. This event is: ',
                 vestibular: 'UNICAMP',
-                anoVestibular: '?',
+                anoVestibular: 2016,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -479,8 +481,10 @@ async function main() {
                         alternativaDEn:
                             'The acceptance of Cecília as a legitimate member of the Goitacás tribe after the marriage ritual.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'O batismo cristão de Peri simboliza sua integração à ordem cristã e patriarcal. Isso torna aceitável, dentro da moral do século XIX, sua união simbólica com Cecília.',
+                        justificativaEn:
+                            'Peri’s Christian baptism symbolizes his integration into the Christian and patriarchal order. This makes his symbolic union with Cecilia acceptable within the morals of the 19th century.',
                     },
                 },
             },
@@ -490,7 +494,7 @@ async function main() {
                 enunciadoEn:
                     'Regarding the villain Loredano, a character in O Guarani, by José de Alencar, choose the correct alternative:',
                 vestibular: 'UNESP',
-                anoVestibular: '?',
+                anoVestibular: 2017,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -511,8 +515,10 @@ async function main() {
                         alternativaDEn:
                             ' He represents the force of law and order from the metropolis, clashing with the feudal isolation of Dom Antônio.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'Loredano é um ex-frade italiano ambicioso e manipulador. Ele deseja Cecília e lidera os aventureiros contra Dom Antônio, funcionando como principal antagonista humano da narrativa.',
+                        justificativaEn:
+                            'Loredano is an ambitious and manipulative former Italian friar. He desires Cecilia and leads the adventurers against Dom Antônio, serving as the main human antagonist in the narrative.',
                     },
                 },
             },
@@ -522,7 +528,7 @@ async function main() {
                 enunciadoEn:
                     'Regarding the narrative structure and the context of publication of O Guarani, choose the correct statement:',
                 vestibular: 'MACKENZIE',
-                anoVestibular: '?',
+                anoVestibular: 2019,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -543,8 +549,10 @@ async function main() {
                         alternativaDEn:
                             'The narrative focus is in the first person, with the story told entirely from Cecília’s perspective in her old age.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'O romance foi publicado inicialmente em folhetins de jornal. Por isso há muitos momentos de suspense, ação intensa e “ganchos” no fim dos capítulos para prender o leitor.',
+                        justificativaEn:
+                            'The novel was initially published in newspaper installments. Therefore, there are many moments of suspense, intense action, and cliffhangers at the end of each chapter to keep the reader hooked.',
                     },
                 },
             },
@@ -554,7 +562,7 @@ async function main() {
                 enunciadoEn:
                     'Consider the statements below regarding the female characters Cecília and Isabel in O Guarani: I. Cecília is the typical idealized romantic heroine: blonde, blue-eyed, fragile, and associated with purity. II. Isabel carries the stigma of miscegenation (the daughter of Dom Antônio with an indigenous woman), representing a darker, more realistic, and unhappy passion. III. Isabel and Cecília fiercely dispute Peri’s love, which constitutes the main love triangle of the primary plot. Which statement(s) is/are correct? ',
                 vestibular: 'UFRGS',
-                anoVestibular: '?',
+                anoVestibular: 2017,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -567,8 +575,10 @@ async function main() {
                         alternativaD: ' I, II e III',
                         alternativaDEn: 'I, II, and III.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'Apenas I e II. I é verdadeira: Cecília representa a heroína romântica idealizada, pura e angelical. II é verdadeira: Isabel possui características mais passionais e dramáticas, ligadas ao tema da miscigenação. III é falsa: Isabel não disputa centralmente o amor de Peri; o principal vínculo amoroso é entre Peri e Cecília.',
+                        justificativaEn:
+                            'Only I and II. I is true: Cecília represents the idealized romantic heroine, pure and angelic. II is true: Isabel possesses more passionate and dramatic characteristics, linked to the theme of miscegenation. III is false: Isabel does not centrally compete for Peri’s love; the main romantic bond is between Peri and Cecília.',
                     },
                 },
             },
@@ -578,7 +588,7 @@ async function main() {
                 enunciadoEn:
                     'The setting in O Guarani, particularly the nature surrounding the Paquequer River and the household of Dom Antônio de Mariz, plays a fundamental role in Romantic aesthetics. This role consists of:',
                 vestibular: 'FUVEST',
-                anoVestibular: '?',
+                anoVestibular: 2018,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -599,8 +609,10 @@ async function main() {
                         alternativaDEn:
                             'Presenting a purely scientific and geographical view of the territory of Rio de Janeiro.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'A natureza no Romantismo participa emocionalmente da narrativa. Em O Guarani, ela acompanha os conflitos, a tensão e os momentos de harmonia das personagens.',
+                        justificativaEn:
+                            'In Romanticism, nature plays an emotional role in the narrative. In O Guarani, it accompanies the conflicts, tension, and moments of harmony of the characters.',
                     },
                 },
             },
@@ -610,7 +622,7 @@ async function main() {
                 enunciadoEn:
                     'The ending of O Guarani features a famous scene in which Peri and Cecília find themselves isolated in the middle of a violent flood, floating on the canopy of a palm tree torn apart by the waters. This famous final scene carries a strong symbolism that represents: ',
                 vestibular: 'PUC-PR',
-                anoVestibular: '?',
+                anoVestibular: 2018,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -631,8 +643,10 @@ async function main() {
                         alternativaDEn:
                             'A purely melodramatic entertainment device, without any political or ideological intention on the part of José de Alencar.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'A cena final possui forte simbolismo mítico e nacionalista. Peri e Cecília funcionam como uma espécie de “Adão e Eva brasileiros”, associados à origem simbólica do povo brasileiro.',
+                        justificativaEn:
+                            'The final scene possesses strong mythical and nationalistic symbolism. Peri and Cecília function as a kind of "Brazilian Adam and Eve," associated with the symbolic origin of the Brazilian people.',
                     },
                 },
             },
@@ -642,7 +656,7 @@ async function main() {
                 enunciadoEn:
                     'Considering Peri’s relationship with Dom Antônio de Mariz’s family, especially with Cecília, it is correct to state that his submission and voluntary servitude:',
                 vestibular: 'FUVEST',
-                anoVestibular: '?',
+                anoVestibular: 2017,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
@@ -663,13 +677,16 @@ async function main() {
                         alternativaDEn:
                             'Demonstrate the military superiority of the colonists, who managed to subjugate Peri through the force of firearms.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'A submissão de Peri reflete a visão da elite imperial do século XIX: o indígena era valorizado quando aparecia como fiel, dócil, cristianizado e integrado à sociedade patriarcal portuguesa.',
+                        justificativaEn:
+                            'Peri’s submission reflects the vision of the 19th-century imperial elite: indigenous people were valued when they appeared faithful, docile, Christianized, and integrated into Portuguese patriarchal society.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado:
+                    '“Muitos acontecimentos se tinham passado entre eles nestes dois dias; há circunstâncias em que os sentimentos marcham com uma rapidez extraordinária, e devoram meses e anos num só minuto. A reflexão do narrador revela: ',
                 enunciadoEn:
                     'Many events had taken place between them during these two days; there are circumstances in which feelings move with extraordinary speed and consume months and years in a single minute. The narrator’s reflection reveals:',
                 vestibular: 'VUNESP ',
@@ -677,152 +694,170 @@ async function main() {
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'A superioridade da razão sobre os sentimentos.',
                         alternativaAEn: 'The superiority of reason over feelings. ',
-                        alternativaB: '...',
+                        alternativaB: 'O caráter ilusório das paixões humanas.',
                         alternativaBEn: 'The illusory nature of human passions.',
-                        alternativaC: '...',
+                        alternativaC: 'A percepção subjetiva da passagem do tempo.',
                         alternativaCEn: 'The subjective perception of the passage of time.',
-                        alternativaD: '...',
+                        alternativaD: 'A crítica romântica ao casamento.',
                         alternativaDEn: 'The romantic criticism of marriage.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'O trecho mostra que o tempo é percebido de forma diferente conforme os sentimentos das personagens. Em momentos intensos, parece que muito tempo passou rapidamente, revelando uma visão subjetiva da passagem do tempo.',
+                        justificativaEn:
+                            'The excerpt shows that time is perceived differently depending on the characters feelings. In intense moments, it seems that a lot of time has passed quickly, revealing a subjective view of the passage of time.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado:
+                    'O indianismo romântico presente em O Guarani tinha como principal objetivo:',
                 enunciadoEn:
                     'The Romantic Indianism present in O Guarani had as its main objective:',
                 vestibular: 'FUVEST ',
-                anoVestibular: '...',
+                anoVestibular: 2016,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'Denunciar a exploração dos indígenas.',
                         alternativaAEn: 'To denounce the exploitation of Indigenous people. ',
-                        alternativaB: '...',
+                        alternativaB: 'Criar um herói nacional brasileiro.',
                         alternativaBEn: 'To create a Brazilian national hero.',
-                        alternativaC: '...',
+                        alternativaC: 'Aproximar a literatura brasileira do Naturalismo.',
                         alternativaCEn: 'To bring Brazilian literature closer to Naturalism.',
-                        alternativaD: '...',
+                        alternativaD: 'Defender exclusivamente costumes europeus.',
                         alternativaDEn: 'To defend exclusively European customs.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'No Romantismo brasileiro, o indígena foi idealizado como símbolo da nação. Peri representa coragem, honra e pureza, funcionando como um herói nacional brasileiro.',
+                        justificativaEn:
+                            'In Brazilian Romanticism, the indigenous person was idealized as a symbol of the nation. Peri represents courage, honor, and purity, functioning as a Brazilian national hero.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado: 'A personagem Peri representa:',
                 enunciadoEn: 'The character Peri represents:',
                 vestibular: 'UNESP ',
-                anoVestibular: '...',
+                anoVestibular: 2015,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'O anti-herói urbano do século XIX.',
                         alternativaAEn: 'The urban antihero of the 19th century. ',
-                        alternativaB: '...',
+                        alternativaB: 'A decadência dos valores indígenas.',
                         alternativaBEn: 'The decline of Indigenous values.',
-                        alternativaC: '...',
+                        alternativaC: 'A idealização do indígena brasileiro.',
                         alternativaCEn: 'The idealization of the Brazilian Indigenous person.',
-                        alternativaD: '...',
+                        alternativaD: 'O racionalismo científico europeu.',
                         alternativaDEn: 'European scientific rationalism.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'Peri é retratado como forte, leal, corajoso e moralmente perfeito. Essa construção exageradamente positiva é típica da idealização romântica do indígena.',
+                        justificativaEn:
+                            'Peri is portrayed as strong, loyal, courageous, and morally perfect. This exaggeratedly positive portrayal is typical of the romantic idealization of indigenous people.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado:
+                    'A natureza, no romance indianista romântico de José de Alencar, aparece:',
                 enunciadoEn: 'Nature, in the Romantic Indianist novel by José de Alencar, appears:',
                 vestibular: 'FUVEST ',
-                anoVestibular: '...',
+                anoVestibular: 2017,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'Apenas como elemento de fundo sem importância.',
                         alternativaAEn: 'Only as an unimportant background element. ',
-                        alternativaB: '...',
+                        alternativaB: 'Descrita de forma objetiva e científica.',
                         alternativaBEn: 'Described in an objective and scientific way.',
-                        alternativaC: '...',
+                        alternativaC: 'Associada aos sentimentos e à valorização nacional.',
                         alternativaCEn: 'Associated with feelings and national valorization.',
-                        alternativaD: '...',
+                        alternativaD: ' Como crítica ao atraso econômico brasileiro.',
                         alternativaDEn: 'As criticism of Brazilian economic backwardness.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'No Romantismo, a natureza tem forte valor emocional e nacionalista. Em O Guarani, ela reflete os sentimentos das personagens e ajuda a valorizar o Brasil e sua paisagem.',
+                        justificativaEn:
+                            'In Romanticism, nature holds strong emotional and nationalistic value. In O Guarani, it reflects the characters feelings and helps to highlight Brazil and its landscape.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado:
+                    '“Ele amava, ou julgava ainda amar Cecília; prometera a seu pai desposá-la…” A forma verbal “prometera” indica:',
                 enunciadoEn:
                     '"He loved, or thought he still loved Cecília; he had promised his father to become her husband…" The verb form “had promised” indicates:',
                 vestibular: 'VUNESP',
-                anoVestibular: '2017',
+                anoVestibular: 2017,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'Uma ação posterior.',
                         alternativaAEn: 'A later action. ',
-                        alternativaB: '...',
+                        alternativaB: 'Uma ação simultânea.',
                         alternativaBEn: 'A simultaneous action.',
-                        alternativaC: '...',
+                        alternativaC: 'Uma hipótese futura.',
                         alternativaCEn: 'A future hypothesis.',
-                        alternativaD: '...',
+                        alternativaD: 'Uma ação anterior a outra ação já passada.',
                         alternativaDEn: 'An action prior to another action already in the past.',
                         respostaCorreta: 'D',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'O verbo “prometer” está no pretérito mais-que-perfeito, indicando uma ação que aconteceu antes de outra ação também passada. Primeiro ele prometeu ao pai; depois ocorreram os outros fatos narrados.',
+                        justificativaEn:
+                            'The verb "prometer" is in the pluperfect tense, indicating an action that happened before another past action. First he promised his father; then the other narrated events occurred.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado:
+                    'A obra indianista de José de Alencar contribuiu para o Romantismo brasileiro porque:',
                 enunciadoEn:
                     'The Indianist work of José de Alencar contributed to Brazilian Romanticism because it:',
                 vestibular: 'FUVEST',
-                anoVestibular: '',
+                anoVestibular: 2019,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'Rejeitou elementos da cultura nacional.',
                         alternativaAEn: 'Rejected elements of national culture. ',
-                        alternativaB: '...',
+                        alternativaB: 'Valorizou o indígena como símbolo da nacionalidade.',
                         alternativaBEn: 'Valued the Indigenous person as a symbol of nationality.',
-                        alternativaC: '...',
+                        alternativaC: 'Aproximou-se exclusivamente do modelo clássico europeu.',
                         alternativaCEn: 'Approached exclusively the European classical model.',
-                        alternativaD: '...',
+                        alternativaD: ' Defendeu a objetividade científica.',
                         alternativaDEn: 'Defended scientific objectivity.',
                         respostaCorreta: 'B',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'José de Alencar ajudou a construir uma identidade nacional na literatura brasileira, usando o indígena como símbolo do país e valorizando elementos brasileiros.',
+                        justificativaEn:
+                            'José de Alencar helped build a national identity in Brazilian literature, using indigenous people as symbols of the country and valuing Brazilian elements.',
                     },
                 },
             },
             {
-                enunciado: '...',
+                enunciado: 'A relação entre Peri e Cecília simboliza:',
                 enunciadoEn: 'The relationship between Peri and Cecília symbolizes:',
                 vestibular: 'UNESP',
-                anoVestibular: '',
+                anoVestibular: 2018,
                 idDoLivro: livro.id,
                 alternativas: {
                     create: {
-                        alternativaA: '...',
+                        alternativaA: 'O conflito político entre colônia e metrópole.',
                         alternativaAEn: 'The political conflict between colony and metropolis. ',
-                        alternativaB: '...',
+                        alternativaB: 'A crítica ao sentimentalismo romântico.',
                         alternativaBEn: 'The criticism of Romantic sentimentalism.',
-                        alternativaC: '...',
+                        alternativaC: 'A união idealizada entre natureza e civilização.',
                         alternativaCEn: 'The idealized union between nature and civilization.',
-                        alternativaD: '...',
+                        alternativaD: 'A valorização do materialismo burguês.',
                         alternativaDEn: 'The valorization of bourgeois materialism.',
                         respostaCorreta: 'C',
-                        justificativa: '...',
-                        justificativaEn: '...',
+                        justificativa:
+                            'Peri representa a natureza e o indígena brasileiro; Cecília representa a civilização europeia. O romance entre os dois simboliza uma união harmoniosa e idealizada entre esses dois mundos.',
+                        justificativaEn:
+                            'Peri represents nature and the Brazilian indigenous people; Cecília represents European civilization. The romance between the two symbolizes a harmonious and idealized union between these two worlds.',
                     },
                 },
             },
@@ -859,9 +894,11 @@ async function main() {
                         descricao: 'Responsável pelo projeto.',
                         descricaoEn: 'Responsible for the project.',
                         cargo: 'PO',
+                        cargoEn: 'Product Owner',
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Victor Boehm',
@@ -871,9 +908,11 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
-                        avaliacaoDaObra: 7,
+                        cargoEn: 'Developer',
+                        avaliacaoDaObra: 5,
                         diasDeLeitura: 9,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Matheus Leitão',
@@ -885,10 +924,12 @@ async function main() {
                         descricaoEn:
                             'He likes technology and back-end programming, likes to help people in the group and always has good ideas for the project.',
                         cargo: 'Desenvolvedor',
+                        cargoEn: 'Developer',
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 28,
                         opiniao:
                             'O livro narra a história de Peri, um indígena que vive para proteger Cecília em meio a conflitos entre colonos e tribos inimigas. A trama é uma mistura de romance com aventura épica, cheia de atos heroicos e um final explosivo. O enredo é interessante, mas a linguagem difícil e as descrições excessivas tornam a leitura bem cansativa e lenta.',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Pedro Brito',
@@ -898,6 +939,7 @@ async function main() {
                         descricao: '...',
                         descricaoEn: '...',
                         cargo: 'Desenvolvedor',
+                        cargoEn: 'Developer',
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
                         opiniao: '...',
@@ -913,6 +955,7 @@ async function main() {
                         descricaoEn:
                             'He enjoys technology and development. He always helps with group organization and discussions about the project.',
                         cargo: 'Desenvolvedor',
+                        cargoEn: 'Developer',
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 30,
                         opiniao:
@@ -930,6 +973,7 @@ async function main() {
                         descricaoEn:
                             'He is interested in investigative and scientific books, and despite the difference in interests, he dedicated himself to reading and understanding the work. He always shows his proactivity and willingness to help the group achieve its goals.',
                         cargo: 'Designer',
+                        cargoEn: 'Designer',
                         avaliacaoDaObra: 3,
                         diasDeLeitura: 9,
                         opiniao:
@@ -942,12 +986,18 @@ async function main() {
                         idade: 16,
                         curso: 'Eletro Eletrônica',
                         cursoEn: 'Electronics Engineering',
-                        descricao: '...',
-                        descricaoEn: '...',
-                        cargo: '...',
-                        avaliacaoDaObra: 5,
-                        diasDeLeitura: 5,
-                        opiniao: '...',
+                        descricao:
+                            'Gosta de livros de romance e científicos, apesar da linguagem mais formal se empenhou na leitura e compreendeu a obra. Mostra a vontade de ajudar o grupo e pesquisar sobre o livro',
+                        descricaoEn:
+                            'She enjoys romance and science fiction books, and despite the more formal language, she put effort into reading and understanding the work. She shows a willingness to help the group and research the book.',
+                        cargo: 'Gestor de conteúdo',
+                        cargoEn: 'Content Manager',
+                        avaliacaoDaObra: 4,
+                        diasDeLeitura: 15,
+                        opiniao:
+                            'Na minha opinião, o livro foi interessante, mas um pouco difícil de ler por causa da linguagem antiga. Gostei do personagem Peri porque ele é muito leal e faz de tudo para proteger a Ceci. Mesmo sendo cansativo em algumas partes, o livro é importante para entender a literatura brasileira e a forma como os indígenas eram vistos naquela época.',
+                        opiniaoEn:
+                            'In my opinion, the book was interesting, but a bit difficult to read due to the old language. I liked the character Peri because he is very loyal and does everything to protect Ceci. Even though it was tiring at times, the book is important for understanding Brazilian literature and the way indigenous people were viewed at that time.',
                     },
                     {
                         nome: 'Gustavo Durães',
@@ -956,10 +1006,12 @@ async function main() {
                         cursoEn: 'Electronics Engineering',
                         descricao: '...',
                         descricaoEn: '...',
-                        cargo: '...',
-                        avaliacaoDaObra: 5,
-                        diasDeLeitura: 5,
+                        cargo: 'Gestor de conteúdo',
+                        cargoEn: 'Content Manager',
+                        avaliacaoDaObra: 3,
+                        diasDeLeitura: 44,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Henry',
@@ -968,10 +1020,12 @@ async function main() {
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
-                        cargo: '...',
+                        cargo: 'Gestor de conteúdo',
+                        cargoEn: 'Content Manager',
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Enzo Vecchi',
@@ -980,10 +1034,12 @@ async function main() {
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
-                        cargo: '...',
+                        cargo: 'Gestor de conteúdo',
+                        cargoEn: 'Content Manager',
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                     {
                         nome: 'Matheus Duarte',
@@ -992,10 +1048,12 @@ async function main() {
                         cursoEn: 'Mechanical Engineering',
                         descricao: '...',
                         descricaoEn: '...',
-                        cargo: '...',
-                        avaliacaoDaObra: 5,
-                        diasDeLeitura: 5,
+                        cargo: 'Gestor de conteúdo',
+                        cargoEn: 'Content Manager',
+                        avaliacaoDaObra: 4,
+                        diasDeLeitura: 30,
                         opiniao: '...',
+                        opiniaoEn: ''
                     },
                 ],
             },
