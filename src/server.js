@@ -14,6 +14,7 @@ import projetosRoutes from './routes/projetosRoute.js';
 import questoesRoutes from './routes/questoesRoute.js';
 import videosRoutes from './routes/videosRoute.js';
 import vocabularioRoutes from './routes/vocabularioRoute.js';
+import temasDeVestibularRoutes from './routes/temasDeVestibularRoute.js'
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -39,6 +40,7 @@ app.use('/projetos', apiKey, projetosRoutes);
 app.use('/questoes', apiKey, questoesRoutes);
 app.use('/videos', apiKey, videosRoutes);
 app.use('/vocabulario', apiKey, vocabularioRoutes);
+app.use('/temas-de-vestibular', apiKey, temasDeVestibularRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ error: 'Rota não encontrada' });
