@@ -1145,16 +1145,40 @@ async function main() {
     await prisma.dicasDeVestibular.createMany({
         data: [
             {
-                titulo: 'Observe o narrador',
-                tituloEn: 'Observe the narrator',
-                dica: 'Preste atenção em como a voz narrativa influencia a leitura da obra.',
-                dicaEn: 'Pay attention to how the narrative voice influences the reading of the work.',
+                titulo: 'Leitura ativa',
+                tituloEn: 'Active reading',
+                dica: 'Sublinhar palavras-chave e anotar ideias principais melhora a interpretação e economiza tempo na prova.',
+                dicaEn: 'Highlighting keywords and noting main ideas improves comprehension and saves time during exams.',
             },
             {
-                titulo: 'Estude o contexto',
-                tituloEn: 'Study the context',
-                dica: 'Relacione o romance ao Realismo e às transformações do século XIX.',
-                dicaEn: 'Connect the novel to Realism and the transformations of the 19th century.',
+                titulo: 'Treino com provas antigas',
+                tituloEn: 'Practice with past exams',
+                dica: 'Resolver vestibulares anteriores ajuda a entender o estilo das questões e a administrar melhor o tempo.',
+                dicaEn: 'Solving previous entrance exams helps you understand question styles and manage time better.',
+            },
+            {
+                titulo: 'Interpretação antes da decoreba',
+                tituloEn: 'Interpretation before memorization',
+                dica: 'Muitas provas valorizam a capacidade de interpretar textos e gráficos mais do que decorar conteúdos.',
+                dicaEn: 'Many exams value the ability to interpret texts and graphs more than memorizing content.',
+            },
+            {
+                titulo: 'Redação faz diferença',
+                tituloEn: 'Essay writing makes a difference',
+                dica: 'Treinar redação frequentemente melhora argumentação, repertório e nota final.',
+                dicaEn: 'Practicing essays frequently improves argumentation, knowledge repertoire, and final scores.',
+            },
+            {
+                titulo: 'Erros também ensinam',
+                tituloEn: 'Mistakes also teach',
+                dica: 'Revisar questões erradas ajuda a identificar padrões de distração e falhas de interpretação.',
+                dicaEn: 'Reviewing incorrect answers helps identify distraction patterns and interpretation mistakes.',
+            },
+            {
+                titulo: 'Concentração é habilidade',
+                tituloEn: 'Concentration is a skill',
+                dica: 'Ler sem distrações diariamente fortalece foco e resistência mental para provas longas.',
+                dicaEn: 'Reading daily without distractions strengthens focus and mental endurance for long exams.',
             },
         ],
     });
