@@ -30,6 +30,7 @@ model Livro {
     videos             Videos[]
     curiosidades       Curiosidades[]
     questoes           Questoes[]
+    temasDeVestibular   TemasDeVestibular[]
 
     @@map("livro")
 }
@@ -121,7 +122,7 @@ model MovimentosLiterarios {
     caracteristicasEn   String
     periodo             String
     fase                String
-    faseTexto          String
+    faseTexto           String
 
     livros Livro[]
 
@@ -204,6 +205,7 @@ model Membros {
     diasDeLeitura   Int
     opiniao         String
     opiniaoEn       String
+    fotoURL         String
 
     idDoProjeto Int
     projetos    Projetos @relation(fields: [idDoProjeto], references: [id], onDelete: Cascade)
@@ -240,3 +242,15 @@ model DicasDeVestibular {
 
     @@map("dicasDeVestibular")
 }
+
+    model TemasDeVestibular {
+        id              Int    @id @default(autoincrement())
+        tema            String
+        temaEn          String
+        temaDescricao   String
+        temaDescricaoEn String
+        livro           Livro? @relation(fields: [livroId], references: [id])
+        livroId         Int?
+
+        @@map("temasDeVestibular")
+    }
