@@ -32,6 +32,7 @@ model Livro {
     questoes           Questoes[]
     temasDeVestibular   TemasDeVestibular[]
 
+
     @@map("livro")
 }
 
@@ -48,7 +49,8 @@ model Autores {
     biografiaEn         String
     fotoURL             String
 
-    livros Livro[]
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("autores")
 }
@@ -108,9 +110,11 @@ model Vocabulario {
     significado   String
     significadoEn String
 
-    livros Livro[]
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("vocabulario")
+
 }
 
 model MovimentosLiterarios {
@@ -124,7 +128,9 @@ model MovimentosLiterarios {
     fase                String
     faseTexto           String
 
-    livros Livro[]
+
+    idDoLivro Int
+    livro     Livro @relation(fields: [idDoLivro], references: [id], onDelete: Cascade)
 
     @@map("movimentosLiterarios")
 }
@@ -251,6 +257,7 @@ model DicasDeVestibular {
         temaDescricaoEn String
         livro           Livro? @relation(fields: [livroId], references: [id])
         livroId         Int?
+    
 
         @@map("temasDeVestibular")
     }

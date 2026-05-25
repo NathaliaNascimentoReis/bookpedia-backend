@@ -10,10 +10,12 @@ export const criar = async (req, res) => {
             fase, faseTexto, idDoLivro
         } = req.body;
 
-        // Validações de presença
+        
+
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
         if (!contextoHistorico) return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
-         if (!contextoHistoricoEn)
+        if (!contextoHistoricoEn)
              return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
         if (!caracteristicas) return res.status(400).json({ error: 'As características são obrigatórias.' });
         if (!caracteristicasEn)

@@ -112,8 +112,15 @@ export default class LivroModel {
             where,
             include: {
                 autores: true,
-                movimentoLiterario: true,
+                enredos: true,
+                cenarios: true,
                 personagens: true,
+                movimentosLiterarios: true,
+                vocabularios: true,
+                videos: true,
+                curiosidades: true,
+                questoes: true,
+                temasDeVestibular: true,
             },
         });
     }
@@ -125,11 +132,26 @@ export default class LivroModel {
             where: { id: parseInt(id, 10) },
             include: {
                 autores: true,
-                movimentoLiterario: true,
+                enredos: true,
+                cenarios: true,
                 personagens: true,
+                movimentosLiterarios: true,
+                vocabularios: true,
+                videos: true,
+                curiosidades: true,
+                questoes: true,
+                temasDeVestibular: true,
             },
         });
+       
         if (!data) return null;
-        return new LivroModel(data);
+
+    const instancia = new LivroModel(data);
+
+    // O construtor não salva as relações (autores, personagens, etc), 
+    // então tive que por o Object.assign, em que ele "anexa" esses dados à instância para o Front receber.
+    Object.assign(instancia, data);
+
+    return instancia;
     }
 }

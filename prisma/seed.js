@@ -28,6 +28,29 @@ async function main() {
 
     console.log('📦 Inserindo novos registros...');
 
+     const livro = await prisma.livro.create({
+
+        data: {
+            tituloDoLivro: 'O Guarani',
+            tituloDoLivroEn: 'The Guarani',
+            descricao:
+                'A história se passa no século XVII e conta o amor impossível entre Peri, um índio guarani nobre e corajoso, e Cecília, filha de um fidalgo português. Ambientado em uma fazenda-fortaleza no interior do Brasil, o romance mistura aventura, heroísmo, perigos da floresta e intrigas indígenas.',
+            descricaoEn:
+                'The story takes place in the 17th century and tells the impossible love between Peri, a noble and brave Guarani Indian, and Cecília, daughter of a Portuguese nobleman. Set in a farm-fortress in the interior of Brazil, the novel combines adventure, heroism, forest dangers, and indigenous intrigues.',
+            contextoHistorico:
+                'O Guarani, de José de Alencar, foi publicado em 1857, no período do Romantismo brasileiro. A obra faz parte do indianismo, movimento que valorizava o indígena como símbolo nacional após a independência do Brasil. A história se passa no período colonial e apresenta o índio Peri como herói idealizado.',
+            contextoHistoricoEn:
+                "The Guarani, by José de Alencar, was published in 1857, during the Brazilian Romanticism period. The work is part of the indianism movement, which valued the indigenous people as a national symbol after Brazil's independence. The story takes place in the colonial period and presents the indigenous hero Peri.",
+            anoDeLancamento: 1857,
+            resumo: 'O Guarani conta a história de Peri, um indígena corajoso e leal que protege Cecília, filha de um fidalgo português. Durante a trama, eles enfrentam ataques indígenas, traições e perigos na floresta. O livro mistura romance e aventura, mostrando o amor idealizado entre Peri e Cecília.',
+            resumoEn:
+                'The Guarani tells the story of Peri, a brave and loyal indigenous man who protects Cecília, daughter of a Portuguese nobleman. Throughout the plot, they face indigenous attacks, betrayals, and dangers in the forest. The book combines romance and adventure, showing the idealized love between Peri and Cecília.',
+            analise: '...',
+            analiseEn: '...',
+            capaURL: 'https://m.media-amazon.com/images/I/7125-MeD+KL._AC_UF1000,1000_QL80_.jpg',
+        },
+    });
+
     const movimento = await prisma.movimentosLiterarios.create({
         data: {
             nome: 'Romantismo',
@@ -43,6 +66,7 @@ async function main() {
             fase: 'Romantismo Brasileiro',
             faseTexto:
                 'O Romantismo no Brasil é dividido em três grandes momentos: a Primeira Geração (Indianista), focada na criação de um herói nacional e na exaltação da natureza; a Segunda Geração (Ultrarromântica), marcada pelo pessimismo, subjetivismo profundo e a Terceira Geração (Condoreira), voltada para questões sociais e a luta abolicionista.',
+            idDoLivro: livro.id
         },
     });
 
@@ -65,6 +89,7 @@ async function main() {
                 'José de Alencar (1829-1877) was one of the greatest exponents of Brazilian literature, establishing himself as a novelist, playwright, journalist, lawyer, and politician. Born on May 1, 1829, at the Alagadiço Novo site in Mecejana, Ceará, he was the son of José Martiniano de Alencar — an imperial senator and former priest — and Ana Josefina. His lineage was marked by strong political engagement, being the grandson of Bárbara de Alencar, a heroine of the Pernambucan Revolution and considered the first female political prisoner in Brazil. At age 11, he moved with his family to Rio de Janeiro, where he entered the College of Elementary Instruction. From an early age, he lived among the backstages of power, witnessing in his own home the negotiations for the majority of Dom Pedro II in 1840. He began his Law studies at the Faculty of Largo de São Francisco, in São Paulo, and completed the course at the Faculty of Law of Olinda, in Pernambuco, in the year 1851. His literary vocation awakened at age 15, inspired by the success of "A Moreninha" by Joaquim Manuel de Macedo, which led him to immerse himself in reading the most influential authors of the time, such as Alexandre Dumas, Balzac, and Lord Byron. His first sketches, such as "Os Contrabandistas" and "O Ermitão da Glória," date from this time, although they were only published or finished much later. Back in Rio de Janeiro, he practiced law and entered the press. In "Correio Mercantil," he wrote the column "Ao Correr da Pena," commenting on daily life in Rio. As editor-in-chief of "Diário do Rio," he published his first serialized novel, "Cinco Minutos" (1856), followed by the resounding success of "O Guarani" (1857), which later inspired the opera by Carlos Gomes. In politics, he was a deputy for Ceará for the Conservative Party and reached the position of Minister of Justice in 1868. Despite being elected senator in 1870, he was not chosen by Dom Pedro II, with whom he maintained a strained relationship, especially after his criticisms published in "Cartas a Erasmo" under a pseudonym. His literary work is vast and multifaceted, divided into four main phases: the Indianist, with "Iracema," "O Guarani," and "Ubirajara"; the Historical, with "As Minas de Prata" and "A Guerra dos Mascates"; the Regionalist, portraying the customs of Brazil in "O Gaúcho" and "O Sertanejo"; and the Urban, which analyzed the Rio society of the Second Reign in books such as "Senhora," "Lucíola," and "Diva." In "Iracema," he created a legend about the origins of Ceará through the love between the Tabajara virgin and the Portuguese Martins, while in "Senhora," he built one of the strongest female profiles in our literature with the character Aurélia Camargo. In addition to novels, he wrote poems such as "Os Filhos de Tupã" and plays such as "O Demônio Familiar." Married to Georgina in 1864, he had four children, including the writer Mário Alencar. At the end of his life, he faced severe criticism and health weakened by tuberculosis. After an unsuccessful trip to Europe in search of improvement for his health, José de Alencar passed away in Rio de Janeiro on December 12, 1877, at age 48. Recognized by Machado de Assis as the "chief of national literature," he was chosen by Machado himself as the patron of Chair No. 23 of the Brazilian Academy of Letters. In 1897, a statue in his honor was inaugurated at Praça José de Alencar, in Flamengo, Rio de Janeiro, celebrating his legacy as the main Brazilian novelist of the Romantic phase.',
             fotoURL:
                 'https://academiacearensedeletras.org.br/wp-content/uploads/2020/11/JOSE-DE-ALENCAR.jpg',
+                idDoLivro: livro.id
         },
     });
 
@@ -74,168 +99,196 @@ async function main() {
             palavraEn: 'Cataclysm',
             significado: 'Desastre natural de grandes proporções',
             significadoEn: 'A natural disaster of great proportions',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Sertões',
             palavraEn: 'Backlands',
             significado: 'Lugar de "sertão", refere-se ao termo após o interior',
             significadoEn: 'Remote inland regions, countryside, reservoirs / seasonal rains',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Monções',
             palavraEn: 'Monsoons',
             significado: 'Reservatórios naturais de água',
             significadoEn: 'Seasonal rains and water reservoirs',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Cabeços',
             palavraEn: 'Knoll',
             significado: 'Pequenos montes de cume, elevação de terreno',
             significadoEn: 'Small hills or elevated landforms',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Várzea',
             palavraEn: 'Floodplain',
             significado: 'Terreno plano, fértil e extenso',
             significadoEn: 'Flat, fertile, and extensive land',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Suserano',
             palavraEn: 'Suzerain',
             significado: 'Senhor feudal que doava feudos a outro nobre',
             significadoEn: 'A feudal lord who granted lands to another noble',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Vassalo',
             palavraEn: 'Vassal',
             significado: 'Um nobre que recebia feudos de outro nobre',
             significadoEn: 'A noble who received lands from another noble',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Sobranceiro',
             palavraEn: 'Overbearing',
             significado: 'Alguém em uma posição superior, arrogante',
             significadoEn: 'Someone arrogant or in a superior position',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Resvalar',
             palavraEn: 'Slip',
             significado: 'Escorregar, deslize',
             significadoEn: 'To slide or slip',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Indômito',
             palavraEn: 'Indomitable',
             significado: 'Algo ou alguém indomável, rebelde',
             significadoEn: 'Someone or something rebellious or impossible to tame',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Tapir',
             palavraEn: 'Tapir',
             significado: 'Mamíferos herbívoros, ou como conhecemos anta',
             significadoEn: 'A herbivorous mammal known in Brazil as "anta"',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Lajedo',
             palavraEn: 'Slabstone',
             significado: 'Grande extensão de rocha plana, pavimento de pedra',
             significadoEn: 'A large flat rock formation',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Gameleiras',
             palavraEn: 'Gameleira Trees',
             significado: 'Árvores nativas do Brasil, mata-pau',
             significadoEn: 'Native Brazilian trees, also called strangler figs',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Jacarandá',
             palavraEn: 'Jacaranda',
             significado: 'Árvore de madeira dura',
             significadoEn: 'A hardwood tree',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Cingidos',
             palavraEn: 'Girdded',
             significado: 'Envolvido, cercado, ou coberto',
             significadoEn: 'Surrounded, wrapped, or covered',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Fidalguia',
             palavraEn: 'Nobility',
             significado: 'Nobreza, classe social dos fidalgos',
             significadoEn: 'The noble social class',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Imbuída',
             palavraEn: 'Imbued',
             significado: 'Convencido de uma ideia, preenchido emocionalmente',
             significadoEn: 'Filled or emotionally convinced by an idea',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Faceirice',
             palavraEn: 'Vanity/Coquetry',
             significado: 'Se exibir, vaidoso, demonstrar elegância',
             significadoEn: 'Showing off, vanity, elegance',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Parafina',
             palavraEn: 'Paraffin',
             significado: 'Camada de matéria orgânica',
             significadoEn: 'A layer of organic material',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Alcatroada',
             palavraEn: 'Tarred',
             significado: 'Coberta, revestido com alcatrão',
             significadoEn: 'Covered or coated with tar',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Enfado',
             palavraEn: 'Boredom',
             significado: 'Mal-estar, tédio, algo maçante ou monótono',
             significadoEn: 'Boredom, discomfort, something tedious or monotonous',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Anexim',
             palavraEn: 'Attachment',
             significado: 'Frase curta rimada, dito popular',
             significadoEn: 'A short rhyming popular saying',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Diáfano',
             palavraEn: 'Diaphanous',
             significado: 'Transparente, algo claro, translúcido',
             significadoEn: 'Transparent, clear, translucent',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Móbil',
             palavraEn: 'Mobile',
             significado: 'Capaz de se mover ou ser movido',
             significadoEn: 'Able to move or be moved',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Cabocla',
             palavraEn: 'Cabocla',
             significado: 'Mestiça de indígena com europeu',
             significadoEn: 'A person of mixed Indigenous and European ancestry',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Clavina',
             palavraEn: 'Clavine',
             significado: 'Pequena clava',
             significadoEn: 'A small mace or club',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Dicastes',
             palavraEn: 'Warriors/Fighters',
             significado: 'Pessoas que lutavam, batalhavam',
             significadoEn: 'People who fought or battled',
+            idDoLivro: livro.id
         },
         {
             palavra: 'Abnegação',
             palavraEn: 'Self-denial',
             significado: 'Renúncia voluntária aos próprios interesses',
             significadoEn: "Voluntary renunciation of one's own interests",
+            idDoLivro: livro.id
         },
     ];
 
@@ -253,6 +306,9 @@ async function main() {
                     'O indianismo foi um movimento literário dentro do Romantismo brasileiro que idealizou o indígena como símbolo da identidade nacional. Em O Guarani, Peri representa esse herói nativo: corajoso, leal e moralmente superior.',
                 temaDescricaoEn:
                     'Indianism was a literary movement within Brazilian Romanticism that idealized the indigenous person as a symbol of national identity. In The Guarani, Peri represents this native hero: brave, loyal, and morally superior.',
+                livro: {
+                connect: { id: livro.id }
+}
             },
         }),
         prisma.temasDeVestibular.create({
@@ -263,7 +319,10 @@ async function main() {
                     'O amor entre Peri e Cecília é puro, impossível e idealizado, típico do Romantismo. Não há consumação física, mas uma devoção absoluta que transcende as diferenças culturais e sociais entre os dois.',
                 temaDescricaoEn:
                     'The love between Peri and Cecília is pure, impossible, and idealized, typical of Romanticism. There is no physical consummation, but an absolute devotion that transcends the cultural and social differences between them.',
+                livro: {
+                connect: { id: livro.id }
             },
+            }
         }),
         prisma.temasDeVestibular.create({
             data: {
@@ -273,6 +332,9 @@ async function main() {
                     'A natureza brasileira em O Guarani não é apenas cenário: ela participa emocionalmente da narrativa, refletindo os conflitos e sentimentos das personagens. Isso também serve para valorizar a paisagem e a identidade do Brasil.',
                 temaDescricaoEn:
                     'Brazilian nature in The Guarani is not merely a backdrop: it participates emotionally in the narrative, reflecting the conflicts and feelings of the characters. This also serves to highlight the landscape and identity of Brazil.',
+                livro: {
+                    connect: { id: livro.id }
+                }
             },
         }),
         prisma.temasDeVestibular.create({
@@ -283,6 +345,9 @@ async function main() {
                     'A obra explora a tensão entre o mundo civilizado europeu, representado pela família de Dom Antônio, e o mundo natural indígena, representado por Peri. O romance propõe uma fusão harmoniosa entre os dois.',
                 temaDescricaoEn:
                     "The work explores the tension between the civilized European world, represented by Dom Antônio's family, and the indigenous natural world, represented by Peri. The novel proposes a harmonious fusion between the two.",
+                livro: {
+                    connect: { id: livro.id }
+                }
             },
         }),
         prisma.temasDeVestibular.create({
@@ -293,35 +358,14 @@ async function main() {
                     'Peri encarna o herói romântico brasileiro: excepcional, abnegado e guiado por valores morais elevados. Ele sacrifica tudo por Cecília, funcionando como um cavaleiro medieval transposto para o contexto brasileiro.',
                 temaDescricaoEn:
                     'Peri embodies the Brazilian Romantic hero: exceptional, self-denying, and guided by high moral values. He sacrifices everything for Cecília, functioning as a medieval knight transposed into the Brazilian context.',
+                livro: {
+                    connect: { id: livro.id }
+                }
             },
         }),
     ]);
 
-    const livro = await prisma.livro.create({
-        data: {
-            tituloDoLivro: 'O Guarani',
-            tituloDoLivroEn: 'The Guarani',
-            descricao:
-                'A história se passa no século XVII e conta o amor impossível entre Peri, um índio guarani nobre e corajoso, e Cecília, filha de um fidalgo português. Ambientado em uma fazenda-fortaleza no interior do Brasil, o romance mistura aventura, heroísmo, perigos da floresta e intrigas indígenas.',
-            descricaoEn:
-                'The story takes place in the 17th century and tells the impossible love between Peri, a noble and brave Guarani Indian, and Cecília, daughter of a Portuguese nobleman. Set in a farm-fortress in the interior of Brazil, the novel combines adventure, heroism, forest dangers, and indigenous intrigues.',
-            contextoHistorico:
-                'O Guarani, de José de Alencar, foi publicado em 1857, no período do Romantismo brasileiro. A obra faz parte do indianismo, movimento que valorizava o indígena como símbolo nacional após a independência do Brasil. A história se passa no período colonial e apresenta o índio Peri como herói idealizado.',
-            contextoHistoricoEn:
-                "The Guarani, by José de Alencar, was published in 1857, during the Brazilian Romanticism period. The work is part of the indianism movement, which valued the indigenous people as a national symbol after Brazil's independence. The story takes place in the colonial period and presents the indigenous hero Peri.",
-            anoDeLancamento: 1857,
-            resumo: 'O Guarani conta a história de Peri, um indígena corajoso e leal que protege Cecília, filha de um fidalgo português. Durante a trama, eles enfrentam ataques indígenas, traições e perigos na floresta. O livro mistura romance e aventura, mostrando o amor idealizado entre Peri e Cecília.',
-            resumoEn:
-                'The Guarani tells the story of Peri, a brave and loyal indigenous man who protects Cecília, daughter of a Portuguese nobleman. Throughout the plot, they face indigenous attacks, betrayals, and dangers in the forest. The book combines romance and adventure, showing the idealized love between Peri and Cecília.',
-            analise: '...',
-            analiseEn: '...',
-            capaURL: 'https://m.media-amazon.com/images/I/7125-MeD+KL._AC_UF1000,1000_QL80_.jpg',
-            autores: { connect: { id: autor.id } },
-            movimentoLiterario: { connect: { id: movimento.id } },
-            vocabularios: { connect: vocabularios.map((item) => ({ id: item.id })) },
-            temasDeVestibular: { connect: temas.map((item) => ({ id: item.id })) },
-        },
-    });
+
 
     await prisma.cenarios.createMany({
         data: [

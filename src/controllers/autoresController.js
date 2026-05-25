@@ -15,9 +15,11 @@ export const criar = async (req, res) => {
             biografia,
             biografiaEn,
             fotoURL,
+            idDoLivro,
         } = req.body;
 
         // Validações de presença
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!nome) return res.status(400).json({ error: 'O campo "nome" é obrigatório.' });
         if (!descricao)
             return res.status(400).json({ error: 'O campo "descricao" é obrigatório.' });
