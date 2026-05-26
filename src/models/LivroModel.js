@@ -135,7 +135,7 @@ export default class LivroModel {
                 enredos: true,
                 cenarios: true,
                 personagens: true,
-                movimentosLiterarios: true,
+                movimentoLiterario: true,
                 vocabularios: true,
                 videos: true,
                 curiosidades: true,
