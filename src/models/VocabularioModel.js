@@ -25,7 +25,7 @@ export default class VocabularioModel {
 
         if (idLivroParaConectar) {
             // Se um id de livro for informado, cria o relacionamento com o livro.
-            data.livros = {
+            data.livro = {
                 connect: { id: parseInt(idLivroParaConectar, 10) },
             };
         }
@@ -82,7 +82,7 @@ export default class VocabularioModel {
             where.significadoEn = { contains: filtros.significadoEn, mode: 'insensitive' };
         }
 
-        return prisma.vocabulario.findMany({ where, include: { livros: true } });
+        return prisma.vocabulario.findMany({ where, include: { livro: true } });
     }
 
     static async buscarPorId(id) {
@@ -90,7 +90,7 @@ export default class VocabularioModel {
         // Retorna null se nenhum registro for encontrado.
         const data = await prisma.vocabulario.findUnique({
             where: { id: parseInt(id, 10) },
-            include: { livros: true },
+            include: { livro: true },
         });
 
         if (!data) return null;

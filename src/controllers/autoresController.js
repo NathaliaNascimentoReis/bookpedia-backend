@@ -40,7 +40,7 @@ export const criar = async (req, res) => {
         if (!fotoURL) return res.status(400).json({ error: 'O campo "fotoURL" é obrigatório.' });
 
         const autor = new AutoresModel(req.body);
-        const data = await autor.criar(req.body.idLivroParaConectar);
+        const data = await autor.criar(parseInt(idDoLivro));
 
         return res.status(201).json({ message: 'Autor criado com sucesso!', data });
     } catch (error) {

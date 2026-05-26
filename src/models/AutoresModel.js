@@ -47,7 +47,7 @@ export default class AutoresModel {
 
         if (idLivroParaConectar) {
             // Caso seja fornecido um id de livro, conecta o autor a esse livro no relacionamento.
-            data.livros = { connect: { id: parseInt(idLivroParaConectar) } };
+            data.livro = { connect: { id: parseInt(idLivroParaConectar) } };
         }
 
         return prisma.autores.create({ data });
@@ -104,14 +104,14 @@ export default class AutoresModel {
         }
 
         // Inclui os livros relacionados ao autor no resultado.
-        return prisma.autores.findMany({ where, include: { livros: true } });
+        return prisma.autores.findMany({ where, include: { livro: true } });
     }
 
     static async buscarPorId(id) {
         // Busca um autor por id e retorna o autor com seus livros relacionados.
         const data = await prisma.autores.findUnique({
             where: { id: parseInt(id, 10) },
-            include: { livros: true },
+            include: { livro: true },
         });
 
         if (!data) return null;
