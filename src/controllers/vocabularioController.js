@@ -10,7 +10,8 @@ export const criar = async (req, res) => {
         if (!palavraEn) return res.status(400).json({ error: 'A palavra é obrigatória.' });
         if (!significado) return res.status(400).json({ error: 'O significado é obrigatório.' });
         if (!significadoEn) return res.status(400).json({ error: 'O significado é obrigatório.' });
-
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
+        
         const vocabulario = new VocabularioModel(req.body);
         const data = await vocabulario.criar(idDoLivro);
 

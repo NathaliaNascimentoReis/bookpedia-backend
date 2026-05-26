@@ -12,7 +12,8 @@ export const criar = async (req, res) => {
         if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatório.' });
         if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatório.' });
-
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' }); 
+        
         const video = new VideosModel(req.body);
         const data = await video.criar();
 

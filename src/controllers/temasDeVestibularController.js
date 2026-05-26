@@ -5,12 +5,13 @@ export const criar = async (req, res) => {
     // Controlador responsável por criar um novo tema de vestibular.
     // Valida campos obrigatórios e utiliza o modelo para persistir o registro.
     try {
-        const { tema, temaEn, temaDescricao, temaDescricaoEn } = req.body;
+        const { tema, temaEn, temaDescricao, temaDescricaoEn, idDoLivro } = req.body;
 
         if (!tema) return res.status(400).json({ error: 'O campo "tema" é obrigatório.' });
         if (!temaEn) return res.status(400).json({ error: 'O campo "temaEn" é obrigatório.' });
         if (!temaDescricao)
             return res.status(400).json({ error: 'O campo "temaDescricao" é obrigatório.' });
+        if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!temaDescricaoEn)
             return res.status(400).json({ error: 'O campo "temaDescricaoEn" é obrigatório.' });
 

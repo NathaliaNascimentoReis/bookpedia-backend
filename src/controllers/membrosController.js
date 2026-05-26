@@ -14,7 +14,7 @@ export const criar = async (req, res) => {
         if (!curso) return res.status(400).json({ error: 'O curso é obrigatório.' });
         if (!cursoEn) return res.status(400).json({ error: 'O curso é obrigatório.' });
         if (!descricao) return res.status(400).json({ error: 'A descrição é obrigatória.' });
-         if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatória.' });
+        if (!descricaoEn) return res.status(400).json({ error: 'A descrição é obrigatória.' });
         if (!cargo) return res.status(400).json({ error: 'O cargo é obrigatório.' });
         if (!avaliacaoDaObra) return res.status(400).json({ error: 'A avaliação da obra é obrigatória.' });
         if (!opiniao)

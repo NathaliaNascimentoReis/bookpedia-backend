@@ -2,14 +2,14 @@
 import prisma from '../lib/services/prismaClient.js';
 
 export default class TemasDeVestibularModel {
-    constructor({ id = null, tema, temaEn, temaDescricao, temaDescricaoEn, livroId = null } = {}) {
+    constructor({ id = null, tema, temaEn, temaDescricao, temaDescricaoEn, idDoLivro } = {}) {
         // O id é opcional para permitir criação e atualização com a mesma classe.
         this.id = id;
         this.tema = tema;
         this.temaEn = temaEn;
         this.temaDescricao = temaDescricao;
         this.temaDescricaoEn = temaDescricaoEn;
-        this.livroId = livroId;
+        this.idDoLivro = idDoLivro;
     }
 
     async criar() {
@@ -20,7 +20,7 @@ export default class TemasDeVestibularModel {
                 temaEn: this.temaEn,
                 temaDescricao: this.temaDescricao,
                 temaDescricaoEn: this.temaDescricaoEn,
-                ...(this.livroId && { livro: { connect: { id: parseInt(this.livroId, 10) } } }),
+                ...(this.idDoLivro && { livro: { connect: { id: parseInt(this.idDoLivro, 10) } } }),
             },
             include: { livro: true },
         });
@@ -40,9 +40,9 @@ export default class TemasDeVestibularModel {
                 temaEn: this.temaEn,
                 temaDescricao: this.temaDescricao,
                 temaDescricaoEn: this.temaDescricaoEn,
-                ...(this.livroId !== undefined && {
-                    livro: this.livroId
-                        ? { connect: { id: parseInt(this.livroId, 10) } }
+                ...(this.idDoLivro !== undefined && {
+                    livro: this.idDoLivro
+                        ? { connect: { id: parseInt(this.idDoLivro, 10) } }
                         : { disconnect: true },
                 }),
             },
@@ -66,8 +66,8 @@ export default class TemasDeVestibularModel {
         if (filtros.tema) {
             where.tema = { contains: filtros.tema, mode: 'insensitive' };
         }
-        if (filtros.livroId) {
-            where.livroId = parseInt(filtros.livroId, 10);
+        if (filtros.idDoLivro) {
+            where.idDoLivro = parseInt(filtros.idDoLivro, 10);
         }
 
         return prisma.temasDeVestibular.findMany({ where, include: { livro: true } });
