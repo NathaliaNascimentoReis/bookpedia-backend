@@ -300,12 +300,12 @@ async function main() {
     const temas = await Promise.all([
         prisma.temasDeVestibular.create({
             data: {
-                tema: 'Indianismo',
-                temaEn: 'Indianism',
+                tema: 'Desafios para a Representatividade Indígena no Brasil',
+                temaEn: 'Challenges for Indigenous Representation in Brazil',
                 temaDescricao:
-                    'O indianismo foi um movimento literário dentro do Romantismo brasileiro que idealizou o indígena como símbolo da identidade nacional. Em O Guarani, Peri representa esse herói nativo: corajoso, leal e moralmente superior.',
+                    'A valorização da cultura indígena na sociedade brasileira contemporânea encontra grandes desafios devido ao apagamento histórico e a marginalização dos povos originários no Brasil, o que impacta diretamente a construção da identidade nacional em um país multicultural.',
                 temaDescricaoEn:
-                    'Indianism was a literary movement within Brazilian Romanticism that idealized the indigenous person as a symbol of national identity. In The Guarani, Peri represents this native hero: brave, loyal, and morally superior.',
+                    'The valorization of Indigenous culture in contemporary Brazilian society faces major challenges due to the historical erasure and marginalization of native peoples in Brazil, which directly impacts the construction of a national identity in a multicultural country.',
                 livro: {
                 connect: { id: livro.id }
 }
@@ -313,12 +313,12 @@ async function main() {
         }),
         prisma.temasDeVestibular.create({
             data: {
-                tema: 'Amor Idealizado',
-                temaEn: 'Idealized Love',
+                tema: 'A exploração predatória dos recursos naturais e seus impactos sociais.',
+                temaEn: 'The predatory exploitation of natural resources and its social impacts.',
                 temaDescricao:
-                    'O amor entre Peri e Cecília é puro, impossível e idealizado, típico do Romantismo. Não há consumação física, mas uma devoção absoluta que transcende as diferenças culturais e sociais entre os dois.',
+                    'O avanço do desmatamento e do garimpo ilegal é uma herança do período colonialista que perpetuou a exploração. No livro de José de Alencar, O Guarani, essa realidade aparece no avanço do colonizador português para o domínio da Mata Atlântica, impondo a civilização europeia sobre a natureza. ',
                 temaDescricaoEn:
-                    'The love between Peri and Cecília is pure, impossible, and idealized, typical of Romanticism. There is no physical consummation, but an absolute devotion that transcends the cultural and social differences between them.',
+                    'The advancement of deforestation and illegal mining is a legacy of the colonial period that perpetuated exploitation. In José de Alencars novel, The Guarani, this reality is reflected in the Portuguese colonizers push to dominate the Atlantic Forest, imposing European civilization upon nature.',
                 livro: {
                 connect: { id: livro.id }
             },
@@ -326,12 +326,12 @@ async function main() {
         }),
         prisma.temasDeVestibular.create({
             data: {
-                tema: 'Natureza e Nacionalismo',
-                temaEn: 'Nature and Nationalism',
+                tema: 'A persistência da violência contra minorias étnicas',
+                temaEn: 'The Persistence of Violence Against Ethnic Minorities',
                 temaDescricao:
-                    'A natureza brasileira em O Guarani não é apenas cenário: ela participa emocionalmente da narrativa, refletindo os conflitos e sentimentos das personagens. Isso também serve para valorizar a paisagem e a identidade do Brasil.',
+                    'A violência decorrente do etnocentrismo se iniciou nas Grandes Navegações e reverbera hoje na falta de respeito à diversidade cultural e religiosa das comunidades tradicionais. O livro "O Guarani" narra a domesticação da cultura indígena e a conversão do indígena Peri para o cristianismo, sendo uma forte representação desse apagamento histórico.',
                 temaDescricaoEn:
-                    'Brazilian nature in The Guarani is not merely a backdrop: it participates emotionally in the narrative, reflecting the conflicts and feelings of the characters. This also serves to highlight the landscape and identity of Brazil.',
+                    'Violence stemming from ethnocentrism began during the Age of Discovery and echoes today in the lack of respect for the cultural and religious diversity of traditional communities. The novel The Guarani narrates the domestication of Indigenous culture and the conversion of the native Peri to Christianity, serving as a powerful representation of this historical erasure.',
                 livro: {
                     connect: { id: livro.id }
                 }
@@ -339,25 +339,12 @@ async function main() {
         }),
         prisma.temasDeVestibular.create({
             data: {
-                tema: 'Civilização x Natureza',
-                temaEn: 'Civilization vs. Nature',
+                tema: 'O Papel da Mulher e o Patriarcado no Brasil Contemporâneo',
+                temaEn: 'The Role of Women and Patriarchy in Contemporary Brazil',
                 temaDescricao:
-                    'A obra explora a tensão entre o mundo civilizado europeu, representado pela família de Dom Antônio, e o mundo natural indígena, representado por Peri. O romance propõe uma fusão harmoniosa entre os dois.',
+                    'A submissão e a dependência da figura feminina em uma estrutura patriarcal rígida é um desafio atual na luta contra a violência de gênero e a desigualdade, sendo uma herança histórica do período colonial/monárquico. Cecília (Ceci), do livro "O Guarani", é a representação de uma mulher pura e idealizada, sempre precisando ser protegida por uma figura masculina, o que escancara a persistência da visão acerca das mulheres como frágeis e sensíveis, mantendo o patriarcado e seus impactos na sociedade brasileira.',
                 temaDescricaoEn:
-                    "The work explores the tension between the civilized European world, represented by Dom Antônio's family, and the indigenous natural world, represented by Peri. The novel proposes a harmonious fusion between the two.",
-                livro: {
-                    connect: { id: livro.id }
-                }
-            },
-        }),
-        prisma.temasDeVestibular.create({
-            data: {
-                tema: 'Herói Romântico',
-                temaEn: 'Romantic Hero',
-                temaDescricao:
-                    'Peri encarna o herói romântico brasileiro: excepcional, abnegado e guiado por valores morais elevados. Ele sacrifica tudo por Cecília, funcionando como um cavaleiro medieval transposto para o contexto brasileiro.',
-                temaDescricaoEn:
-                    'Peri embodies the Brazilian Romantic hero: exceptional, self-denying, and guided by high moral values. He sacrifices everything for Cecília, functioning as a medieval knight transposed into the Brazilian context.',
+                   "The submission and dependency of the female figure in a rigid patriarchal structure is a contemporary challenge in the struggle against gender violence and inequality, being a historical heritage of the colonial/monarchical period. Cecília (Ceci), from the book O Guarani, is the representation of a pure and idealized woman, always needing to be protected by a masculine figure, which exposes the persistence of the vision about women as fragile and sensitive, maintaining the patriarchy and its impacts on Brazilian society.",
                 livro: {
                     connect: { id: livro.id }
                 }
@@ -509,14 +496,37 @@ async function main() {
         },
     });
 
-    await prisma.curiosidades.create({
-        data: {
-            tituloCuriosidade: '...',
-            tituloCuriosidadeEn: '...',
-            curiosidade: '...',
-            curiosidadeEn: '...',
-            idDoLivro: livro.id,
-        },
+    await prisma.curiosidades.createMany({
+        data: [
+            {
+                tituloCuriosidade: 'A figura política de José de Alencar',
+                tituloCuriosidadeEn: 'The political figure of José de Alencar',
+                curiosidade: 'José de Alencar, formado em Direito, atuou na política durante o Segundo Reinado como Deputado Estadual do Ceará, Chefe da Secretaria do Ministro da Justiça e Ministro da Justiça, senador e deputado.',
+                curiosidadeEn: 'José de Alencar, who held a degree in Law, was active in politics as a State Representative for Ceará, Chief of Staff for the Minister of Justice, and Minister of Justice.',
+                idDoLivro: livro.id,
+            },
+            {
+                tituloCuriosidade: 'A amizade com Machado de Assis',
+                tituloCuriosidadeEn: 'The friendship with Machado de Assis',
+                curiosidade: 'José de Alencar foi um grande amigo do escritor brasileiro Machado de Assis, que o escolheu para ser o patrono da Cadeira nº 23 da Academia Brasileira de Letras (ABL).',
+                curiosidadeEn: 'José de Alencar was a close friend of the Brazilian writer Machado de Assis, who even chose him as the patron of the 23rd chair of the Brazilian Academy of Letters (ABL).',
+                idDoLivro: livro.id,
+            },
+            {
+                tituloCuriosidade: 'Um nome que carrega monumentos e teatros',
+                tituloCuriosidadeEn: 'A name carried by monuments and theaters',
+                curiosidade: 'Em 1910, na cidade de Fortaleza, foi inaugurado um teatro em homenagem ao escritor de O Guarani, José de Alencar, chamado "Theatro José de Alencar" e, além desse espaço, há no Rio de Janeiro uma estátua da figura do autor localizada na praça que também carrega o seu nome. Todas essas construções permanecem intactas até os dias de hoje.',
+                curiosidadeEn: 'In 1910, in the city of Fortaleza, a theater was inaugurated in honor of the author of The Guarani, José de Alencar, named "Theatro José de Alencar". In addition to this venue, there is a statue of the author in Rio de Janeiro, located in a square that also bears his name. All of these landmarks remain intact to this day.',
+                idDoLivro: livro.id,
+            },
+            {
+                tituloCuriosidade: 'O apelido de infância que José de Alencar compartilha com um famoso cantor dos anos 80',
+                tituloCuriosidadeEn: 'The childhood nickname that José de Alencar shares with a famous 80s singer',
+                curiosidade: 'O escritor José de Alencar, durante a infância, era chamado de Cazuza (que significa "moleque" ou "garoto"), assim como o cantor e ex-vocalista da banda Barão Vermelho, Cazuza.',
+                curiosidadeEn: 'During his childhood, the writer José de Alencar was called Cazuza (which means "scamp" or "boy"), just like the 1980s singer of the band Barão Vermelho, Cazuza.',
+                idDoLivro: livro.id,
+            },
+        ],
     });
 
     // Substituímos o método createMany pelo loop for...of com create. Isso foi necessário porque o Prisma não permite criar relações (como as alternativas conectadas a uma questão) usando o comando de inserção em massa (createMany).
@@ -1154,14 +1164,14 @@ async function main() {
                         idade: 17,
                         curso: 'Mecânica',
                         cursoEn: 'Mechanical Engineering',
-                        descricao: '...',
-                        descricaoEn: '...',
+                        descricao: ' Um entusiasta de música e arte que aprecia o movimento Romancista.',
+                        descricaoEn: 'I am an musician and art enthusiast who appreciates the Romantic movement.',
                         cargo: 'Gestor de conteúdo',
                         cargoEn: 'Content Manager',
                         avaliacaoDaObra: 5,
                         diasDeLeitura: 5,
-                        opiniao: '...',
-                        opiniaoEn: '',
+                        opiniao: 'Na minha opinião o livro O Guarani é uma obra literária muito característica do período romantista. Ela retrata diversos elementos nacionais de forma romântica e melancólica. O livro narra a paixão entre o indígena Peri e a jovem nobre portuguêsa, Cecília ou Ceci. Tudo isso em meio a conflitos coloniais e tribais. O livro consegue te deixar conectado à história do início ao fim e retrata muito bem o Brasil do século XVII.',
+                        opiniaoEn: 'In my opinion, the book O Guarani is a literary work that strongly represents the Romantic period. It portrays many national elements in a romantic and melancholic way. The book tells the story of the love between the indigenous man Peri and the young Portuguese noblewoman Cecília, also called Ceci, amid colonial and tribal conflicts. The story keeps the reader connected from beginning to end and portrays 17th-century Brazil very well.',
                         fotoURL:
                             'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866162277292186008&th=19e5f0b42f3c1998&view=fimg&fur=ip&permmsgid=msg-f:1866162277292186008&sz=s0-l75-ft&attbid=ANGjdJ_dewHzHkZgSkfQtv6Qah_GcqVOiOOjE_OJHeGaz-HlGfnn2-cbeh1YG6A-YgwGQTz2tOmSRrprHYUbbE1GzjyvJKhInc6XEXfUE5Yidr_eeR1ekffgSs6Ybvs&disp=emb&realattid=E87194D3-55CE-4096-AD8C-C33F638A459C&zw',
                     },
