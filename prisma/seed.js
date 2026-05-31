@@ -78,9 +78,9 @@ async function main() {
             descricaoEn:
                 'He was one of the main writers of Brazilian Romanticism. Lawyer, journalist and Ceará politician, he is considered one of the founders of national literature. He valued nature and Brazilian culture, especially the indigenous people.',
             contextoHistorico:
-                'Viveu no Segundo Reinado, época de consolidação do Império Brasileiro após a Independência. Como romancista, buscou criar uma identidade nacional através do indianismo e do romantismo.',
+                'José de Alencar acompanhou os dois últimos períodos do Imperialismo no Brasil, o Período Regencial e o Segundo Reinado, uma vez que era um bebê durante o Primeiro Reinado. Após Dom Pedro I abdicar do trono, em abril de 1831, o sucessor direto da coroa era Pedro de Alcântara, que não podia ser coroado até que completasse a maioridade. Dessa forma, restou ao país recorrer a governação de regentes até o ano de 1844, que seria o ano em que o herdeiro faria 18 anos. Devido às revoltas e tentativas de revolução por todo o país, foi criada a Guarda Nacional, que buscava reprimir manifestações e controlar a população, mas essa medida se provou insuficiente, pois as mudanças constantes nas regências provaram a falta de controle nos rumos da política nacional. Para lidar com isso, foi decretada a suspenção do Poder Moderador, a autonomia das províncias por meio do Federalismo e o início de um “republicanismo” pela eleição dos regentes, além da instalação de grupos políticos no país que influenciaram na política interna. Em 1840, o Brasil passou pelo Golpe da Maioridade, um golpe parlamentar que colocou o filho de Dom Pedro I, mesmo menor de idade, como líder do país, instalando o Segundo Reinado. Nessa fase ocorreram fatos importantes, como a Guerra do Paraguai, as intrigas entre o Partido Liberal e o Conservador, a centralização do café na economia e o golpe militar que levou à Proclamação da República em novembro de 1889, finalizando o Imperialismo no país verde-amarelo.',
             contextoHistoricoEn:
-                'He lived during the Second Reign, a period of consolidation of the Brazilian Empire after independence. As a novelist, he sought to create a national identity through indianism and romanticism.',
+                'José de Alencar followed the last two periods of the Brazilian Empire, the Regency Period and the Second Reign, since he was a baby during the First Reign. After Dom Pedro I abdicated the throne in April 1831, the direct successor to the crown was Pedro de Alcântara, who could not be crowned until he reached the age of majority. Therefore, the country had to resort to the governance of regents until the year 1844, which would have been the year the heir turned 18. Due to revolts and attempted revolutions throughout the country, the National Guard was created to suppress demonstrations and control the population, but this measure proved insufficient, as the constant changes in the regencies demonstrated a lack of control over the direction of national politics. To deal with this, the suspension of the Moderating Power was decreed, along with the autonomy of the provinces through Federalism and the beginning of a form of "republicanism" through the election of regents, in addition to the establishment of political groups in the country that influenced domestic policy. In 1840, Brazil went through the Coronation Coup (Golpe da Maioridade), a parliamentary coup that placed Dom Pedro Is son, even though he was a minor, as the leader of the country, establishing the Second Reign. During this phase, important events occurred, such as the Paraguayan War, the intrigues between the Liberal and Conservative Parties, the centralization of coffee in the economy, and the military coup that led to the Proclamation of the Republic in November 1889, ending the imperial era in the green-and-yellow nation.',
             anoNascimento: 1829,
             anoFalecimento: 1877,
             biografia:
@@ -356,20 +356,6 @@ async function main() {
 
     await prisma.cenarios.createMany({
         data: [
-            {
-                nome: 'A fazenda de Dom Antônio de Mariz, no interior do Rio de Janeiro colonial, onde vive a família de Cecília. A floresta brasileira, que aparece como um ambiente de aventura, perigo e contato com a natureza. Os rios e montanhas da região, usados nas fugas e conflitos ao longo da história.',
-                nomeEn: "Dom Antônio de Mariz's farm, in the interior of colonial Rio de Janeiro, where Cecília's family lives. The Brazilian forest, which appears as an environment of adventure, danger and contact with nature. The region's rivers and mountains, used in escapes and conflicts throughout history.",
-                caracteristicas:
-                    'Os cenários de O Guarani têm como principais características a natureza exuberante, com florestas, rios e montanhas descritos de forma grandiosa e idealizada. O ambiente é cheio de aventuras, perigos e mistério, além de representar a valorização da paisagem brasileira, típica do Romantismo.',
-                caracteristicasEn:
-                    "The main characteristics of O Guarani's scenarios are exuberant nature, with forests, rivers and mountains described in a grandiose and idealized way. The environment is full of adventures, dangers and mystery, in addition to representing the appreciation of the Brazilian landscape, typical of Romanticism.",
-                descricao:
-                    'Fazenda de Dom Antônio: local seguro e organizado onde vive a família de Cecília, representando a sociedade colonial. Floresta: ambiente selvagem e perigoso, cheio de aventuras e contato com a natureza. Rios e montanhas: cenários usados nas fugas e batalhas, mostrando a grandiosidade da paisagem brasileira.',
-                descricaoEn:
-                    "Dom Antônio's farm: a safe and organized place where Cecília's family lives, representing the colonial society. Forest: a wild and dangerous environment, full of adventures and contact with nature. Rivers and mountains: scenarios used in escapes and battles, showing the grandiosity of the Brazilian landscape.",
-                fotoURL: 'https://example.com/cenarios/rio-de-janeiro.jpg',
-                idDoLivro: livro.id,
-            },
             {
                 nome: 'Mata Atlântica',
                 nomeEn: 'Atlantic Forest',
