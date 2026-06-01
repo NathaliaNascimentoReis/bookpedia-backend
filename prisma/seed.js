@@ -472,15 +472,15 @@ async function main() {
     });
 
     await prisma.videos.create({
-        data: {
-            titulo: 'Resumo de O Guarani',
-            tituloEn: 'The Guarani Summary',
-            descricao: 'Vídeo explicando enredo, personagens e contexto da obra.',
-            descricaoEn: 'Video explaining the plot, characters, and context of the work.',
-            url: 'https://example.com/videos/o-guarani',
-            idDoLivro: livro.id,
-        },
-    });
+    data: {
+        titulo: 'Resumo de O Guarani',
+        tituloEn: 'The Guarani Summary',
+        descricao: 'Vídeo explicando enredo, personagens e contexto da obra.',
+        descricaoEn: 'Video explaining the plot, characters, and context of the work.',
+        url: 'https://youtu.be/_JlDrmk-1aM?si=Zb1fEeg0X1Los4xd', // <-- URL completa aqui
+        idDoLivro: livro.id,
+    },
+});
 
     await prisma.curiosidades.createMany({
         data: [
