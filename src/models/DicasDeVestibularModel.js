@@ -9,7 +9,6 @@ export default class DicasDeVestibularModel {
         this.tituloEn = tituloEn;
         this.dica = dica;
         this.dicaEn = dicaEn;
-        this.idDoLivro = idDoLivro;
     }
 
     async criar() {
@@ -21,7 +20,6 @@ export default class DicasDeVestibularModel {
                 tituloEn: this.tituloEn,
                 dica: this.dica,
                 dicaEn: this.dicaEn,
-                idDoLivro: this.idDoLivro,
             },
         });
     }
