@@ -28,7 +28,7 @@ async function main() {
 
     console.log('📦 Inserindo novos registros...');
 
-     const livro = await prisma.livro.create({
+    const livro = await prisma.livro.create({
 
         data: {
             tituloDoLivro: 'O Guarani',
@@ -1017,7 +1017,7 @@ async function main() {
                         opiniao: '...',
                         opiniaoEn: '',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866158471246422515&th=19e5ed3e053aa1f3&view=fimg&fur=ip&permmsgid=msg-f:1866158471246422515&sz=s0-l75-ft&attbid=ANGjdJ-mF3ltITTvGEUk4X8rmAqsWOhZl93_uHFFqbFHqHty_gcFCsTgIvit3bvOMyyEjR0m6DbmdBn-3YIdokstFDVzPKOnab3ELpQbo_Wy89wqRsyukGbxfbs5aEA&disp=emb&realattid=C508F893-77CD-4280-936B-6A4BD403DD23&zw',
+                            'https://imgur.com/i0bnA7B',
                     },
                     {
                         nome: 'Matheus Leitão',
@@ -1051,7 +1051,7 @@ async function main() {
                         opiniao: '...',
                         opiniaoEn: '...',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866161525897598446&th=19e5f0053ca095ee&view=fimg&fur=ip&permmsgid=msg-f:1866161525897598446&sz=s0-l75-ft&attbid=ANGjdJ8Z_HhTgIB2usAdxipogCpePVEN7QXTqr7ye8onnPrHkUEs5s10qz70gYN29ULl3g9Up-CzrfuZYdDf0rb0bHubsjrnHZDo1JThvtqfQ4wCrawCbq-ln3K-lB8&disp=emb&realattid=19e5effd4c6b5d973be1&zw',
+                            'https://imgur.com/YSQDBVT',
                     },
                     {
                         nome: 'Arthur Ferian',
@@ -1071,7 +1071,7 @@ async function main() {
                         opiniaoEn:
                             "The Guarani is an interesting work because it blends romance, adventure, and elements of Brazilian indigenous culture. Peri's story shows courage, loyalty, and love, while also presenting the customs and landscapes of Brazil at that time. Although the language is somewhat archaic, the book manages to hold the reader's attention at various points and is important for understanding Brazilian Romanticism.",
                         fotoURL:
-                            'https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&content_type=image%2Fjpeg&attachment_token=AOo0EEXL9jfahFXjnDmbkGpYAbUC4oZcEpT78d13I28GCpfLAIgQyBsn7JpgD4wPOuUJCNR8yYUkSurJd6BucbGgz3OP04c%2FpCM47DG5YTav8vLHqINaZQOy1HNq%2FyxrJKaEDFho9ypvjWLwPGJDv%2BmbZNzVNkNRN%2Fqo3b28IzHCygkOje%2FdQX6YZ8k%2B%2BPr32zMN4%2FxNMvVt4q6%2F168diaAtEEgwil8g7Fo7lUwMC0u9WmR0FTl%2BVuLc50lQoYdo2cR5eqmT5YH8%2BQMulzV51vb5tXF14GYR9RjBjS5hV%2FkobviDGXM2l9muTvvqh1mQv9tccwR4epC0XOhwcPQYR02q0jutQeXqyz0OcGOXxUqc5i1lg3SFlgoQB3BNK%2Bcp%2F1Y06r5edIfZbU4sksuyFrXwX5wZ7rNkPwpXfZV%2BTKY2iU5irTPvUwrpfkiuxdt2IThE0RE6Kqs74TT%2Bc12P%2FvJNC0DOCcNb488u7Pmyo%2FnOzFcc%2Bv4VnJvl55WQsiq9ypfHm7fXaZiQtfcSfDTiStRLhJCELxShajDq%2FBYn7velOe1KciyT8x4w6o8KnqNFkXJzu6wVAnylPxIRtFAN9OUUdJ%2BwEow%3D&allow_caching=true&sz=w1920-h826-rw&auditContext=forDisplay',
+                            'https://imgur.com/148kWTg',
                     },
                     {
                         nome: 'Nicolas Silva',
@@ -1091,7 +1091,7 @@ async function main() {
                         opiniaoEn:
                             'Since my main interests lie in scientific and investigative books, reading "O Guarani" was a challenge outside my comfort zone. I rate it 3.5/5. Although the idealized and descriptive style of Brazilian Romanticism is very different from my usual taste, the plot kept me engaged over these 9 days with its elements of action and conflict. It was a great reading exercise that helped me improve my critical analysis and understand a major classic of our literature.',
                         fotoURL:
-                            'https://chat.google.com/u/0/api/get_attachment_url?url_type=FIFE_URL&content_type=image%2Fpng&attachment_token=AOo0EEXUl4KSN67RHRNNNuoVTnTkp4VXXaxcjo6ymd4gW9XTIqHPrlCk8FgajAC9oR7TLfh8r0h8HZECmQVUgeNLxxEOvdH0EKKGecaK7HdSSx6HMfTAmjwiph89BkUurHDrHio993F08dpOADiR%2Bia8MsP5lKFQL8ZSD%2FzBtfDrDf0F0L1KsAoRXg%2FPL5Ntyc3WCDsXGS%2Bdi1kAjEAxqyTuFFRb7FK%2BOO3c9f%2FCKphpin%2BazXQx2aqY2Z5%2F2CPveXNfwhYUpWlLoF2ZAN9BCtHF1yJ4b1spDzqE9EVmL%2FX5hG%2FpARemyqByQX6TQ7uyUeSVERzeIssCLXr7%2BNOSwtx3U%2Bc2u5E5PQqJsixbXjjvCcpHNKrNJHpCmxMKQ1pIs7I0JKPYtbSjGCa%2F%2Fjqaz1UQSveTVGVxJLYYsfWPfJ8BDkCvi7%2FuOCMIYBf0qE00WuUfcbsP3NsmaG43PplDZCKsgiZiiwLdY21vMoObHEOV3AIlNp0TTJ1FNiY%2B5xBm185rVEam2VsJPw%2FWgYXdfoXP1d4jDZX9pXl92ShrGGnSHtJiR3BdjrWXhy%2Bsu3clBtn39DReAPxtYRypcwc5o%2BQ%3D&allow_caching=true&sz=w1920-h826-rw&auditContext=forDisplay',
+                            'https://imgur.com/i48gxSY',
                     },
                     {
                         nome: 'Isadora Murback',
@@ -1111,7 +1111,7 @@ async function main() {
                         opiniaoEn:
                             'In my opinion, the book was interesting, but a bit difficult to read due to the old language. I liked the character Peri because he is very loyal and does everything to protect Ceci. Even though it was tiring at times, the book is important for understanding Brazilian literature and the way indigenous people were viewed at that time.',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866163418499213726&th=19e5f1bde479699e&view=fimg&fur=ip&permmsgid=msg-f:1866163418499213726&sz=s0-l75-ft&attbid=ANGjdJ_spez1s0xY6CllzScb97PVh_wAuAdRct50ZwiFJuvlg8WlCKNtf1QVciPLFYi0VXPMNI78ha_1Mr6ArpmysthNrWNu5EB9o94P9rXAVfPz_1jdQo47ooO9ThI&disp=emb&realattid=70D0CB96-D43C-48F2-9BD9-9DE862B38F7F&zw',
+                            'https://imgur.com/ROecJ3O',
                     },
                     {
                         nome: 'Gustavo Durães',
@@ -1127,7 +1127,7 @@ async function main() {
                         opiniao: '...',
                         opiniaoEn: '',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866165347760102336&th=19e5f37f15625bc0&view=fimg&fur=ip&permmsgid=msg-f:1866165347760102336&sz=s0-l75-ft&attbid=ANGjdJ9v1xgakCTLNJDHfxOZrTFDTc0-VHmw4wK-c3ls1KG1VNbTEXmdx--crZ3c7rFHE-NZWY5aztFvO0rcsx_T_Ns13vtySzNqYAlDflIQOCScThqdtzQihf79SvI&disp=emb&realattid=24E4F2C0-85B0-475E-B119-7392D5832EEB&zw',
+                            'https://imgur.com/jnJnb0V',
                     },
                     {
                         nome: 'Henry Araújo',
@@ -1143,7 +1143,7 @@ async function main() {
                         opiniao: '...',
                         opiniaoEn: '',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866162008792123547&th=19e5f075ab62489b&view=fimg&fur=ip&permmsgid=msg-f:1866162008792123547&sz=s0-l75-ft&attbid=ANGjdJ9-se9wr7r7E0eBDJZOx7bsjYdS6oGDx06wCUBTclTiRq6CMcNtBJ8LUBs9kpbrZngVFQWSHQQ0QHDlaAIAz7JqsFNwAnPaa2diIBH1Vgp19LSSr5fqzIUIHT0&disp=emb&realattid=3D3223AC-3D82-4B43-9407-57FB00D54993&zw',
+                            'https://imgur.com/e534bBq',
                     },
                     {
                         nome: 'Enzo Vecchi',
@@ -1159,7 +1159,7 @@ async function main() {
                         opiniao: 'Na minha opinião o livro O Guarani é uma obra literária muito característica do período romantista. Ela retrata diversos elementos nacionais de forma romântica e melancólica. O livro narra a paixão entre o indígena Peri e a jovem nobre portuguêsa, Cecília ou Ceci. Tudo isso em meio a conflitos coloniais e tribais. O livro consegue te deixar conectado à história do início ao fim e retrata muito bem o Brasil do século XVII.',
                         opiniaoEn: 'In my opinion, the book O Guarani is a literary work that strongly represents the Romantic period. It portrays many national elements in a romantic and melancholic way. The book tells the story of the love between the indigenous man Peri and the young Portuguese noblewoman Cecília, also called Ceci, amid colonial and tribal conflicts. The story keeps the reader connected from beginning to end and portrays 17th-century Brazil very well.',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866162277292186008&th=19e5f0b42f3c1998&view=fimg&fur=ip&permmsgid=msg-f:1866162277292186008&sz=s0-l75-ft&attbid=ANGjdJ_dewHzHkZgSkfQtv6Qah_GcqVOiOOjE_OJHeGaz-HlGfnn2-cbeh1YG6A-YgwGQTz2tOmSRrprHYUbbE1GzjyvJKhInc6XEXfUE5Yidr_eeR1ekffgSs6Ybvs&disp=emb&realattid=E87194D3-55CE-4096-AD8C-C33F638A459C&zw',
+                            'https://imgur.com/1QJzOLx',
                     },
                     {
                         nome: 'Matheus Duarte',
@@ -1175,7 +1175,7 @@ async function main() {
                         opiniao: '...',
                         opiniaoEn: '',
                         fotoURL:
-                            'https://mail.google.com/mail/u/0?ui=2&ik=eae726dbfa&attid=0.1&permmsgid=msg-f:1866162928853120135&th=19e5f14be34af487&view=fimg&fur=ip&permmsgid=msg-f:1866162928853120135&sz=s0-l75-ft&attbid=ANGjdJ9M45OPDF7VwV_Y9-aT0qO2utIldmCCR797R8PMD2GN4Vx70Tt2510_OpF-TbI0u_JH-hgMruVqpK_SVyKenIiUiEIcfbZeauTbYrU93Q7lFAoqLFWqZuKi8ZA&disp=emb&realattid=EEADC39A-E8E8-485D-B220-21266BD427A4&zw',
+                            'https://imgur.com/vhAwase',
                     },
                 ],
             },
