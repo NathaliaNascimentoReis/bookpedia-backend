@@ -42,7 +42,7 @@ export default class MovimentosLiterariosModel {
 
         if (idLivroParaConectar) {
             // Conecta o novo movimento literário ao livro existente pelo id.
-            data.livros = {
+            data.livro = {
                 connect: { id: parseInt(idLivroParaConectar, 10) },
             };
         }
@@ -96,21 +96,21 @@ export default class MovimentosLiterariosModel {
         }
 
         if (filtros.idDoLivro && filtros.idDoLivro !== '') {
-            where.livros = {
+            where.livro = {
                 some: {
                     id: parseInt(filtros.idDoLivro, 10),
                 },
             };
         }
 
-        return prisma.movimentosLiterarios.findMany({ where, include: { livros: true } });
+        return prisma.movimentosLiterarios.findMany({ where, include: { livro: true } });
     }
 
     static async buscarPorId(id) {
         // Busca um único movimento literário por id e inclui os livros relacionados.
         const data = await prisma.movimentosLiterarios.findUnique({
             where: { id: parseInt(id, 10) },
-            include: { livros: true },
+            include: { livro: true },
         });
 
         if (!data) return null;
