@@ -5,24 +5,27 @@ export const criar = async (req, res) => {
     // Valida campos obrigatórios e delega a persistência ao modelo.
     try {
         const {
-            nome, contextoHistorico, contextoHistoricoEn,
+            nome, nomeEn, contextoHistorico, contextoHistoricoEn,
             caracteristicas, caracteristicasEn, periodo,
-            fase, faseTexto, idDoLivro
+            fase, faseEn, faseTexto, faseTextoEn, idDoLivro
         } = req.body;
 
         
 
         if (!idDoLivro) return res.status(400).json({ error: 'O ID do livro é obrigatório.' });
         if (!nome) return res.status(400).json({ error: 'O nome é obrigatório.' });
+        if (!nomeEn) return res.status(400).json({ error: 'O nome (em inglês) é obrigatório.' });
         if (!contextoHistorico) return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
         if (!contextoHistoricoEn)
-             return res.status(400).json({ error: 'O contexto histórico é obrigatório.' });
+             return res.status(400).json({ error: 'O contexto histórico (em inglês) é obrigatório.' });
         if (!caracteristicas) return res.status(400).json({ error: 'As características são obrigatórias.' });
         if (!caracteristicasEn)
             return res.status(400).json({ error: 'As características são obrigatórias.' });
         if (!periodo) return res.status(400).json({ error: 'O período é obrigatório.' });
         if (!fase) return res.status(400).json({ error: 'A fase é obrigatória.' });
+        if (!faseEn) return res.status(400).json({ error: 'A fase (em inglês) é obrigatória.' });
         if (!faseTexto) return res.status(400).json({ error: 'A fase é obrigatória.' });
+        if (!faseTextoEn) return res.status(400).json({ error: 'A fase (em inglês) é obrigatória.' });
 
         const movimento = new MovimentosLiterariosModel(req.body);
         const data = await movimento.criar(idDoLivro);
@@ -95,6 +98,7 @@ export const atualizar = async (req, res) => {
         }
 
         if (req.body.nome !== undefined) item.nome = req.body.nome;
+        if (req.body.nomeEn !== undefined) item.nomeEn = req.body.nomeEn;
         if (req.body.contextoHistorico !== undefined)
             item.contextoHistorico = req.body.contextoHistorico;
         if (req.body.contextoHistoricoEn !== undefined)
@@ -104,7 +108,9 @@ export const atualizar = async (req, res) => {
             item.caracteristicasEn = req.body.caracteristicasEn;
         if (req.body.periodo !== undefined) item.periodo = req.body.periodo;
         if (req.body.fase !== undefined) item.fase = req.body.fase;
+        if (req.body.faseEn !== undefined) item.faseEn = req.body.faseEn;
         if (req.body.faseTexto !== undefined) item.faseTexto = req.body.faseTexto;
+        if (req.body.faseTextoEn !== undefined) item.faseTextoEn = req.body.faseTextoEn;
         if (req.body.idDoLivro !== undefined && req.body.idDoLivro !== null)
             item.idDoLivro = parseInt(req.body.idDoLivro);
 
