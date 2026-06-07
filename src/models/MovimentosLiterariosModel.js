@@ -39,6 +39,7 @@ export default class MovimentosLiterariosModel {
 
         const data = {
             nome: this.nome,
+            nomeEn: this.nomeEn,
             contextoHistorico: this.contextoHistorico,
             contextoHistoricoEn: this.contextoHistoricoEn,
             caracteristicas: this.caracteristicas,
@@ -72,6 +73,7 @@ export default class MovimentosLiterariosModel {
             where: { id: parseInt(this.id, 10) },
             data: {
                 nome: this.nome,
+                nomeEn: this.nomeEn,
                 contextoHistorico: this.contextoHistorico,
                 contextoHistoricoEn: this.contextoHistoricoEn,
                 caracteristicas: this.caracteristicas,

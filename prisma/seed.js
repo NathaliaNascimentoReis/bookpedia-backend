@@ -1059,7 +1059,7 @@ async function main() {
                         opiniao: 'Na minha opinião, O Guarani é um livro interessante porque mostra costumes e acontecimentos do Brasil colonial, além de apresentar personagens marcantes, como Peri. Apesar de a linguagem ser um pouco difícil em alguns momentos por ser uma obra antiga, a história consegue transmitir valores como coragem, lealdade e amor. Foi uma leitura que me ajudou a conhecer melhor a literatura brasileira e a forma como os autores da época enxergavam o país.',
                         opiniaoEn: 'In my opinion, "O Guarani" is an interesting book because it shows the customs and events of colonial Brazil, in addition to presenting distinctive characters like Peri. Although the language is a bit difficult at times due to its age, the story manages to convey values such as courage, loyalty, and love. It was a read that helped me better understand Brazilian literature and how the authors of that time viewed the country.',
                         fotoURL:
-                            'https://imgur.com/i0bnA7B',
+                            'https://i.imgur.com/i0bnA7B.png',
                     },
                     {
                         nome: 'Matheus Leitão',
@@ -1093,7 +1093,7 @@ async function main() {
                         opiniao: 'Ler O Guarani foi uma experiência absolutamente fantástica que superou todas as minhas expectativas. Avalio a obra com nota 5. A riqueza de detalhes do Romantismo e a forma como a narrativa mistura aventura, romance e lealdade me prenderam tanto que concluí a leitura em 12 dias. É um clássico indispensável que enriqueceu muito nossa bagagem cultural e literária.',
                         opiniaoEn: 'Reading "O Guarani" was an absolutely fantastic experience that exceeded all my expectations. I rate it 5/5. The rich details of Brazilian Romanticism and the way the narrative blends adventure, romance, and loyalty kept me so engaged that I finished reading it in 12 days. It is an indispensable classic that greatly enriched our cultural and literary background.',
                         fotoURL:
-                            'https://imgur.com/YSQDBVT',
+                            'https://i.imgur.com/YSQDBVT.jpeg',
                     },
                     {
                         nome: 'Arthur Ferian',
@@ -1113,7 +1113,7 @@ async function main() {
                         opiniaoEn:
                             "The Guarani is an interesting work because it blends romance, adventure, and elements of Brazilian indigenous culture. Peri's story shows courage, loyalty, and love, while also presenting the customs and landscapes of Brazil at that time. Although the language is somewhat archaic, the book manages to hold the reader's attention at various points and is important for understanding Brazilian Romanticism.",
                         fotoURL:
-                            'https://imgur.com/148kWTg',
+                            'https://i.imgur.com/148kWTg.jpeg',
                     },
                     {
                         nome: 'Nicolas Silva',
@@ -1133,7 +1133,7 @@ async function main() {
                         opiniaoEn:
                             'Since my main interests lie in scientific and investigative books, reading "O Guarani" was a challenge outside my comfort zone. I rate it 3.5/5. Although the idealized and descriptive style of Brazilian Romanticism is very different from my usual taste, the plot kept me engaged over these 9 days with its elements of action and conflict. It was a great reading exercise that helped me improve my critical analysis and understand a major classic of our literature.',
                         fotoURL:
-                            'https://imgur.com/i48gxSY',
+                            'https://i.imgur.com/i48gxSY.jpeg',
                     },
                     {
                         nome: 'Isadora Murback',
@@ -1153,7 +1153,7 @@ async function main() {
                         opiniaoEn:
                             'In my opinion, the book was interesting, but a bit difficult to read due to the old language. I liked the character Peri because he is very loyal and does everything to protect Ceci. Even though it was tiring at times, the book is important for understanding Brazilian literature and the way indigenous people were viewed at that time.',
                         fotoURL:
-                            'https://imgur.com/ROecJ3O',
+                            'https://i.imgur.com/ROecJ3O.jpeg',
                     },
                     {
                         nome: 'Gustavo Durães',
@@ -1169,7 +1169,7 @@ async function main() {
                         opiniao: 'Na minha opinião, O Guarani é um livro interessante porque mistura aventura, romance e elementos da cultura brasileira. Apesar de a linguagem ser um pouco difícil em alguns trechos, a história consegue prender a atenção e mostra valores como coragem, lealdade e amor. É uma obra importante para entender o Romantismo no Brasil e a forma como os indígenas eram retratados na literatura da época.',
                         opiniaoEn: 'In my opinion, O Guarani is an interesting book because it combines adventure, romance, and elements of Brazilian culture. Although the language can be a little difficult at times, the story is engaging and highlights values such as courage, loyalty, and love. It is also an important work for understanding Brazilian Romanticism and how Indigenous people were portrayed in the literature of that period.',
                         fotoURL:
-                            'https://imgur.com/jnJnb0V',
+                            'https://i.imgur.com/jnJnb0V.jpeg',
                     },
                     {
                         nome: 'Henry Araújo',
@@ -1185,7 +1185,7 @@ async function main() {
                         opiniao: 'O Guarani é uma obra fascinante e de leitura ágil. O que mais me chamou a atenção foi a sua forte importância política: o livro atua na construção de uma identidade nacional pós-independência, utilizando a figura de Peri como um símbolo de aliança e fundação do povo brasileiro. É um clássico indispensável para entender os projetos políticos e ideológicos do Romantismo no Brasil.',
                         opiniaoEn: 'The Guarani is a fascinating and fast-paced book. What caught my attention the most was its strong political importance: the novel works on building a post-independence national identity, using the figure of Peri as a symbol of alliance and foundation of the Brazilian people. It is an indispensable classic to understand the political and ideological projects of Romanticism in Brazil.',
                         fotoURL:
-                            'https://imgur.com/e534bBq',
+                            'https://i.imgur.com/e534bBq.jpeg',
                     },
                     {
                         nome: 'Enzo Vecchi',
@@ -1201,7 +1201,7 @@ async function main() {
                         opiniao: 'Na minha opinião o livro O Guarani é uma obra literária muito característica do período romantista. Ela retrata diversos elementos nacionais de forma romântica e melancólica. O livro narra a paixão entre o indígena Peri e a jovem nobre portuguêsa, Cecília ou Ceci. Tudo isso em meio a conflitos coloniais e tribais. O livro consegue te deixar conectado à história do início ao fim e retrata muito bem o Brasil do século XVII.',
                         opiniaoEn: 'In my opinion, the book O Guarani is a literary work that strongly represents the Romantic period. It portrays many national elements in a romantic and melancholic way. The book tells the story of the love between the indigenous man Peri and the young Portuguese noblewoman Cecília, also called Ceci, amid colonial and tribal conflicts. The story keeps the reader connected from beginning to end and portrays 17th-century Brazil very well.',
                         fotoURL:
-                            'https://imgur.com/1QJzOLx',
+                            'https://i.imgur.com/1QJzOLx.jpeg',
                     },
                     {
                         nome: 'Matheus Duarte',
@@ -1217,7 +1217,7 @@ async function main() {
                         opiniao: 'Eu adorei ler O Guarani, o livro me prendeu do começo ao fim. Achei a história cheia de aventura e achei o Peri um herói incrível, com uma coragem e lealdade admiráveis. Mesmo sendo um clássico antigo, foi uma leitura que valeu muito a pena.',
                         opiniaoEn: 'I loved reading O Guarani; the book captivated me from beginning to end. I found the story full of adventure, and I thought Peri was an incredible hero, with admirable courage and loyalty. Even though its an old classic, it was a very worthwhile read.',
                         fotoURL:
-                            'https://imgur.com/vhAwase',
+                            'https://i.imgur.com/vhAwase.jpeg',
                     },
                 ],
             },
