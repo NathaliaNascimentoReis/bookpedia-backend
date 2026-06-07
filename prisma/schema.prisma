@@ -120,13 +120,16 @@ model Vocabulario {
 model MovimentosLiterarios {
     id                  Int    @id @default(autoincrement())
     nome                String
+    nomeEn              String
     contextoHistorico   String
     contextoHistoricoEn String
     caracteristicas     String
     caracteristicasEn   String
     periodo             String
     fase                String
+    faseEn              String
     faseTexto           String
+    faseTextoEn         String
 
 
     idDoLivro Int

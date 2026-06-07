@@ -5,23 +5,31 @@ export default class MovimentosLiterariosModel {
     constructor({
         id = null,
         nome,
+        nomeEn,
         contextoHistorico,
         contextoHistoricoEn,
         caracteristicas,
         caracteristicasEn,
         periodo,
         fase,
+        faseEn,
+        faseTexto,
+        faseTextoEn,
         influencia,
     } = {}) {
         // Esses campos representam as propriedades salvas no banco de dados.
         this.id = id;
         this.nome = nome;
+        this.nomeEn = nomeEn;
         this.contextoHistorico = contextoHistorico;
         this.contextoHistoricoEn = contextoHistoricoEn;
         this.caracteristicas = caracteristicas;
         this.caracteristicasEn = caracteristicasEn;
         this.periodo = periodo;
         this.fase = fase;
+        this.faseEn = faseEn;
+        this.faseTexto = faseTexto;
+        this.faseTextoEn = faseTextoEn;
         this.influencia = influencia;
     }
 
@@ -37,6 +45,9 @@ export default class MovimentosLiterariosModel {
             caracteristicasEn: this.caracteristicasEn,
             periodo: this.periodo,
             fase: this.fase,
+            faseEn: this.faseEn,
+            faseTexto: this.faseTexto,
+            faseTextoEn: this.faseTextoEn,
             influencia: this.influencia,
         };
 
@@ -67,6 +78,9 @@ export default class MovimentosLiterariosModel {
                 caracteristicasEn: this.caracteristicasEn,
                 periodo: this.periodo,
                 fase: this.fase,
+                faseEn: this.faseEn,
+                faseTexto: this.faseTexto,
+                faseTextoEn: this.faseTextoEn,  
                 influencia: this.influencia,
             },
         });
